@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="My Homeworks"
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/sidemenu_homeworks" android:layout_gravity="left|center_vertical" android:textSize="20dp"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="My Jobs"
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/sidemenu_jobs" android:layout_gravity="center" android:textSize="20dp"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="My Profile"
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/sidemenu_profile" android:layout_gravity="center" android:textSize="20dp"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Find Jobs"
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/sidemenu_find_jobs" android:layout_gravity="left|center_vertical" android:textSize="20dp"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Find techers"
+            android:id="@+id/sidemenu_find_teacher" android:layout_gravity="left|center_vertical"
+            android:textSize="20dp"
+            android:background="@android:color/holo_blue_light"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:textSize="20dp"
+            android:id="@+id/sidemenu_logout" android:layout_gravity="left|center_vertical"
+            android:background="#92d2ff"/>
+</LinearLayout>

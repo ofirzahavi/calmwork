@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/choose_role"
+          android:title="Student"
+          android:orderInCategory="0"
+          android:showAsAction="ifRoom">
+        <menu>
+            <item android:id="@+id/menu_student"
+                  android:title="Student" />
+            <item android:id="@+id/menu_techer"
+                  android:title="Teacher" />
+
+        </menu>
+          </item>
+</menu>
