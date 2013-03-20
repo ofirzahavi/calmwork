@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <TextView
+        android:layout_width="165dp"
+        android:layout_height="27dp"
+        android:text="Teacher's Name"
+        android:id="@+id/textView"
+        android:textSize="17dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21/3/2013"
+        android:id="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp" />
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="33dp"
+        android:id="@+id/imageView1"
+        android:layout_toLeftOf="@+id/textView1"
+        android:layout_alignTop="@+id/textView"
+        android:src="@drawable/golden-rating-stars"
+        android:layout_alignLeft="@+id/button"
+        android:layout_marginLeft="100dp" />
+
+    <ImageView
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="6dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/question" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What do you mean by..."
+        android:id="@+id/textView2"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp" />
+
+
+</RelativeLayout>
