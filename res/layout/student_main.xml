@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/BackGround">
+    android:background="@drawable/green_background">
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -15,23 +15,10 @@
         android:text="UserName"
         android:id="@+id/works_user_name" android:layout_gravity="center"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload New Exercise "
-        android:id="@+id/button"
-        android:layout_gravity="center"
-        android:visibility="visible"
-        android:typeface="sans"
-        android:clickable="false"
-        android:longClickable="false"
-        android:textStyle="bold"
-        android:background="#bababa" />
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/listView"
+        android:id="@+id/works_list"
         android:layout_gravity="center" />
 </LinearLayout>
 

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/BackGround">
+    android:background="@drawable/green_background">
 
     <EditText
         android:id="@+id/editText1"
@@ -14,7 +14,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/choose_a_user_name"
-        android:textColorHint="Black" />
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/EditText01"
@@ -26,7 +26,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/re_enter_password"
-        android:textColorHint="Black" />
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/editText2"
@@ -38,7 +38,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="@string/enter_your_email_address"
-        android:textColorHint="Black" />
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/editText3"
@@ -49,7 +49,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/choose_a_password"
-        android:textColorHint="Black" />
+        android:textColorHint="#000000" />
 
     <Button
         android:id="@+id/button1"

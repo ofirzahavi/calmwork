@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LoginActivity" android:launchMode="singleTop"/>
-        <activity android:name=".activity.UserWorksActivity" android:launchMode="singleTop"/>
+        <activity android:name=".activity.NewWorkActivity" android:launchMode="singleTop"/>
+        <activity android:name=".activity.WorksListActivity"/>
 
     </application>
 </manifest>

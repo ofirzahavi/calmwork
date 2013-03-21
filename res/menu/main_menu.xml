@@ -2,7 +2,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/choose_role"
-          android:title="Student\Teacher"
+          android:title="Student"
           android:orderInCategory="0"
           android:showAsAction="ifRoom">
         <menu>
@@ -12,5 +12,10 @@
                   android:title="Teacher" />
 
         </menu>
-          </item>
+    </item>
+    <item android:id="@+id/menu_upload_image"
+          android:title="upload"
+          android:icon="@drawable/upload_file"
+          android:orderInCategory="1"
+          android:showAsAction="ifRoom" />
 </menu>

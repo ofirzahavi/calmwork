@@ -46,7 +46,7 @@
         android:id="@+id/imageView1"
         android:layout_toLeftOf="@+id/textView1"
         android:layout_alignTop="@+id/textView"
-        android:src="@drawable/golden-rating-stars"
+        android:src="@drawable/golden_rating_stars"
         android:layout_alignLeft="@+id/button"
         android:layout_marginLeft="100dp" />
 
@@ -70,7 +70,7 @@
         android:layout_marginLeft="6dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
-        android:src="@drawable/purpleV copy" />
+        android:src="@drawable/item_v_purpule" />
 
 
 </RelativeLayout>

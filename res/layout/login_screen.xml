@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/BackGround">
+    android:background="@drawable/green_background">
 
     <TextView
         android:id="@+id/textView3"
@@ -11,7 +11,7 @@
         android:text="@string/dont_have_an_account"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="18sp"
-        android:layout_alignLeft="@+id/textView2" android:layout_above="@+id/button2"/>
+        android:layout_alignLeft="@+id/textView2" android:layout_above="@+id/button2" android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/button2"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
         android:layout_alignParentLeft="true" android:layout_marginLeft="110dp" android:layout_alignParentBottom="true"
-        android:background="#bababa" />
+            />
 
     <TextView
         android:id="@+id/textView1"
@@ -28,7 +28,7 @@
         android:text="@string/login"
         android:textAppearance="?android:attr/textAppearanceLarge" android:layout_alignLeft="@+id/button2"
         android:layout_alignParentTop="true" android:layout_marginTop="7dp"
-        android:layout_marginLeft="0dp" />
+        android:layout_marginLeft="0dp" android:textColor="#ffffff"/>
 
     <EditText
         android:id="@+id/login_password"
@@ -40,7 +40,7 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColorHint="Black" />
+        android:textColorHint="#eeeeee" android:textColor="#ffffff" android:password="true"/>
 
     <EditText
         android:id="@+id/login_email"
@@ -52,7 +52,7 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColorHint="Black" />
+        android:textColorHint="#eeeeee" android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/login_button_login"
@@ -63,7 +63,7 @@
         android:layout_marginLeft="210dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="210dp"
-        android:background="#bababa" />
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -75,6 +75,6 @@
         android:text="@string/enter_account_information"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="16sp" />
+        android:textSize="16sp" android:textColor="#ffffff"/>
 
 </RelativeLayout>

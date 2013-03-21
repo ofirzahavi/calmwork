@@ -13,7 +13,7 @@
         android:layout_marginLeft="5dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="14dp"
-        android:src="@drawable/red-plus-hi" />
+        android:src="@drawable/item_red_plus" />
 
     <TextView
         android:layout_width="118dp"

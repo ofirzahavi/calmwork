@@ -1,13 +1,11 @@
 package com.calm.android.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import com.calm.android.R;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
@@ -46,7 +44,7 @@ public class LoginActivity extends RoboActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), UserWorksActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);
                 startActivity(intent);
 
 
