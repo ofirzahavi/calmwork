@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/BackGround">
+
+    <ImageView
+        android:layout_width="66dp"
+        android:layout_height="61dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="left|center_vertical"
+        android:src="@drawable/demo_profile_pic"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="7dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name:"
+        android:id="@+id/textView"
+        android:layout_gravity="left|center_vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="75dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="example user name"
+        android:id="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="100dp"
+        android:layout_alignTop="@+id/textView" />
+
+    <TextView
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:text="42 successful interactions"
+        android:id="@+id/textView2"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="97dp"
+        android:layout_alignRight="@+id/textView1"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:text="Mathematics - Algebra"
+        android:id="@+id/textView3"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="195dp"
+        android:layout_alignRight="@+id/textView1"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:id="@+id/imageView1"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/golden-rating-stars"
+        android:layout_alignRight="@+id/textView" />
+
+    <TextView
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:text="History"
+        android:id="@+id/textView4"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_below="@+id/imageView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/golden-rating-stars"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_below="@+id/textView4"
+        android:layout_alignRight="@+id/textView"
+        android:layout_marginTop="5dp" />
+
+    <ImageView
+        android:layout_width="92dp"
+        android:layout_height="38dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/golden-rating-stars"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="120dp"
+        android:layout_alignRight="@+id/textView" />
+
+</RelativeLayout>

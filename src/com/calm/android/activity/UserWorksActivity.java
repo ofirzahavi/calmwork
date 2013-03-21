@@ -79,7 +79,7 @@ public class UserWorksActivity extends CalmActivity {
                 public void onClick(View v) {
                     dispatchTakePictureIntent(CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-                }
+    }
             });
         } else {
             mTakePicButton.setEnabled(false);

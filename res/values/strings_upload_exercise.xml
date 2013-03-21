@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Strings related to login -->
+    <string name="upload_exercise">Upload Exercise</string>
+    <string name="exercise_subject">What\'s the subject of you exercise?</string>
+    <string name="difficulty_level">Difficulty Level</string>
+    <string name="language">Language</string>
+    <string name="due_date">Due Date</string>
+    <string name="price">How much do you want to pay?</string>
+    <string name="go_button">Go!</string>
+
+</resources>

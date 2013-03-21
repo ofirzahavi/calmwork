@@ -2,7 +2,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/choose_role"
-          android:title="Student"
+          android:title="Student\Teacher"
           android:orderInCategory="0"
           android:showAsAction="ifRoom">
         <menu>
