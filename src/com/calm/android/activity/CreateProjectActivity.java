@@ -38,6 +38,8 @@ public class CreateProjectActivity extends CalmActivity implements AdapterView.O
     @InjectView(R.id.newProject_spinner_level)
     private Spinner mLevelSpinner;
 
+    //TODO: add dateChoose member
+
     private String[] subjects = {"Math"};
     private String[] levels = {"Elementary school (Grades 1-5)","Middle school (Grades 6-8)", "High school (Grades 9-12)", "University / College"};
 
