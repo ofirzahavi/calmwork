@@ -8,14 +8,14 @@
     <TextView android:id="@+id/newProject_headline" android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:textAppearance="?android:attr/textAppearanceLarge"
               android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
-              android:layout_marginTop="20dp" android:autoText="true" android:clickable="false"
+              android:layout_marginTop="10dp" android:autoText="true" android:clickable="false"
               android:textColor="#ffffff" android:layout_gravity="center" android:gravity="center"
-              android:text="@string/project_details" android:textStyle="bold"/>
+              android:text="@string/new_project" android:textStyle="bold"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_a_name"
-            android:id="@+id/newProject_name" android:layout_gravity="center" android:layout_marginTop="40dp"
+            android:id="@+id/newProject_name" android:layout_gravity="center" android:layout_marginTop="20dp"
             android:textColor="#ffffff"/>
     <EditText
             android:layout_width="wrap_content"
@@ -27,27 +27,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/subject"
-            android:id="@+id/newProject_subject" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:id="@+id/newProject_subject" android:layout_gravity="center" android:layout_marginTop="15dp"
             android:textColor="#ffffff"/>
     <Spinner
-            android:layout_width="201dp"
-            android:layout_height="29dp"
+            android:layout_width="180dp"
+            android:layout_height="20dp"
             android:id="@+id/newProject_spinner_subject" android:layout_gravity="center"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/level"
-            android:id="@+id/newProject_level" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:id="@+id/newProject_level" android:layout_gravity="center" android:layout_marginTop="15dp"
             android:textColor="#ffffff"/>
     <Spinner
-            android:layout_width="201dp"
-            android:layout_height="29dp"
+            android:layout_width="180dp"
+            android:layout_height="20dp"
             android:id="@+id/newProject_spinner_level" android:layout_gravity="center"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/due_date_for_project"
+            android:id="@+id/newProject_dueDate" android:layout_gravity="center" android:gravity="center"
+            android:layout_marginTop="15dp" android:textColor="#ffffff"/>
+    <DatePicker
+            android:layout_width="180dp"
+            android:layout_height="20dp"
+            android:id="@+id/newProject_datePicker" android:layout_gravity="center"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/describe"
-            android:id="@+id/newProject_describe" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:id="@+id/newProject_describe" android:layout_gravity="center" android:layout_marginTop="15dp"
             android:textColor="#ffffff"/>
     <EditText
             android:layout_width="wrap_content"
@@ -56,6 +66,12 @@
             android:id="@+id/newProject_editText_describe" android:layout_gravity="center" android:textSize="12dp"
             android:textIsSelectable="false" android:inputType="textLongMessage"/>
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_files"
+            android:id="@+id/newProject_howToAttachAfile" android:layout_gravity="center" android:layout_marginTop="15dp"
+            android:textColor="#ffffff"/>
     <Button
             android:id="@+id/newProject_button_submit"
             android:layout_width="201dp"
@@ -63,6 +79,6 @@
             android:text="@string/submit"
             android:layout_gravity="center"
             android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
-            android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="15dp"
             android:clickable="true"/>
 </LinearLayout>
