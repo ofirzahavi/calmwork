@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="#439bc2">
+
+    <TextView
+            android:id="@+id/Signup_headline"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lets_get_started"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="15dp"
+            android:autoText="true" android:clickable="false" android:textColor="#ffffff"
+            android:gravity="center"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/enter_your_email_address"
+            android:id="@+id/Signup_email" android:layout_gravity="center" android:layout_marginTop="40dp"
+            android:textColorHint="#ffffff" android:gravity="center" android:textSize="16dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/choose_a_password"
+            android:id="@+id/Signup_password" android:layout_gravity="center" android:textColorHint="#ffffff"
+            android:gravity="center" android:textSize="16dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/re_enter_password"
+            android:id="@+id/Signup_rePassword" android:layout_gravity="center" android:textColorHint="#ffffff"
+            android:password="true" android:gravity="center" android:textSize="16dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:inputType="textPersonName"
+            android:hint="@string/choose_a_user_name"
+            android:textColorHint="#ffffff"
+            android:id="@+id/Signup_userName" android:layout_gravity="center" android:gravity="center"
+            android:textSize="16dp"/>
+    <Button
+            android:layout_width="235dp"
+            android:layout_height="30dp"
+            android:text="Let the CalmWork begin :)"
+            android:id="@+id/Signup_signupButton" android:layout_gravity="center" android:layout_marginTop="35dp"
+            android:background="#aae002" android:textSize="16dp" android:textColor="#ffffff" android:textStyle="bold"/>
+
+</LinearLayout>
