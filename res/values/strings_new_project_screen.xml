@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="project_details">Project details</string>
+    <string name="subject">Choose a subject </string>
+    <string name="choose_a_name">Enter a name for the project</string>
+    <string name="level">Choose a level</string>
+    <string name="submit">Submit :)</string>
+    <string name="describe">Describe your project (optional)</string>
+    <string name="what_you_need_done">What do you need done...</string>
+    <string name="feel_free_to_provide_some_more_details">Feel free to provide us with some more details...</string>
+
+</resources>

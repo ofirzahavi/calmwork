@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="#439bc2">
+
+    <TextView android:id="@+id/newProject_headline" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+              android:layout_marginTop="20dp" android:autoText="true" android:clickable="false"
+              android:textColor="#ffffff" android:layout_gravity="center" android:gravity="center"
+              android:text="@string/project_details" android:textStyle="bold"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_a_name"
+            android:id="@+id/newProject_name" android:layout_gravity="center" android:layout_marginTop="40dp"
+            android:textColor="#ffffff"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/what_you_need_done"
+            android:id="@+id/newProject_editText_name" android:layout_gravity="center"
+            android:textSize="12dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subject"
+            android:id="@+id/newProject_subject" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:textColor="#ffffff"/>
+    <Spinner
+            android:layout_width="201dp"
+            android:layout_height="29dp"
+            android:id="@+id/newProject_spinner_subject" android:layout_gravity="center"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/level"
+            android:id="@+id/newProject_level" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:textColor="#ffffff"/>
+    <Spinner
+            android:layout_width="201dp"
+            android:layout_height="29dp"
+            android:id="@+id/newProject_spinner_level" android:layout_gravity="center"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/describe"
+            android:id="@+id/newProject_describe" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:textColor="#ffffff"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/feel_free_to_provide_some_more_details"
+            android:id="@+id/newProject_editText_describe" android:layout_gravity="center" android:textSize="12dp"
+            android:textIsSelectable="false" android:inputType="textLongMessage"/>
+
+    <Button
+            android:id="@+id/newProject_button_submit"
+            android:layout_width="201dp"
+            android:layout_height="29dp"
+            android:text="@string/submit"
+            android:layout_gravity="center"
+            android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
+            android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="40dp"
+            android:clickable="true"/>
+</LinearLayout>
