@@ -52,7 +52,7 @@ public class CreateProjectActivityStepTwo extends CalmActivity {
 
                 // custom dialog
                 final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.newproject_datepicker_dialog);
+                dialog.setContentView(R.layout.upload_attachments_dialog);
                 dialog.setTitle("Choose due date");
 
                 dialog.show();
