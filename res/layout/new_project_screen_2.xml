@@ -24,11 +24,41 @@
             android:text="@string/due_date_for_project"
             android:id="@+id/newproject_duedate" android:layout_gravity="center" android:gravity="center"
             android:layout_marginTop="15dp" android:textColor="#ffffff"/>
-    <Button
-            android:layout_width="wrap_content"
+
+    <LinearLayout
+            android:id="@+id/buttonsLayout"
             android:layout_height="wrap_content"
-            android:text="Choose due date"
-            android:id="@+id/button" android:layout_gravity="center"/>
+            android:layout_width="fill_parent"
+            android:measureWithLargestChild="true"
+            android:orientation="horizontal"
+            android:padding="6sp"
+            android:layout_alignParentBottom="true">
+
+        <Spinner
+                android:layout_width="104dp"
+                android:layout_height="40dp"
+                android:entries="@array/date_day_array"
+                android:prompt="@string/date_day_prompt"
+                android:gravity="center"
+                android:id="@+id/newproject_spinner_date_day" android:layout_gravity="center" android:spinnerMode="dialog"/>
+
+        <Spinner
+                android:layout_width="104dp"
+                android:layout_height="40dp"
+                android:entries="@array/date_month_array"
+                android:prompt="@string/date_month_prompt"
+                android:gravity="center"
+                android:id="@+id/newproject_spinner_date_month" android:layout_gravity="center" android:spinnerMode="dialog"/>
+
+        <Spinner
+                android:layout_width="104dp"
+                android:layout_height="40dp"
+                android:entries="@array/date_year_array"
+                android:prompt="@string/date_year_prompt"
+                android:gravity="center"
+                android:id="@+id/newproject_spinner_date_year" android:layout_gravity="center" android:spinnerMode="dialog"/>
+    </LinearLayout>
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

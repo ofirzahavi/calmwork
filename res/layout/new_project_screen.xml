@@ -52,21 +52,24 @@
             android:layout_width="280dp"
             android:layout_height="40dp"
             android:entries="@array/level_array"
-            android:prompt="@string/level_prompt" android:gravity="center" android:spinnerMode="dialog"
+            android:prompt="@string/level_prompt"
+            android:gravity="center" android:spinnerMode="dialog"
             android:id="@+id/newproject_spinner_level" android:layout_gravity="center" android:textAlignment="center"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/language"
-            android:id="@+id/newproject_language" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:id="@+id/newproject_language"
+            android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
     <Spinner
             android:layout_width="280dp"
             android:layout_height="40dp"
             android:entries="@array/languages_array"
             android:prompt="@string/languages_prompt" android:gravity="center"
-            android:id="@+id/newproject_spinner_language" android:layout_gravity="center" android:spinnerMode="dialog"/>
+            android:id="@+id/newproject_spinner_language"
+            android:layout_gravity="center" android:spinnerMode="dialog"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
