@@ -28,7 +28,7 @@ public class SplashActivity extends Activity {
              intent = new Intent(getApplicationContext(), LoginActivity.class);
              startActivity(intent);
         } else {
-            intent = new Intent(getApplicationContext(), WorksListActivity.class);
+            intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
 
         }
