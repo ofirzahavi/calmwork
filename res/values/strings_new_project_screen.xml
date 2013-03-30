@@ -7,8 +7,8 @@
     <string name="level">Choose a level</string>
     <string name="submit">Submit :)</string>
     <string name="describe">Describe your project (optional)</string>
-    <string name="what_you_need_done">What do you need done...</string>
-    <string name="feel_free_to_provide_some_more_details">Feel free to provide us with some more details...</string>
+    <string name="what_you_need_done">For example: "Linear Math Assignment".</string>
+    <string name="feel_free_to_provide_some_more_details">Here you can add more specific details</string>
     <string name="due_date_for_project">Choose a due date for the project</string>
     <string name="add_files">Add files to the project</string>
 
