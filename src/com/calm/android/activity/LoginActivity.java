@@ -28,6 +28,9 @@ public class LoginActivity extends RoboActivity {
     @InjectView(R.id.login_button_login)
     private Button mLoginButton;
 
+    @InjectView(R.id.login_button_signup)
+    private Button mSignupButton;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
@@ -44,7 +47,20 @@ public class LoginActivity extends RoboActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+        mSignupButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intent);
 
 

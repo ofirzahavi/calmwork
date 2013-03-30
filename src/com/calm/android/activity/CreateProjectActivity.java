@@ -1,5 +1,6 @@
 package com.calm.android.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,37 +17,33 @@ import roboguice.inject.InjectView;
  * Time: 21:26
  * To change this template use File | Settings | File Templates.
  */
-public class CreateProjectActivity extends CalmActivity implements AdapterView.OnItemSelectedListener {
+public class CreateProjectActivity extends CalmActivity {
+
     @Override
     protected int getLayoutId() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return R.layout.new_project_screen;
     }
 
-
-    @InjectView(R.id.newProject_editText_name)
+    @InjectView(R.id.newproject_edittext_name)
     private EditText mProjectNameText;
 
-    @InjectView(R.id.newProject_editText_describe)
+    @InjectView(R.id.newproject_edittext_describe)
     private EditText mProjectDescriptionText;
 
-    @InjectView(R.id.newProject_button_submit)
+    @InjectView(R.id.newproject_button_submit)
     private Button mSubmitButton;
 
-    @InjectView(R.id.newProject_spinner_subject)
+    @InjectView(R.id.newproject_spinner_subject)
     private Spinner mSubjectSpinner;
 
-    @InjectView(R.id.newProject_spinner_level)
+    @InjectView(R.id.newproject_spinner_level)
     private Spinner mLevelSpinner;
 
-    //TODO: add dateChoose member
-
-    private String[] subjects = {"Math"};
-    private String[] levels = {"Elementary school (Grades 1-5)","Middle school (Grades 6-8)", "High school (Grades 9-12)", "University / College"};
-
+    //TODO: add dateChooser member
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_new_account_screen);
+        addListenerOnSpinnerItemSelection();
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
 
@@ -54,7 +51,7 @@ public class CreateProjectActivity extends CalmActivity implements AdapterView.O
             public void onClick(View v) {
 
                 String project_name =  mProjectNameText.getText().toString();
-                String project_description =  mProjectDescriptionText.getText().toString();           //TODO: set all values
+                String project_description =  mProjectDescriptionText.getText().toString();   //TODO: set all values
 
                 //TODO - CHECK IF PASSWORDS MATCH
                 //TOAST
@@ -70,30 +67,14 @@ public class CreateProjectActivity extends CalmActivity implements AdapterView.O
                 Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);     //TODO: change the activity that button leads to
                 startActivity(intent);
 
-
             }
         });
-
-        ArrayAdapter<String> adapterLevels = new ArrayAdapter<String>(CreateProjectActivity.this, android.R.layout.simple_spinner_item, levels);
-        mLevelSpinner = (Spinner) findViewById(R.id.newProject_spinner_level);
-        mLevelSpinner.setAdapter(adapterLevels);
-
-        ArrayAdapter<String> adapterSubjects = new ArrayAdapter<String>(CreateProjectActivity.this, android.R.layout.simple_spinner_item, subjects);
-        mSubjectSpinner = (Spinner) findViewById(R.id.newProject_spinner_subject);
-        mLevelSpinner = (Spinner) findViewById(R.id.newProject_spinner_level);
-        mLevelSpinner.setAdapter(adapterSubjects);
-
-        mLevelSpinner.setOnItemSelectedListener(this);
-        mSubjectSpinner.setOnItemSelectedListener(this);
     }
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void addListenerOnSpinnerItemSelection() {
+        mLevelSpinner = (Spinner) findViewById(R.id.newproject_spinner_level);
+        mLevelSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+        mSubjectSpinner = (Spinner) findViewById(R.id.newproject_spinner_level);
+        mSubjectSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 }

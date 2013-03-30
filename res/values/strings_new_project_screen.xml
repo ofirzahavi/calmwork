@@ -2,7 +2,7 @@
 <resources>
 
     <string name="new_project">New project</string>
-    <string name="subject">Choose a subject </string>
+    <string name="subject">Choose a subject</string>
     <string name="choose_a_name">Enter a name for the project</string>
     <string name="level">Choose a level</string>
     <string name="submit">Submit :)</string>
@@ -11,5 +11,21 @@
     <string name="feel_free_to_provide_some_more_details">Feel free to provide us with some more details...</string>
     <string name="due_date_for_project">Choose a due date for the project</string>
     <string name="add_files">Add files to the project</string>
+
+    <string name="subject_prompt">Choose a subject</string>
+    <string-array name="subject_array">
+        <item>Math</item>
+        <item>History</item>
+        <item>Geography</item>
+        <item>Literature</item>
+    </string-array>
+
+    <string name="level_prompt">Choose a level</string>
+    <string-array name="level_array">
+        <item>Elementary school (Grades 1-5)</item>
+        <item>Middle school (Grades 6-8)</item>
+        <item>High school (Grades 9-12)</item>
+        <item>University / College</item>
+    </string-array>
 
 </resources>
