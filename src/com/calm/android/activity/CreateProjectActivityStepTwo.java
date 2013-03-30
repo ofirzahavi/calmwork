@@ -1,9 +1,13 @@
 package com.calm.android.activity;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.widget.Spinner;
+import android.widget.*;
 import com.calm.android.R;
 import roboguice.inject.InjectView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,10 +32,35 @@ public class CreateProjectActivityStepTwo extends CalmActivity {
     @InjectView(R.id.newproject_spinner_date_year)
     private Spinner mYearSpinner;
 
+    @InjectView(R.id.newproject_button_date)
+    private Button mDateDialogButton;
+
+    final Context context = this;
+
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
+
+        mDateDialogButton = (Button) findViewById(R.id.newproject_button_date);
+
+        // add button listener
+        mDateDialogButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                // custom dialog
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.newproject_datepicker_dialog);
+                dialog.setTitle("Choose due date");
+
+                dialog.show();
+            }
+        });
     }
+
+
 
     public void addListenerOnSpinnerItemSelection() {
         mDaySpinner = (Spinner) findViewById(R.id.newproject_spinner_date_day);
