@@ -2,6 +2,8 @@
 <resources>
 
     <string name="new_project">New project</string>
+    <string name="step_1">Step 1/2</string>
+    <string name="step_2">Step 2/2</string>
     <string name="subject">Choose a subject</string>
     <string name="choose_a_name">Enter a name for the project</string>
     <string name="level">Choose a level</string>
@@ -11,6 +13,11 @@
     <string name="feel_free_to_provide_some_more_details">Here you can add more specific details</string>
     <string name="due_date_for_project">Choose a due date for the project</string>
     <string name="add_files">Add files to the project</string>
+    <string name="next">Next</string>
+    <string name="language">Select project\'s language</string>
+    <string name="budget">Select your budget (In USD $)</string>
+
+
 
     <string name="subject_prompt">Choose a subject</string>
     <string-array name="subject_array">
@@ -28,6 +35,22 @@
         <item>Middle school (Grades 6-8)</item>
         <item>High school (Grades 9-12)</item>
         <item>University / College</item>
+    </string-array>
+
+    <string name="languages_prompt">Select project\'s language</string>
+    <string-array name="languages_array">
+        <item>Language</item>
+        <item>Arabic</item>
+        <item>English</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Hebrew</item>
+        <item>Hindustani</item>
+        <item>Japanese</item>
+        <item>Mandarin</item>
+        <item>Portuguese</item>
+        <item>Russian</item>
+        <item>Spanish</item>
     </string-array>
 
 </resources>

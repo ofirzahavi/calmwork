@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="#439bc2">
+
+    <TextView android:id="@+id/newproject_headline" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+              android:autoText="true" android:clickable="false"
+              android:textColor="#aae002" android:layout_gravity="center" android:gravity="center"
+              android:text="@string/new_project" android:textStyle="bold"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/step_2"
+            android:id="@+id/newproject_steptwo" android:layout_gravity="center" android:textColor="#aae002"
+            android:textStyle="bold|italic"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/due_date_for_project"
+            android:id="@+id/newproject_duedate" android:layout_gravity="center" android:gravity="center"
+            android:layout_marginTop="15dp" android:textColor="#ffffff"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose due date"
+            android:id="@+id/button" android:layout_gravity="center"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/budget"
+            android:id="@+id/newproject_budget" android:layout_gravity="center" android:layout_marginTop="15dp"
+            android:textColor="#ffffff"/>
+
+    <Button
+            android:id="@+id/newproject_button_submit"
+            android:layout_width="201dp"
+            android:layout_height="29dp"
+            android:text="@string/submit"
+            android:layout_gravity="center"
+            android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
+            android:layout_alignParentTop="true" android:layout_marginTop="15dp"
+            android:clickable="true"/>
+</LinearLayout>

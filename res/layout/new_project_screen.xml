@@ -5,29 +5,35 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:background="#439bc2">
 
-    <TextView android:id="@+id/newproject_headline" android:layout_width="wrap_content" android:layout_height="wrap_content"
+    <TextView android:id="@+id/newproject" android:layout_width="280dp" android:layout_height="30dp"
               android:textAppearance="?android:attr/textAppearanceLarge"
               android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
               android:autoText="true" android:clickable="false"
-              android:textColor="#ffffff" android:layout_gravity="center" android:gravity="center"
+              android:textColor="#aae002" android:layout_gravity="center" android:gravity="center"
               android:text="@string/new_project" android:textStyle="bold"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/step_1"
+            android:id="@+id/newproject_stepone" android:layout_gravity="center" android:textColor="#aae002"
+            android:textStyle="bold|italic"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/choose_a_name"
-            android:id="@+id/newproject_name" android:layout_gravity="center" android:layout_marginTop="20dp"
-            android:textColor="#ffffff"/>
+            android:id="@+id/newproject_name" android:layout_gravity="center"
+            android:textColor="#ffffff" android:layout_marginTop="10dp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/what_you_need_done"
             android:id="@+id/newproject_edittext_name" android:layout_gravity="center"
-            android:textSize="12dp"/>
+            android:textSize="12dp" android:textColorHint="#dcdcdc" android:textStyle="italic"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/subject"
-            android:id="@+id/newproject_subject" android:layout_gravity="center" android:layout_marginTop="15dp"
+            android:id="@+id/newproject_subject" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
     <Spinner
             android:layout_width="280dp"
@@ -40,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/level"
-            android:id="@+id/newproject_level" android:layout_gravity="center" android:layout_marginTop="15dp"
+            android:id="@+id/newproject_level" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
     <Spinner
             android:layout_width="280dp"
@@ -52,35 +58,41 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/due_date_for_project"
-            android:id="@+id/newproject_duedate" android:layout_gravity="center" android:gravity="center"
-            android:layout_marginTop="15dp" android:textColor="#ffffff"/>
+            android:text="@string/language"
+            android:id="@+id/newproject_language" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textColor="#ffffff"/>
+    <Spinner
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:entries="@array/languages_array"
+            android:prompt="@string/languages_prompt" android:gravity="center"
+            android:id="@+id/newproject_spinner_language" android:layout_gravity="center" android:spinnerMode="dialog"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_files"
+            android:id="@+id/newproject_howtoattachafile" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textColor="#ffffff"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/describe"
-            android:id="@+id/newproject_describe" android:layout_gravity="center" android:layout_marginTop="15dp"
+            android:id="@+id/newproject_describe" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/feel_free_to_provide_some_more_details"
             android:id="@+id/newproject_edittext_describe" android:layout_gravity="center" android:textSize="12dp"
-            android:textIsSelectable="false"/>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_files"
-            android:id="@+id/newproject_howtoattachafile" android:layout_gravity="center" android:layout_marginTop="15dp"
-            android:textColor="#ffffff"/>
+            android:textIsSelectable="false" android:textColorHint="#dcdcdc" android:textStyle="italic"/>
     <Button
-            android:id="@+id/newproject_button_submit"
+            android:id="@+id/newproject_button_next"
             android:layout_width="201dp"
             android:layout_height="29dp"
-            android:text="@string/submit"
+            android:text="@string/next"
             android:layout_gravity="center"
             android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
-            android:layout_alignParentTop="true" android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true" android:layout_marginTop="10dp"
             android:clickable="true"/>
+
 </LinearLayout>

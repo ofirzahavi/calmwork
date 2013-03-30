@@ -19,6 +19,7 @@
         <activity android:name=".activity.NewWorkActivity" android:launchMode="singleTop"/>
         <activity android:name=".activity.SignupActivity" android:launchMode="singleTop"/>
         <activity android:name=".activity.CreateProjectActivity" android:launchMode="singleTop"/>
+        <activity android:name=".activity.CreateProjectActivityStepTwo" android:launchMode="singleTop"/>
         <activity android:name=".activity.WorksListActivity"/>
 
 

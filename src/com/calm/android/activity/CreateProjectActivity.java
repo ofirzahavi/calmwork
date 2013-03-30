@@ -30,8 +30,8 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_edittext_describe)
     private EditText mProjectDescriptionText;
 
-    @InjectView(R.id.newproject_button_submit)
-    private Button mSubmitButton;
+    @InjectView(R.id.newproject_button_next)
+    private Button mNextButton;
 
     @InjectView(R.id.newproject_spinner_subject)
     private Spinner mSubjectSpinner;
@@ -39,13 +39,18 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_spinner_level)
     private Spinner mLevelSpinner;
 
+    @InjectView(R.id.newproject_spinner_language)
+    private Spinner mLanguageSpinner;
+
     //TODO: add dateChooser member
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
 
-        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+
+
+        mNextButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -64,7 +69,7 @@ public class CreateProjectActivity extends CalmActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);     //TODO: change the activity that button leads to
+                Intent intent = new Intent(getApplicationContext(), CreateProjectActivityStepTwo.class);
                 startActivity(intent);
 
             }
@@ -76,5 +81,7 @@ public class CreateProjectActivity extends CalmActivity {
         mLevelSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
         mSubjectSpinner = (Spinner) findViewById(R.id.newproject_spinner_level);
         mSubjectSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+        mLanguageSpinner = (Spinner) findViewById(R.id.newproject_spinner_language);
+        mLanguageSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 }
