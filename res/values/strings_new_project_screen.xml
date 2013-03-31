@@ -15,7 +15,7 @@
     <string name="add_files">Add files to the project</string>
     <string name="next">Next</string>
     <string name="language">Select project\'s language</string>
-    <string name="budget">Select your budget (In USD $)</string>
+    <string name="budget">Click here to set your budget (In USD $)</string>
     <string name="click_here_to_choose_due_date">Click here to set due date</string>
 
 

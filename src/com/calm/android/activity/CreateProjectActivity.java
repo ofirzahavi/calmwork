@@ -1,6 +1,8 @@
 package com.calm.android.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ public class CreateProjectActivity extends CalmActivity {
 
     DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
     Calendar myCalendar = Calendar.getInstance();
+    TextView lblDateAndTime;
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -36,8 +39,13 @@ public class CreateProjectActivity extends CalmActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel(lblDateAndTime);
         }
     };
+
+    private void updateLabel(TextView text_id) {
+        text_id.setText(fmtDateAndTime.format(myCalendar.getTime()));
+    }
 
     @Override
     protected int getLayoutId() {
@@ -65,23 +73,20 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_button_budget)
     private Button mBudgetButton;
 
-    @InjectView(R.id.newproject_button_add_files)
-    private Button mAddFilesButton;
 
-    //TODO: add dateChooser member
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
+        lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
         mDueDateButton = (Button) findViewById(R.id.newproject_button_due_date);
+
         mDueDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new DatePickerDialog(CreateProjectActivity.this, d, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
-
-
         });
 
 
@@ -109,6 +114,8 @@ public class CreateProjectActivity extends CalmActivity {
 
             }
         });
+
+        updateLabel(lblDateAndTime);
     }
 
     public void addListenerOnSpinnerItemSelection() {
