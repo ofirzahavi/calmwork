@@ -6,17 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 import com.calm.android.R;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,34 +20,27 @@ import java.util.List;
  */
 
 
-public class SignupActivity extends CalmActivity {
+public class SignupActivity extends RoboActivity {
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.create_new_account_screen;
-    }
-
-
-    @InjectView(R.id.signup_email)
+    @InjectView(R.id.Signup_email)
     private EditText mEmailText;
 
-    @InjectView(R.id.signup_password)
+    @InjectView(R.id.Signup_password)
     private EditText mPasswordText;
 
-    @InjectView(R.id.signup_rePassword)
+    @InjectView(R.id.Signup_rePassword)
     private EditText mRePasswordText;
 
-    @InjectView(R.id.signup_userName)
+    @InjectView(R.id.Signup_userName)
     private EditText mUserNameText;
 
-    @InjectView(R.id.signup_signupButton)
+    @InjectView(R.id.Signup_signupButton)
     private Button mSignupButton;
-
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.create_new_account_screen);
 
         mSignupButton.setOnClickListener(new View.OnClickListener() {
 
@@ -67,7 +53,7 @@ public class SignupActivity extends CalmActivity {
                 //TODO - CHECK IF PASSWORDS MATCH
                 //TOAST
 
-               // Toast.makeText(getApplicationContext(), "passwords do not match", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "passwords do not match", Toast.LENGTH_SHORT);
 
                 SharedPreferences settings = getSharedPreferences("CALM",0);
                 SharedPreferences.Editor editor = settings.edit();
@@ -78,7 +64,7 @@ public class SignupActivity extends CalmActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);
                 startActivity(intent);
 
 
@@ -86,4 +72,3 @@ public class SignupActivity extends CalmActivity {
         });
     }
 }
-
