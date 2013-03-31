@@ -9,6 +9,14 @@ import android.widget.*;
 import com.actionbarsherlock.ActionBarSherlock;
 import com.calm.android.R;
 import roboguice.inject.InjectView;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+import android.widget.TextView;
+import java.text.DateFormat;
+import java.util.Calendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +27,24 @@ import roboguice.inject.InjectView;
  */
 public class CreateProjectActivity extends CalmActivity {
 
+    DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
+    TextView lblDateAndTime;
+    Calendar myCalendar = Calendar.getInstance();
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+    };
+
+    private void updateLabel() {
+        lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
+    }
+
     @Override
     protected int getLayoutId() {
         return R.layout.new_project_screen;
@@ -26,9 +52,6 @@ public class CreateProjectActivity extends CalmActivity {
 
     @InjectView(R.id.newproject_edittext_name)
     private EditText mProjectNameText;
-
-    @InjectView(R.id.newproject_edittext_describe)
-    private EditText mProjectDescriptionText;
 
     @InjectView(R.id.newproject_button_next)
     private Button mNextButton;
@@ -42,11 +65,31 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_spinner_language)
     private Spinner mLanguageSpinner;
 
+    @InjectView(R.id.newproject_button_due_date)
+    private Button mDueDateButton;
+
+    @InjectView(R.id.newproject_button_budget)
+    private Button mBudgetButton;
+
+    @InjectView(R.id.newproject_button_add_files)
+    private Button mAddFilesButton;
+
     //TODO: add dateChooser member
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
+        mDueDateButton = (Button) findViewById(R.id.newproject_duedate);
+        mDueDateButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new DatePickerDialog(CreateProjectActivity.this, d, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+
+        });
+        updateLabel();
 
 
 
@@ -56,7 +99,7 @@ public class CreateProjectActivity extends CalmActivity {
             public void onClick(View v) {
 
                 String project_name =  mProjectNameText.getText().toString();
-                String project_description =  mProjectDescriptionText.getText().toString();   //TODO: set all values
+                //String project_description =  mProjectDescriptionText.getText().toString();   //TODO: set all values
 
                 //TODO - CHECK IF PASSWORDS MATCH
                 //TOAST
@@ -65,7 +108,7 @@ public class CreateProjectActivity extends CalmActivity {
                 SharedPreferences.Editor editor = settings.edit();
 
                 editor.putString("projectName", project_name);
-                editor.putString("projectDescription", project_description);
+                //editor.putString("projectDescription", project_description);
 
                 editor.commit();
 

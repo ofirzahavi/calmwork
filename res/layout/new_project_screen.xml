@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#439bc2">
+              android:layout_height="match_parent" android:background="#449bc2">
 
     <TextView android:id="@+id/newproject" android:layout_width="280dp" android:layout_height="30dp"
               android:textAppearance="?android:attr/textAppearanceLarge"
@@ -11,81 +11,111 @@
               android:autoText="true" android:clickable="false"
               android:textColor="#aae002" android:layout_gravity="center" android:gravity="center"
               android:text="@string/new_project" android:textStyle="bold"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/step_1"
-            android:id="@+id/newproject_stepone" android:layout_gravity="center" android:textColor="#aae002"
-            android:textStyle="bold|italic"/>
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_a_name"
             android:id="@+id/newproject_name" android:layout_gravity="center"
-            android:textColor="#ffffff" android:layout_marginTop="10dp"/>
+            android:textColor="#ffffff" android:layout_marginTop="5dp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/what_you_need_done"
             android:id="@+id/newproject_edittext_name" android:layout_gravity="center"
             android:textSize="12dp" android:textColorHint="#dcdcdc" android:textStyle="italic"/>
-    <TextView
+    <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/subject"
-            android:id="@+id/newproject_subject" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textColor="#ffffff"/>
-    <Spinner
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:entries="@array/subject_array"
-            android:prompt="@string/subject_prompt"
-            android:id="@+id/newproject_spinner_subject" android:spinnerMode="dialog" android:gravity="center"
-            android:layout_gravity="center" android:textAlignment="center"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/level"
-            android:id="@+id/newproject_level" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textColor="#ffffff"/>
-    <Spinner
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:entries="@array/level_array"
-            android:prompt="@string/level_prompt"
-            android:gravity="center" android:spinnerMode="dialog"
-            android:id="@+id/newproject_spinner_level" android:layout_gravity="center" android:textAlignment="center"/>
+            android:id="@+id/newproject_subject" android:layout_gravity="center" android:layout_marginTop="5dp"
+            android:textColor="#ffffff"/> -->
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/language"
-            android:id="@+id/newproject_language" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textColor="#ffffff"/>
-    <Spinner
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:entries="@array/languages_array"
-            android:prompt="@string/languages_prompt" android:gravity="center"
-            android:id="@+id/newproject_spinner_language" android:layout_gravity="center" android:spinnerMode="dialog"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_files"
-            android:id="@+id/newproject_howtoattachafile" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textColor="#ffffff"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/describe"
-            android:id="@+id/newproject_describe" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textColor="#ffffff"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/feel_free_to_provide_some_more_details"
-            android:id="@+id/newproject_edittext_describe" android:layout_gravity="center" android:textSize="12dp"
-            android:textIsSelectable="false" android:textColorHint="#dcdcdc" android:textStyle="italic"/>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="330dp"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Spinner
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:entries="@array/subject_array"
+                android:prompt="@string/subject_prompt"
+                android:id="@+id/newproject_spinner_subject" android:spinnerMode="dialog" android:gravity="center"
+                android:layout_gravity="center" android:textAlignment="center"/>
+            <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/level"
+                    android:id="@+id/newproject_level" android:layout_gravity="center" android:layout_marginTop="5dp"
+                    android:textColor="#ffffff"/>    -->
+            <Spinner
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:entries="@array/level_array"
+                android:prompt="@string/level_prompt"
+                android:gravity="center" android:spinnerMode="dialog"
+                android:id="@+id/newproject_spinner_level" android:layout_gravity="center" android:textAlignment="center"/>
+
+            <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/language"
+                    android:id="@+id/newproject_language" android:layout_gravity="center" android:layout_marginTop="5dp"
+                    android:textColor="#ffffff"/>    -->
+            <Spinner
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:entries="@array/languages_array"
+                android:prompt="@string/languages_prompt" android:gravity="center"
+                android:id="@+id/newproject_spinner_language" android:layout_gravity="center" android:spinnerMode="dialog"/>
+
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/due_date_for_project"
+                android:id="@+id/textView"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColor="#ffffff"/>      -->
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newproject_button_due_date"
+                android:layout_gravity="center"
+                android:src="@drawable/calendar_new"
+                android:background="#459bc2"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newproject_button_budget"
+                android:layout_gravity="center"
+                android:src="@drawable/dollar_budget"
+                android:background="#449bc2"/>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:id="@+id/newproject_button_add_files"
+                android:layout_gravity="center"
+                android:src="@drawable/document_add"
+                android:background="#449bc2"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
     <Button
             android:id="@+id/newproject_button_next"
             android:layout_width="201dp"
@@ -93,7 +123,7 @@
             android:text="@string/next"
             android:layout_gravity="center"
             android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
-            android:layout_alignParentTop="true" android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
             android:clickable="true"/>
 
 </LinearLayout>

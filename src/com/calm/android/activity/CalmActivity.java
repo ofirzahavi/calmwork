@@ -39,9 +39,9 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     //@InjectView(R.id.sidemenu_logout)
     private Button mLogoutButton;
 
-    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-    private static final String ALBUM_NAME = "calmwork";
-    private static final String JPEG_FILE_PREFIX = "calmphoto";
+    protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+    protected static final String ALBUM_NAME = "calmwork";
+    protected static final String JPEG_FILE_PREFIX = "calmphoto";
     private Uri fileUri;
     private File mStorageDir;
     private String mCurrentPhotoPath = "new";

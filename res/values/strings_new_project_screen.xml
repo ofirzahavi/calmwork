@@ -19,27 +19,27 @@
     <string name="click_here_to_choose_due_date">Click here to set due date</string>
 
 
-    <string name="subject_prompt">Choose a subject</string>
+    <string name="subject_prompt">Choose project\'s Subject</string>
     <string-array name="subject_array">
-        <item>Subject</item>
+        <item>Choose project\'s Subject</item>
         <item>Math</item>
         <item>History</item>
         <item>Geography</item>
         <item>Literature</item>
     </string-array>
 
-    <string name="level_prompt">Choose a level</string>
+    <string name="level_prompt">Choose project\'s Level</string>
     <string-array name="level_array">
-        <item>Level</item>
+        <item>Choose project\'s Level</item>
         <item>Elementary school (Grades 1-5)</item>
         <item>Middle school (Grades 6-8)</item>
         <item>High school (Grades 9-12)</item>
         <item>University / College</item>
     </string-array>
 
-    <string name="languages_prompt">Select project\'s language</string>
+    <string name="languages_prompt">Choose project\'s Language</string>
     <string-array name="languages_array">
-        <item>Language</item>
+        <item>Choose project\'s Language</item>
         <item>Arabic</item>
         <item>English</item>
         <item>French</item>
@@ -87,7 +87,6 @@
         <item>29</item>
         <item>30</item>
         <item>31</item>
-
     </string-array>
 
     <string name="date_month_prompt">Select a Month</string>

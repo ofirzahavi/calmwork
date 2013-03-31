@@ -4,7 +4,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#439bc2">
+              android:background="#439bc2"
+              android:paddingTop="15dp">
 
     <LinearLayout
         android:id="@+id/buttonsLayout"
@@ -40,5 +41,41 @@
             android:background="#439bc2"/>
 
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:id="@+id/scrollView">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            />
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/describe"
+        android:id="@+id/newproject_describe" android:layout_gravity="center" android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/editText"
+        android:layout_gravity="center"
+        android:textColor="#0d070a"
+        android:textAlignment="textStart"
+        android:background="#fafafa"
+        android:inputType="textImeMultiLine|textLongMessage"
+        android:textSize="14dp"
+        android:textIsSelectable="false"
+        android:gravity="top"
+        android:paddingTop="5dp"
+        android:hint="@string/feel_free_to_provide_some_more_details"/>
 
 </LinearLayout>

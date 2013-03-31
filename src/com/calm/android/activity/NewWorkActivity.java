@@ -57,6 +57,16 @@ public class NewWorkActivity extends CalmActivity {
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
+            //pass mFileName??
+            setPic();
+
+        }
+
+    }
+
 
     private void setPic() {
         Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath);
