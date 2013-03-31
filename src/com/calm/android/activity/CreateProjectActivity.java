@@ -39,6 +39,7 @@ public class CreateProjectActivity extends CalmActivity {
         }
     };
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.new_project_screen;
@@ -60,20 +61,20 @@ public class CreateProjectActivity extends CalmActivity {
     private Spinner mLanguageSpinner;
 
     @InjectView(R.id.newproject_button_due_date)
-    private Button mDueDateButton;
+    private ImageButton mDueDateButton;
 
     @InjectView(R.id.newproject_button_budget)
-    private Button mBudgetButton;
+    private ImageButton mBudgetButton;
 
     @InjectView(R.id.newproject_button_add_files)
-    private Button mAddFilesButton;
+    private ImageButton mAddFilesButton;
 
     //TODO: add dateChooser member
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
-        mDueDateButton = (Button) findViewById(R.id.newproject_button_due_date);
+
         mDueDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new DatePickerDialog(CreateProjectActivity.this, d, myCalendar
