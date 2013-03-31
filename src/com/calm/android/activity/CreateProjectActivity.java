@@ -28,7 +28,6 @@ import java.util.Calendar;
 public class CreateProjectActivity extends CalmActivity {
 
     DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
-    TextView lblDateAndTime;
     Calendar myCalendar = Calendar.getInstance();
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -37,13 +36,8 @@ public class CreateProjectActivity extends CalmActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
         }
     };
-
-    private void updateLabel() {
-        lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
-    }
 
     @Override
     protected int getLayoutId() {
@@ -79,7 +73,7 @@ public class CreateProjectActivity extends CalmActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
-        mDueDateButton = (Button) findViewById(R.id.newproject_duedate);
+        mDueDateButton = (Button) findViewById(R.id.newproject_button_due_date);
         mDueDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new DatePickerDialog(CreateProjectActivity.this, d, myCalendar
@@ -89,8 +83,6 @@ public class CreateProjectActivity extends CalmActivity {
 
 
         });
-        updateLabel();
-
 
 
         mNextButton.setOnClickListener(new View.OnClickListener() {
