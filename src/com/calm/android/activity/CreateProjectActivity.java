@@ -109,7 +109,7 @@ public class CreateProjectActivity extends CalmActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), CreateProjectActivityStepTwo.class);
+                Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
                 startActivity(intent);
 
             }

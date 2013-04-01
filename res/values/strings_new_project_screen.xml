@@ -17,6 +17,8 @@
     <string name="language">Select project\'s language</string>
     <string name="budget">Click here to set your budget (In USD $)</string>
     <string name="click_here_to_choose_due_date">Click here to set due date</string>
+    <string name="add_notes">Add Notes (optional)</string>
+    <string name="click_here_to_choose_due_date">Click here to set due date</string>
 
 
     <string name="subject_prompt">Choose project\'s Subject</string>
@@ -26,6 +28,8 @@
         <item>History</item>
         <item>Geography</item>
         <item>Literature</item>
+        <item>Relationship advice</item>
+        <item>Settle a Debate</item>
     </string-array>
 
     <string name="level_prompt">Choose project\'s Level</string>
@@ -51,66 +55,6 @@
         <item>Portuguese</item>
         <item>Russian</item>
         <item>Spanish</item>
-    </string-array>
-
-    <string name="date_day_prompt">Select a Day</string>
-    <string-array name="date_day_array">
-        <item>Day</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-        <item>25</item>
-        <item>26</item>
-        <item>27</item>
-        <item>28</item>
-        <item>29</item>
-        <item>30</item>
-        <item>31</item>
-    </string-array>
-
-    <string name="date_month_prompt">Select a Month</string>
-    <string-array name="date_month_array">
-        <item>Month</item>
-        <item>January</item>
-        <item>February</item>
-        <item>March</item>
-        <item>April</item>
-        <item>May</item>
-        <item>June</item>
-        <item>July</item>
-        <item>August</item>
-        <item>September</item>
-        <item>October</item>
-        <item>November</item>
-        <item>December</item>
-    </string-array>
-
-    <string name="date_year_prompt">Select a Month</string>
-    <string-array name="date_year_array">
-        <item>2013</item>
-        <item>2014</item>
-        <item>2015</item>
     </string-array>
 
 
