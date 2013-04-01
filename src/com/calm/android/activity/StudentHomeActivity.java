@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
+import android.widget.*;
 import com.calm.android.R;
 import roboguice.inject.InjectView;
 
@@ -22,10 +19,10 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 
-public class StudentHomeActivity extends CalmActivity{
+public class StudentHomeActivity extends CalmActivity implements CompoundButton.OnCheckedChangeListener{
 
-    @InjectView(R.id.studenthome_togglebutton_student_or_ninja)
-    private ToggleButton toggleButton1;
+    @InjectView(R.id.studenthome_switch_student_or_ninja)
+    private Switch mSwitchStudentNinja;
 
     @InjectView(R.id.studenthome_button_work_in_progress)
     private Button mWorkInProgressButton;
@@ -46,7 +43,11 @@ public class StudentHomeActivity extends CalmActivity{
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addListenerOnButton();
+
+        mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
+        if (mSwitchStudentNinja != null) {
+            mSwitchStudentNinja.setOnCheckedChangeListener(this);
+        }
 
         mNewProjectButton.setOnClickListener(new View.OnClickListener() {
 
@@ -59,10 +60,10 @@ public class StudentHomeActivity extends CalmActivity{
         });
     }
 
-    public void addListenerOnButton() {
-
-        toggleButton1 = (ToggleButton) findViewById(R.id.studenthome_togglebutton_student_or_ninja);
-
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        Toast.makeText(this, (isChecked ? "Ninja mode" : "Student mode"),
+                Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -4,4 +4,6 @@
     <string name="work_in_progress">Work in progress</string>
     <string name="past_projects">Past projects</string>
     <string name="create_new_project">Create new project</string>
+    <string name="student_mode">Student mode</string>
+    <string name="ninja_mode">Ninja mode</string>
 </resources>
