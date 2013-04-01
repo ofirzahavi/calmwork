@@ -30,8 +30,8 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
     @InjectView(R.id.teacherhome_button_work_in_progress)
     private Button mWorkInProgressButton;
 
-    @InjectView(R.id.teacherhome_button_create_new_project)
-    private Button mNewProjectButton;
+    @InjectView(R.id.teacherhome_button_work_opportunities)
+    private Button mWorkOpportunitiesButton;
 
     @InjectView(R.id.teacherhome_button_awaiting_response)
     private Button mAwaitingResponseButton;
@@ -54,16 +54,6 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
             mSwitchStudentNinja.setOnCheckedChangeListener(this);
         }
 
-
-        mNewProjectButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
