@@ -22,37 +22,37 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 
-public class StudentHomeActivity extends CalmActivity implements CompoundButton.OnCheckedChangeListener{
+public class TeacherHomeActivity extends CalmActivity implements CompoundButton.OnCheckedChangeListener{
 
-    @InjectView(R.id.studenthome_switch_student_or_ninja)
+    @InjectView(R.id.teacherhome_switch_student_or_ninja)
     private Switch mSwitchStudentNinja;
 
-    @InjectView(R.id.studenthome_button_work_in_progress)
+    @InjectView(R.id.teacherhome_button_work_in_progress)
     private Button mWorkInProgressButton;
 
-    @InjectView(R.id.studenthome_button_create_new_project)
+    @InjectView(R.id.teacherhome_button_create_new_project)
     private Button mNewProjectButton;
 
-    @InjectView(R.id.studenthome_button_awaiting_response)
+    @InjectView(R.id.teacherhome_button_awaiting_response)
     private Button mAwaitingResponseButton;
 
-    @InjectView(R.id.studenthome_button_past_projects)
+    @InjectView(R.id.teacherhome_button_past_projects)
     private Button mPastProjectsButton;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.student_home_screen;
+        return R.layout.teacher_home_screen;
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
+        mSwitchStudentNinja = (Switch) findViewById(R.id.teacherhome_switch_student_or_ninja);
 
-       if (mSwitchStudentNinja != null)
-       {
+        if (mSwitchStudentNinja != null)
+        {
             mSwitchStudentNinja.setOnCheckedChangeListener(this);
-       }
+        }
 
 
         mNewProjectButton.setOnClickListener(new View.OnClickListener() {
@@ -71,9 +71,9 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         Toast.makeText(this, (isChecked ? "Ninja mode" : "Student mode"),
                 Toast.LENGTH_SHORT).show();
 
-        if (isChecked==true)
+        if (isChecked==false)
         {
-            Intent intent = new Intent(getApplicationContext(), TeacherHomeActivity.class);
+            Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
             startActivity(intent);
         }
 
