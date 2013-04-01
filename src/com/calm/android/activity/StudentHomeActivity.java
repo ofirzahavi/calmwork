@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.*;
 import com.calm.android.R;
 import roboguice.inject.InjectView;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -45,9 +48,9 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         super.onCreate(savedInstanceState);
 
         mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
-        if (mSwitchStudentNinja != null) {
-            mSwitchStudentNinja.setOnCheckedChangeListener(this);
-        }
+
+        mSwitchStudentNinja.setOnCheckedChangeListener(this);
+
 
         mNewProjectButton.setOnClickListener(new View.OnClickListener() {
 
@@ -65,5 +68,4 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         Toast.makeText(this, (isChecked ? "Ninja mode" : "Student mode"),
                 Toast.LENGTH_SHORT).show();
     }
-
 }

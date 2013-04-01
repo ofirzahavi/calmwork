@@ -9,8 +9,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/studenthome_switch_student_or_ninja" android:layout_gravity="center" android:textOff="@string/student_mode"
-            android:textOn="@string/ninja_mode" android:checked="false" android:layout_marginTop="5dp"
-            android:clickable="false"/>
+            android:textOn="@string/ninja_mode"
+            android:layout_marginTop="5dp"/>
     <Button
             android:layout_width="112dp"
             android:layout_height="40dp"
