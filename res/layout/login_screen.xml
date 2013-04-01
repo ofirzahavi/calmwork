@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:text="@string/dont_have_an_account"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textColor="#ffffff" android:layout_alignParentRight="true" android:layout_alignParentTop="true"
-        android:layout_marginTop="240dp" android:gravity="center" android:layout_alignParentLeft="true"
+        android:layout_marginTop="245dp" android:gravity="center" android:layout_alignParentLeft="true"
             />
 
     <Button
@@ -75,7 +75,7 @@
         android:text="@string/enter_account_information"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="16sp" android:textColor="#ffffff" android:layout_alignRight="@+id/textView3"
+        android:textSize="14sp" android:textColor="#ffffff" android:layout_alignRight="@+id/textView3"
         android:layout_alignParentTop="true" android:layout_marginTop="45dp" android:layout_alignParentLeft="true"
         android:layout_marginLeft="7dp" android:gravity="center"/>
 
