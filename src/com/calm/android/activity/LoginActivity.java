@@ -47,7 +47,7 @@ public class LoginActivity extends RoboActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
                 startActivity(intent);
 
 

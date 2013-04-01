@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="awaiting_response">Awaiting response</string>
+    <string name="work_in_progress">Work in progress</string>
+    <string name="past_projects">Past projects</string>
+    <string name="create_new_project">Create new project</string>
+</resources>

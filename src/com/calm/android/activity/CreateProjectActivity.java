@@ -39,12 +39,12 @@ public class CreateProjectActivity extends CalmActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel(lblDateAndTime);
+            updateLabel();
         }
     };
 
-    private void updateLabel(TextView text_id) {
-        text_id.setText(fmtDateAndTime.format(myCalendar.getTime()));
+    private void updateLabel() {
+        lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
     }
 
     @Override
@@ -115,7 +115,7 @@ public class CreateProjectActivity extends CalmActivity {
             }
         });
 
-        updateLabel(lblDateAndTime);
+        updateLabel();
     }
 
     public void addListenerOnSpinnerItemSelection() {
