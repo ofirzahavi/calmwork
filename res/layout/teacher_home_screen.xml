@@ -12,6 +12,13 @@
             android:textOn="@string/ninja_mode"
             android:layout_marginTop="5dp" android:checked="true"/>
 
+    <Button
+            android:layout_width="112dp"
+            android:layout_height="40dp"
+            android:id="@+id/studenthome_add_skills" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textSize="10dp" android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
+            android:text="@string/add_skills" android:clickable="true"/>
+
     <ScrollView
             android:layout_width="315dp"
             android:layout_height="100dp"

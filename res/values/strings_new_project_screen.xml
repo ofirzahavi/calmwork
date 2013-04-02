@@ -16,9 +16,8 @@
     <string name="next">Next</string>
     <string name="language">Select project\'s language</string>
     <string name="budget">Click here to set your budget (In USD $)</string>
-    <string name="click_here_to_choose_due_date">Click here to set due date</string>
+    <string name="click_here_to_choose_due_date">Click here to set project\'s due date</string>
     <string name="add_notes">Add Notes (optional)</string>
-    <string name="click_here_to_choose_due_date">Click here to set due date</string>
 
 
     <string name="subject_prompt">Choose project\'s Subject</string>
