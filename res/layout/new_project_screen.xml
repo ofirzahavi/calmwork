@@ -12,11 +12,12 @@
             android:id="@+id/newproject_name" android:layout_gravity="center"
             android:textColor="#ffffff" android:layout_marginTop="5dp" android:textSize="13dp"/>
     <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:hint="@string/what_you_need_done"
             android:id="@+id/newproject_edittext_name" android:layout_gravity="center"
-            android:textSize="10dp" android:textColorHint="#dcdcdc" android:textStyle="italic"/>
+            android:textSize="10dp" android:textColorHint="#dcdcdc" android:textStyle="italic"
+            android:layout_marginTop="3dp"/>
     <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -169,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/add_notes"
                     android:id="@+id/textView2" android:layout_gravity="center" android:textSize="10dp"
-                    android:textIsSelectable="false" android:layout_marginTop="5dp" android:textColor="#ffffff"
+                    android:textIsSelectable="false" android:textColor="#ffffff"
                     android:textStyle="bold"/>
 
 
@@ -189,6 +190,6 @@
             android:layout_gravity="center"
             android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
             android:layout_alignParentTop="true"
-            android:clickable="true" android:textSize="12dp" android:layout_marginTop="15dp"/>
+            android:clickable="true" android:textSize="12dp" android:layout_marginTop="25dp"/>
 
 </LinearLayout>
