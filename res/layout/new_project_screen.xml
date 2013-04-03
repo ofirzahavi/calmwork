@@ -146,7 +146,7 @@
                         android:id="@+id/imageButton"
                         android:layout_gravity="center"
                         android:src="@drawable/camera"
-                        android:background="#439bc2"/>
+                        android:background="#439bc2" android:adjustViewBounds="false"/>
 
                 <ImageButton
                         android:layout_width="104dp"

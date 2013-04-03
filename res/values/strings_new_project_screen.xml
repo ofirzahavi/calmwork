@@ -68,4 +68,25 @@
         <item>Work In Progress:</item>
     </string-array>
 
+
+    <string name="subject_prompt_skills">Choose Subject to add</string>
+    <string-array name="subject_array_skills">
+        <item>Choose Subject to add</item>
+        <item>Math</item>
+        <item>History</item>
+        <item>Geography</item>
+        <item>Literature</item>
+        <item>Relationship advice</item>
+        <item>Settle a Debate</item>
+    </string-array>
+
+    <string name="level_prompt_skills">Choose Level</string>
+    <string-array name="level_array_skills">
+        <item>Choose Level</item>
+        <item>Elementary school (Grades 1-5)</item>
+        <item>Middle school (Grades 6-8)</item>
+        <item>High school (Grades 9-12)</item>
+        <item>University / College</item>
+    </string-array>
+
 </resources>

@@ -18,7 +18,7 @@
     <Button
             android:layout_width="112dp"
             android:layout_height="40dp"
-            android:id="@+id/studenthome_add_skills" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:id="@+id/teacherthome_button_add_skills" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textSize="10dp" android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
             android:text="Add Skills" android:clickable="true"/>
 
