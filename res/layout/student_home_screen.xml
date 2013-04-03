@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="#439bc2">
+
+    <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/studenthome_switch_student_or_ninja" android:layout_gravity="center" android:textOff="@string/student_mode"
+            android:textOn="@string/ninja_mode"
+            android:layout_marginTop="5dp"/>
+    <Button
+            android:layout_width="112dp"
+            android:layout_height="40dp"
+            android:id="@+id/studenthome_button_create_new_project" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textSize="10dp" android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
+            android:text="@string/create_new_project" android:clickable="true"/>
+    <ScrollView
+            android:layout_width="315dp"
+            android:layout_height="100dp"
+            android:id="@+id/scrollview" android:layout_gravity="center" android:layout_marginTop="65dp">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:id="@+id/studenthome_listview_worklist" android:layout_gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+            android:id="@+id/studenthome_buttonslayout"
+            android:layout_height="100dp"
+            android:layout_width="fill_parent"
+            android:measureWithLargestChild="true"
+            android:orientation="horizontal"
+            android:padding="6sp"
+            android:layout_alignParentBottom="true" android:layout_marginTop="100dp">
+
+        <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="@string/work_in_progress"
+                android:id="@+id/studenthome_button_work_in_progress" android:layout_gravity="center" android:textSize="10dp"
+                android:textStyle="bold" android:textColor="#ffffff" android:background="#aae002"
+                android:layout_marginRight="5dp" android:clickable="true"/>
+        <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:id="@+id/studenthome_button_awaiting_response" android:layout_gravity="center" android:textSize="10dp"
+                android:text="@string/awaiting_response" android:background="#aae002" android:textColor="#ffffff"
+                android:textStyle="bold" android:layout_marginRight="5dp" android:clickable="true"/>
+        <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="@string/past_projects"
+                android:id="@+id/studenthome_button_past_projects" android:layout_gravity="center" android:textSize="10dp"
+                android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
+                android:layout_marginRight="5dp" android:clickable="true"/>
+    </LinearLayout>
+
+</LinearLayout>

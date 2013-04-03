@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.actionbarsherlock.app.ActionBar;
-import com.calm.android.activity.*;
+import com.calm.android.activity.CalmActivity;
+import com.calm.android.activity.LoginActivity;
+import com.calm.android.activity.NewWorkActivity;
+import com.calm.android.activity.WorksListActivity;
 import net.simonvt.menudrawer.MenuDrawer;
 
 public class SplashActivity extends Activity {
@@ -20,22 +23,15 @@ public class SplashActivity extends Activity {
 
         SharedPreferences settings = getSharedPreferences("CALM", 0);
         String userName = settings.getString("userName", null);
-
-
-
-        Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
-        startActivity(intent);
-        /*
-        //Intent intent;
+        Intent intent;
         if (userName == null){
              intent = new Intent(getApplicationContext(), LoginActivity.class);
              startActivity(intent);
         } else {
-            intent = new Intent(getApplicationContext(), WorksListActivity.class);
+            intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
 
         }
-          */
 
     }
 

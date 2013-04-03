@@ -10,13 +10,13 @@
         android:layout_height="wrap_content"
         android:text="@string/dont_have_an_account"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textColor="#ffffff" android:layout_alignParentRight="true" android:layout_alignParentTop="true"
-        android:layout_marginTop="240dp" android:gravity="center" android:layout_alignParentLeft="true"
+        android:layout_marginTop="245dp" android:gravity="center" android:layout_alignParentLeft="true"
             />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/login_button_signup"
         android:layout_width="201dp"
         android:layout_height="29dp"
         android:text="@string/sign_up"
@@ -42,9 +42,9 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColorHint="#eeeeee" android:textColor="#ffffff" android:password="true"
+        android:textColorHint="#cccccc" android:textColor="#000000" android:password="true"
         android:layout_alignLeft="@+id/login_email" android:layout_alignParentTop="true"
-        android:layout_marginTop="120dp" android:editable="false" android:clickable="true" android:gravity="center"
+        android:layout_marginTop="130dp" android:editable="false" android:clickable="true" android:gravity="center"
         android:textSize="16dp"/>
 
     <EditText
@@ -54,7 +54,7 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColorHint="#eeeeee" android:textColor="#ffffff" android:layout_centerHorizontal="true"
+        android:textColorHint="#cccccc" android:textColor="#000000" android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true" android:layout_marginTop="85dp" android:gravity="center"
         android:textSize="16dp"/>
 
@@ -65,7 +65,7 @@
         android:text="@string/login"
         android:layout_gravity="center"
         android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
-        android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="175dp"
+        android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="185dp"
         android:clickable="true"/>
 
     <TextView
@@ -75,7 +75,7 @@
         android:text="@string/enter_account_information"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="16sp" android:textColor="#ffffff" android:layout_alignRight="@+id/textView3"
+        android:textSize="14sp" android:textColor="#ffffff" android:layout_alignRight="@+id/textView3"
         android:layout_alignParentTop="true" android:layout_marginTop="45dp" android:layout_alignParentLeft="true"
         android:layout_marginLeft="7dp" android:gravity="center"/>
 
