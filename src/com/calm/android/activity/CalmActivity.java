@@ -85,7 +85,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
             @Override
             public void onClick(View v) {
                 logout();
-                Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
 
 
@@ -183,10 +183,6 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
         }
 
     }
-
-
-
-
 
 
     public void logout(){

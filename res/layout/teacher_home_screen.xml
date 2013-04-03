@@ -12,17 +12,20 @@
             android:textOn="@string/ninja_mode"
             android:layout_marginTop="5dp" android:checked="true"/>
 
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Welcome Ofir Zahavi"
+              android:id="@+id/textView" android:layout_gravity="center" android:textColor="#010101"
+              android:textStyle="bold" android:layout_marginTop="5dp"/>
     <Button
             android:layout_width="112dp"
             android:layout_height="40dp"
             android:id="@+id/studenthome_add_skills" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textSize="10dp" android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
-            android:text="@string/add_skills" android:clickable="true"/>
+            android:text="Add Skills" android:clickable="true"/>
 
     <ScrollView
             android:layout_width="315dp"
             android:layout_height="100dp"
-            android:id="@+id/teacher_scrollview" android:layout_gravity="center" android:layout_marginTop="65dp">
+            android:id="@+id/teacher_scrollview" android:layout_gravity="center">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
@@ -31,7 +34,9 @@
             <ListView
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
-                    android:id="@+id/teacherhome_listview_worklist" android:layout_gravity="center"/>
+                    android:id="@+id/teacherhome_listview_worklist" android:layout_gravity="center"
+                    android:choiceMode="none" android:fastScrollAlwaysVisible="false" android:fastScrollEnabled="false"
+                    android:entries="@array/bluff_progress_array"/>
         </LinearLayout>
     </ScrollView>
     <LinearLayout
@@ -41,14 +46,14 @@
             android:measureWithLargestChild="true"
             android:orientation="horizontal"
             android:padding="6sp"
-            android:layout_alignParentBottom="true" android:layout_marginTop="120dp">
+            android:layout_alignParentBottom="true" android:layout_marginTop="150dp">
 
         <Button
                 android:layout_width="72dp"
                 android:layout_height="40dp"
                 android:text="@string/work_in_progress"
                 android:id="@+id/teacherhome_button_work_in_progress" android:layout_gravity="center" android:textSize="10dp"
-                android:textStyle="bold" android:textColor="#ffffff" android:background="#aae002"
+                android:textStyle="bold" android:textColor="#ff3e2b" android:background="#aae002"
                 android:layout_marginRight="5dp" android:clickable="true"/>
         <Button
                 android:layout_width="72dp"
@@ -59,16 +64,16 @@
         <Button
                 android:layout_width="72dp"
                 android:layout_height="40dp"
-                android:text="@string/past_projects"
-                android:id="@+id/teacherhome_button_past_projects" android:layout_gravity="center" android:textSize="10dp"
-                android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
-                android:layout_marginRight="5dp" android:clickable="true"/>
-        <Button
-                android:layout_width="72dp"
-                android:layout_height="40dp"
                 android:id="@+id/teacherhome_button_work_opportunities" android:layout_gravity="center"
                 android:textSize="10dp" android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
                 android:text="@string/work_opportunities" android:clickable="true" android:layout_marginRight="5dp"/>
+        <Button
+                android:layout_width="72dp"
+                android:layout_height="40dp"
+                android:text="My Skills"
+                android:id="@+id/teacherhome_button_past_projects" android:textSize="10dp"
+                android:background="#aae002" android:textStyle="bold" android:textColor="#ffffff"
+                android:layout_marginRight="5dp" android:clickable="true" android:layout_gravity="center"/>
     </LinearLayout>
 
 </LinearLayout>

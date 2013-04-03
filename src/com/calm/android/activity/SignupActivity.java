@@ -78,7 +78,7 @@ public class SignupActivity extends CalmActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
                 startActivity(intent);
 
 
@@ -86,4 +86,3 @@ public class SignupActivity extends CalmActivity {
         });
     }
 }
-

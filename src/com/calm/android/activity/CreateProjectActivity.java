@@ -19,6 +19,9 @@ import android.widget.TimePicker;
 import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.Calendar;
+import android.widget.Toast;
+
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -100,7 +103,7 @@ public class CreateProjectActivity extends CalmActivity {
 
                 //TODO - CHECK IF PASSWORDS MATCH
                 //TOAST
-
+                maketoast();
                 SharedPreferences settings = getSharedPreferences("CALM",0);
                 SharedPreferences.Editor editor = settings.edit();
 
@@ -109,13 +112,19 @@ public class CreateProjectActivity extends CalmActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StudentHomeActivityFakeProject.class);
                 startActivity(intent);
 
             }
         });
 
         updateLabel();
+    }
+
+    void maketoast()
+    {
+        Toast.makeText(this, ("Project Submitted successfully"),
+                Toast.LENGTH_SHORT).show();
     }
 
     public void addListenerOnSpinnerItemSelection() {

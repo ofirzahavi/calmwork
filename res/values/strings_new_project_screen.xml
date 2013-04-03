@@ -57,4 +57,15 @@
     </string-array>
 
 
+    <string name="bluff_prompt">Projects awaiting response</string>
+    <string-array name="bluff_array">
+        <item>Awaiting Response:</item>
+        <item>Geometry assignment      due to: 05/04/2013</item>
+    </string-array>
+
+    <string name="bluff_prompt_progress_prompt">Projects in progress</string>
+    <string-array name="bluff_progress_array">
+        <item>Work In Progress:</item>
+    </string-array>
+
 </resources>

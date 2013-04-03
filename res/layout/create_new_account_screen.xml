@@ -47,7 +47,7 @@
     <Button
             android:layout_width="235dp"
             android:layout_height="30dp"
-            android:text="Let the CalmWork begin :)"
+            android:text="Submit"
             android:id="@+id/signup_signupButton" android:layout_gravity="center" android:layout_marginTop="35dp"
             android:background="#aae002" android:textSize="16dp" android:textColor="#ffffff" android:textStyle="bold"/>
 

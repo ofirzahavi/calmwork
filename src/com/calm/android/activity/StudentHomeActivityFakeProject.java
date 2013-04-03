@@ -1,18 +1,14 @@
 package com.calm.android.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
-import com.calm.android.R;
-import roboguice.inject.InjectView;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
-
-import java.util.Calendar;
+import com.calm.android.R;
+import roboguice.inject.InjectView;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,32 +18,32 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 
-public class StudentHomeActivity extends CalmActivity implements CompoundButton.OnCheckedChangeListener{
+public class StudentHomeActivityFakeProject extends CalmActivity implements CompoundButton.OnCheckedChangeListener{
 
-    @InjectView(R.id.studenthome_switch_student_or_ninja)
+    @InjectView(R.id.studenthome_switch_student_or_ninja_fake)
     private Switch mSwitchStudentNinja;
 
-    @InjectView(R.id.studenthome_button_work_in_progress)
+    @InjectView(R.id.studenthome_button_work_in_progress_fake)
     private Button mWorkInProgressButton;
 
-    @InjectView(R.id.studenthome_button_create_new_project)
+    @InjectView(R.id.studenthome_button_create_new_project_fake)
     private Button mNewProjectButton;
 
-    @InjectView(R.id.studenthome_button_awaiting_response)
+    @InjectView(R.id.studenthome_button_awaiting_response_fake)
     private Button mAwaitingResponseButton;
 
-    @InjectView(R.id.studenthome_button_past_projects)
+    @InjectView(R.id.studenthome_button_awaiting_response_fake)
     private Button mPastProjectsButton;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.student_home_screen;
+        return R.layout.student_home_screen_fake_project;
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
+        mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja_fake);
 
        if (mSwitchStudentNinja != null)
        {
@@ -65,15 +61,6 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
             }
         });
 
-        mAwaitingResponseButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), StudentHomeActivityFakeProject.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
