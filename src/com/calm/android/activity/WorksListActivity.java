@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.calm.android.R;
+import com.calm.android.adapter.WorksListAdapter;
+import com.calm.android.model.User;
+import com.calm.android.model.Work;
 import roboguice.inject.InjectView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,10 +30,11 @@ public class WorksListActivity extends CalmActivity {
     private TextView mUserNameTextView;
 
     @InjectView(R.id.works_list)
-    private ListView mWorksListView;
+    private ExpandableListView mWorksListView;
 
 
-    ArrayList<String> works = new ArrayList<String>();
+   // ArrayList<String> works = new ArrayList<String>();
+   ArrayList<Work> works = new ArrayList<Work>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,20 +46,23 @@ public class WorksListActivity extends CalmActivity {
         getWorksList();
 
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, works);
+        WorksListAdapter adapter = new WorksListAdapter(getApplicationContext(), works);
 
         mWorksListView.setAdapter(adapter);
 
     }
 
     private void getWorksList() {
-        works.add("Math home work");
-        works.add("Calculus integrals");
-        works.add("Computer networks http servlet");
-        works.add("calculus homework, Gaussian");
-        works.add("Biological computation assignment");
-        works.add("Computer networks project");
+        for (int i = 0; i < 10; i++){
+            Work work = new Work();
+            Random r = new Random();
+            int n = r.nextInt(3);
+            for (int j = 0; j < n; j++){
+                work.bids.add(new User());
+            }
+
+            works.add(work);
+        }
 
     }
 

@@ -21,7 +21,11 @@ public class Work {
     public String description;
     public int price;
     public String owner;
-    public String teahcer;
-    public ArrayList<User> bids;
+    public String teacher;
+    public ArrayList<User> bids = new ArrayList<User>();
+
+    public Work(){
+
+    }
 
 }

@@ -92,6 +92,17 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
             }
         });
 
+        mLogoutButton = (Button) findViewById(R.id.sidemenu_homeworks);
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WorksListActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
 
     }
 
