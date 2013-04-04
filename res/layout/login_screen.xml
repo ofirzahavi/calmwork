@@ -78,5 +78,11 @@
         android:textSize="14sp" android:textColor="#ffffff" android:layout_alignRight="@+id/textView3"
         android:layout_alignParentTop="true" android:layout_marginTop="45dp" android:layout_alignParentLeft="true"
         android:layout_marginLeft="7dp" android:gravity="center"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton" android:layout_alignLeft="@+id/textView1"
+            android:layout_below="@+id/login_button_signup" android:src="@drawable/ninja_medium"
+            android:background="#439bc2" android:layout_marginTop="30dp"/>
 
 </RelativeLayout>
