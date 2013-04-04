@@ -167,20 +167,10 @@
             </LinearLayout>
 
 
-            <ScrollView
-                    android:layout_width="317dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/scrollView" android:layout_gravity="center">
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-                    <ListView
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:id="@+id/listView" android:layout_gravity="center"/>
-                </LinearLayout>
-            </ScrollView>
+            <ListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/newproject_image_list" android:layout_gravity="center"/>
 
             <TextView
                     android:layout_width="wrap_content"
