@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.*;
 import com.actionbarsherlock.ActionBarSherlock;
 import com.calm.android.R;
+import com.calm.android.adapter.WorksListAdapter;
 import roboguice.inject.InjectView;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -19,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.TextView;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import android.widget.Toast;
 
@@ -46,6 +48,8 @@ public class CreateProjectActivity extends CalmActivity {
             updateLabel();
         }
     };
+    private ArrayList<String> images = new ArrayList<String>();
+    private int numberOfImages = 1;
 
     private void updateLabel() {
         lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
@@ -81,10 +85,18 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_take_pic_btn)
     private ImageButton mPictureButton;
 
+    @InjectView(R.id.newproject_image_list)
+    private ListView mImagesList;
+
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
+
+        images.add("image 1");
+        images.add("image 2");
+
         lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
         mDueDateButton = (Button) findViewById(R.id.newproject_button_due_date);
 
@@ -99,6 +111,7 @@ public class CreateProjectActivity extends CalmActivity {
         mPictureButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (isIntentAvailable(getApplicationContext(), MediaStore.ACTION_IMAGE_CAPTURE)){
+                    images.add("Image " + numberOfImages);
                     dispatchTakePictureIntent(CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 }
 
@@ -132,6 +145,13 @@ public class CreateProjectActivity extends CalmActivity {
         });
 
         updateLabel();
+
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,images);
+
+
+        mImagesList.setAdapter(adapter);
+
+
     }
 
     void maketoast()
@@ -154,13 +174,15 @@ public class CreateProjectActivity extends CalmActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
             //pass mFileName??
-            Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);
-            intent.putExtra("photoPath", mCurrentPhotoPath);
-            startActivity(intent);
-
+            setPic();
 
         }
 
     }
+
+    private void setPic() {
+        Toast.makeText(getApplicationContext(), "camera", Toast.LENGTH_SHORT);
+    }
+
 
 }
