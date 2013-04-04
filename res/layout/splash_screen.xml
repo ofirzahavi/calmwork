@@ -6,11 +6,11 @@
               android:layout_height="match_parent"
     android:background="#439bc2">
 
-    <TextView
+    <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loading"
-            android:id="@+id/textView" android:layout_gravity="center"
-            android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:textStyle="bold"
-            android:textColor="#010101"/>
+            android:id="@+id/imageButton"
+            android:src="@drawable/ninja_icon_big"
+            android:background="#439bc2" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="57dp"/>
 </RelativeLayout>
