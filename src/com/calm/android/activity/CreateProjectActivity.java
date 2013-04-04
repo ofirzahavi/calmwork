@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.*;
 import com.actionbarsherlock.ActionBarSherlock;
@@ -77,6 +78,9 @@ public class CreateProjectActivity extends CalmActivity {
     private Button mBudgetButton;
 
 
+    @InjectView(R.id.newproject_take_pic_btn)
+    private ImageButton mPictureButton;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +93,15 @@ public class CreateProjectActivity extends CalmActivity {
                 new DatePickerDialog(CreateProjectActivity.this, d, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        mPictureButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isIntentAvailable(getApplicationContext(), MediaStore.ACTION_IMAGE_CAPTURE)){
+                    dispatchTakePictureIntent(CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+                }
+
             }
         });
 
@@ -135,4 +148,19 @@ public class CreateProjectActivity extends CalmActivity {
         mLanguageSpinner = (Spinner) findViewById(R.id.newproject_spinner_language);
         mLanguageSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
+            //pass mFileName??
+            Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);
+            intent.putExtra("photoPath", mCurrentPhotoPath);
+            startActivity(intent);
+
+
+        }
+
+    }
+
 }

@@ -44,7 +44,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     protected static final String JPEG_FILE_PREFIX = "calmphoto";
     private Uri fileUri;
     private File mStorageDir;
-    private String mCurrentPhotoPath = "new";
+    protected String mCurrentPhotoPath = "new";
 
 
 
@@ -97,7 +97,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), WorksListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
                 startActivity(intent);
 
 
@@ -165,7 +165,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     }
 
 
-    private void dispatchTakePictureIntent(int actionCode) {
+    protected void dispatchTakePictureIntent(int actionCode) {
         try {
 
             File f = createImageFile();
@@ -186,7 +186,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
             //pass mFileName??
-            Intent intent = new Intent(getApplicationContext(), NewWorkActivity.class);
+            Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
             intent.putExtra("photoPath", mCurrentPhotoPath);
             startActivity(intent);
 
