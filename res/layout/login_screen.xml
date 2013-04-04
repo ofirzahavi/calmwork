@@ -83,6 +83,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageButton" android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/login_button_signup" android:src="@drawable/ninja_medium"
-            android:background="#439bc2" android:layout_marginTop="15dp"/>
+            android:background="#439bc2" android:layout_marginTop="16dp"/>
 
 </RelativeLayout>
