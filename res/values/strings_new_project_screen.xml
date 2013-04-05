@@ -2,7 +2,7 @@
 <resources>
 
     <string name="new_project">New project</string>
-    <string name="step_1">Step 1/2</string>
+    <string name="step_1">Step 1/29</string>
     <string name="step_2">Step 2/2</string>
     <string name="subject">Choose a subject</string>
     <string name="choose_a_name">Enter a name for the project</string>
