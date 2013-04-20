@@ -73,12 +73,8 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
             @Override
             public void onClick(View arg0) {
 
-                // custom dialog
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.edit_skills_dialog);
-                dialog.setTitle("Add Skills:");
-
-                dialog.show();
+                Intent intent = new Intent(getApplicationContext(), EditSkillsActivity.class);
+                startActivity(intent);
             }
         });
     }

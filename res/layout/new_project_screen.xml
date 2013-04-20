@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#449bc2">
+              android:layout_height="match_parent" android:background="@drawable/sandtextures">
 
     <TextView
             android:layout_width="wrap_content"
@@ -41,7 +41,8 @@
                     android:entries="@array/subject_array"
                     android:prompt="@string/subject_prompt"
                     android:id="@+id/newproject_spinner_subject" android:spinnerMode="dialog" android:gravity="center"
-                    android:layout_gravity="center" android:textAlignment="center"/>
+                    android:layout_gravity="center" android:textAlignment="center" android:background="#ffffff"
+                    android:alpha="0.8"/>
             <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -55,7 +56,7 @@
                     android:prompt="@string/level_prompt"
                     android:gravity="center" android:spinnerMode="dialog"
                     android:id="@+id/newproject_spinner_level" android:textAlignment="center"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" android:background="#ffffff" android:alpha="0.8"/>
 
             <!--<TextView
                     android:layout_width="wrap_content"
@@ -68,7 +69,8 @@
                     android:layout_height="35dp"
                     android:entries="@array/languages_array"
                     android:prompt="@string/languages_prompt" android:gravity="center"
-                    android:id="@+id/newproject_spinner_language" android:layout_gravity="center" android:spinnerMode="dialog"/>
+                    android:id="@+id/newproject_spinner_language" android:layout_gravity="center" android:spinnerMode="dialog"
+                    android:background="#ffffff" android:alpha="0.8"/>
 
 
             <!--<TextView
@@ -86,8 +88,10 @@
                     android:layout_height="15dp"
                     android:text="@string/click_here_to_choose_due_date"
                     android:id="@+id/newproject_button_due_date" android:layout_gravity="center"
-                    android:textSize="10dp" android:textStyle="bold" android:background="#aae002"
-                    android:enabled="true" android:textColor="#ffffff" android:layout_marginTop="10dp"/>
+                    android:textSize="10dp" android:textStyle="bold" android:background="@drawable/buttons2"
+                    android:enabled="true" android:textColor="#ffffff" android:layout_marginTop="10dp"
+                    android:shadowColor="#010001" android:focusable="true" android:focusableInTouchMode="true"
+                    android:alpha="0.9"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,8 +103,8 @@
                     android:layout_height="15dp"
                     android:text="Set a Budget for the project (In $ USD)"
                     android:id="@+id/newproject_button_budget" android:layout_gravity="center" android:textSize="10dp"
-                    android:textStyle="bold" android:background="#449bc2" android:enabled="true"
-                    android:textColor="#ffffff"/>
+                    android:textStyle="bold" android:background="@drawable/buttons2" android:enabled="true"
+                    android:textColor="#ffffff" android:alpha="0.9"/>
 
             <LinearLayout
                     android:id="@+id/budget_layout"
@@ -138,7 +142,8 @@
                     android:measureWithLargestChild="true"
                     android:orientation="horizontal"
                     android:padding="6sp"
-                    android:layout_alignParentBottom="true" android:layout_marginTop="3dp">
+                    android:layout_alignParentBottom="true" android:layout_marginTop="3dp"
+                    android:background="@drawable/gold">
 
                 <ImageButton
                         android:layout_width="98dp"
@@ -146,7 +151,7 @@
                         android:id="@+id/newproject_take_pic_btn"
                         android:layout_gravity="center"
                         android:src="@drawable/camera"
-                        android:background="#439bc2" android:adjustViewBounds="false"/>
+                        android:background="#000101" android:adjustViewBounds="false" android:alpha="0.8"/>
 
                 <ImageButton
                         android:layout_width="104dp"
@@ -195,8 +200,9 @@
             android:layout_height="16dp"
             android:text="Submit Project"
             android:layout_gravity="center"
-            android:singleLine="true" android:background="#aae002" android:textColor="#ffffff" android:textStyle="bold"
+            android:singleLine="true" android:background="@drawable/buttons2" android:textColor="#ffffff" android:textStyle="bold"
             android:layout_alignParentTop="true"
-            android:clickable="true" android:textSize="12dp" android:layout_marginTop="20dp"/>
+            android:clickable="true" android:textSize="12dp" android:layout_marginTop="20dp" android:focusable="false"
+            android:focusableInTouchMode="false" android:alpha="0.9"/>
 
 </LinearLayout>
