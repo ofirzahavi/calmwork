@@ -10,7 +10,8 @@
             android:layout_height="wrap_content"
             android:text="@string/choose_a_name"
             android:id="@+id/newproject_name" android:layout_gravity="center"
-            android:textColor="#ffffff" android:layout_marginTop="5dp" android:textSize="13dp"/>
+            android:textColor="#ffffff" android:layout_marginTop="5dp" android:textSize="13dp"
+            android:textStyle="bold"/>
     <EditText
             android:layout_width="280dp"
             android:layout_height="wrap_content"
@@ -33,7 +34,7 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent" android:baselineAligned="false">
 
             <Spinner
                     android:layout_width="280dp"
@@ -126,7 +127,8 @@
                         android:layout_height="wrap_content"
                         android:text="$"
                         android:id="@+id/textView" android:layout_gravity="center" android:layout_marginLeft="2dp"
-                        android:textSize="12dp" android:layout_marginBottom="3dp" android:layout_marginTop="2dp"/>
+                        android:textSize="12dp" android:layout_marginBottom="3dp" android:layout_marginTop="2dp"
+                        android:textColor="#010101" android:textStyle="bold"/>
 
             </LinearLayout>
             <TextView
@@ -150,24 +152,24 @@
                         android:layout_height="80dp"
                         android:id="@+id/newproject_take_pic_btn"
                         android:layout_gravity="center"
-                        android:src="@drawable/camera"
-                        android:background="#000101" android:adjustViewBounds="false" android:alpha="0.8"/>
+                        android:src="@drawable/whitecamera"
+                        android:background="#010101" android:adjustViewBounds="false" android:alpha="0.8"/>
 
                 <ImageButton
                         android:layout_width="104dp"
                         android:layout_height="80dp"
                         android:id="@+id/newproject_gallery_btn"
                         android:layout_gravity="center"
-                        android:src="@drawable/gallery"
-                        android:background="#439bc2"/>
+                        android:src="@drawable/galleryblack"
+                        android:background="#000101" android:alpha="0.8"/>
 
                 <ImageButton
                         android:layout_width="104dp"
                         android:layout_height="80dp"
                         android:id="@+id/newproject_dropbox_btn"
                         android:layout_gravity="center"
-                        android:src="@drawable/dropbox"
-                        android:background="#439bc2"/>
+                        android:src="@drawable/dropboxblacknew"
+                        android:background="#000101" android:alpha="0.8" android:adjustViewBounds="false"/>
 
             </LinearLayout>
 
