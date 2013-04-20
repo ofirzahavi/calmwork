@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/sandtextures">
+              android:layout_height="match_parent" android:background="@drawable/brownorange2">
 
     <TextView
             android:layout_width="wrap_content"
@@ -145,7 +145,7 @@
                     android:orientation="horizontal"
                     android:padding="6sp"
                     android:layout_alignParentBottom="true" android:layout_marginTop="3dp"
-                    android:background="@drawable/gold">
+                    android:background="@drawable/browngood" android:alpha="0.9">
 
                 <ImageButton
                         android:layout_width="98dp"
@@ -153,7 +153,7 @@
                         android:id="@+id/newproject_take_pic_btn"
                         android:layout_gravity="center"
                         android:src="@drawable/whitecamera"
-                        android:background="#010101" android:adjustViewBounds="false" android:alpha="0.8"/>
+                        android:background="#030303" android:adjustViewBounds="false" android:alpha="0.8"/>
 
                 <ImageButton
                         android:layout_width="104dp"
@@ -161,7 +161,7 @@
                         android:id="@+id/newproject_gallery_btn"
                         android:layout_gravity="center"
                         android:src="@drawable/galleryblack"
-                        android:background="#000101" android:alpha="0.8"/>
+                        android:background="#030303" android:alpha="0.8"/>
 
                 <ImageButton
                         android:layout_width="104dp"
@@ -169,7 +169,7 @@
                         android:id="@+id/newproject_dropbox_btn"
                         android:layout_gravity="center"
                         android:src="@drawable/dropboxblacknew"
-                        android:background="#000101" android:alpha="0.8" android:adjustViewBounds="false"/>
+                        android:background="#030303" android:alpha="0.8" android:adjustViewBounds="false"/>
 
             </LinearLayout>
 

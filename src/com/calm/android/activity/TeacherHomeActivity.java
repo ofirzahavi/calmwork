@@ -32,16 +32,13 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
     @InjectView(R.id.teacherhome_button_work_in_progress)
     private Button mWorkInProgressButton;
 
-    @InjectView(R.id.teacherhome_button_work_opportunities)
-    private Button mWorkOpportunitiesButton;
-
     @InjectView(R.id.teacherhome_button_awaiting_response)
     private Button mAwaitingResponseButton;
 
     @InjectView(R.id.teacherhome_button_past_projects)
     private Button mPastProjectsButton;
 
-    @InjectView(R.id.teacherthome_button_add_skills)
+    @InjectView(R.id.teacherhome_button_create_new_project)
     private Button mEditSkills;
 
    // @InjectView(R.id.newproject_spinner_level_skills)
