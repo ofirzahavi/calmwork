@@ -4,20 +4,21 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:baselineAligned="false"
-              android:background="@drawable/sandtextures">
-
+              android:background="@drawable/brownorange">
+   <!--
     <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/studenthome_switch_student_or_ninja" android:layout_gravity="center" android:textOff="@string/student_mode"
             android:textOn="@string/ninja_mode"
             android:layout_marginTop="5dp"/>
+            -->
     <Button
             android:layout_width="112dp"
             android:layout_height="40dp"
             android:id="@+id/studenthome_button_create_new_project" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textSize="10dp" android:background="@drawable/buttons2" android:textStyle="bold" android:textColor="#ffffff"
-            android:text="@string/create_new_project" android:clickable="true" android:alpha="0.8"/>
+            android:text="@string/create_new_project" android:clickable="true"/>
     <ScrollView
             android:layout_width="315dp"
             android:layout_height="200dp"
@@ -33,18 +34,19 @@
                     android:id="@+id/studenthome_listview_worklist" android:layout_gravity="left|center_vertical"
                     android:divider="#79ff25"
                     android:drawSelectorOnTop="false" android:entries="@array/bluff_progress_array"
-                    android:choiceMode="none" android:background="@drawable/fagray" android:alpha="0.8"/>
+                    android:choiceMode="none" android:background="#ccA2CD5A"
+                    android:layout_marginTop="5dp"/>
         </LinearLayout>
     </ScrollView>
     <LinearLayout
             android:id="@+id/studenthome_buttonslayout"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_width="wrap_content"
             android:measureWithLargestChild="true"
             android:orientation="horizontal"
             android:padding="6sp"
             android:layout_alignParentBottom="true" android:layout_marginTop="50dp"
-            android:background="@drawable/gold" android:layout_gravity="center" android:alpha="0.9">
+            android:background="#cc010101" android:layout_gravity="center">
 
         <Button
                 android:layout_width="100dp"

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.actionbarsherlock.ActionBarSherlock;
 import com.calm.android.R;
@@ -138,7 +139,7 @@ public class CreateProjectActivity extends CalmActivity {
 
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), StudentHomeActivityFakeProject.class);
+                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
                 startActivity(intent);
 
             }

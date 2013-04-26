@@ -36,7 +36,6 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     private ActionBar actionBar;
     private MenuDrawer mMenuDrawer;
 
-    //@InjectView(R.id.sidemenu_logout)
     private Button mLogoutButton;
 
     protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
@@ -62,11 +61,6 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
         actionBarSetup();
         menuDrawerSetup();
 
-
-
-
-
-        
     }
 
     private void actionBarSetup() {
@@ -120,14 +114,19 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()){
             case R.id.menu_student:
                 Toast.makeText(this, "Student", Toast.LENGTH_SHORT);
                 System.out.println("Student");
+                intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menu_techer:
                 Toast.makeText(this, "Teacher", Toast.LENGTH_SHORT);
                 System.out.println("Teacher");
+                intent = new Intent(getApplicationContext(), TeacherHomeActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menu_upload_image:
                 if (isIntentAvailable(this, MediaStore.ACTION_IMAGE_CAPTURE)){

@@ -24,8 +24,8 @@ import java.util.Calendar;
 
 public class StudentHomeActivity extends CalmActivity implements CompoundButton.OnCheckedChangeListener{
 
-    @InjectView(R.id.studenthome_switch_student_or_ninja)
-    private Switch mSwitchStudentNinja;
+ //   @InjectView(R.id.studenthome_switch_student_or_ninja)
+//    private Switch mSwitchStudentNinja;
 
     @InjectView(R.id.studenthome_button_work_in_progress)
     private Button mWorkInProgressButton;
@@ -47,13 +47,13 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
-
+     //   mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
+  /*
        if (mSwitchStudentNinja != null)
        {
             mSwitchStudentNinja.setOnCheckedChangeListener(this);
        }
-
+    */
 
         mNewProjectButton.setOnClickListener(new View.OnClickListener() {
 

@@ -3,21 +3,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/sandtextures">
+              android:layout_height="match_parent" android:background="@drawable/brownorange2">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_a_name"
             android:id="@+id/newproject_name" android:layout_gravity="center"
-            android:textColor="#ffffff" android:layout_marginTop="5dp" android:textSize="13dp"/>
+            android:textColor="#ffffff" android:layout_marginTop="5dp" android:textSize="13dp"
+            android:textStyle="bold" android:alpha="0.9"/>
     <EditText
             android:layout_width="280dp"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:hint="@string/what_you_need_done"
             android:id="@+id/newproject_edittext_name" android:layout_gravity="center"
             android:textSize="10dp" android:textColorHint="#dcdcdc" android:textStyle="italic"
-            android:layout_marginTop="3dp"/>
+            android:layout_marginTop="3dp" android:background="@android:color/transparent" android:textColor="#ffffff"/>
     <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,8 +42,8 @@
                     android:entries="@array/subject_array"
                     android:prompt="@string/subject_prompt"
                     android:id="@+id/newproject_spinner_subject" android:spinnerMode="dialog" android:gravity="center"
-                    android:layout_gravity="center" android:textAlignment="center" android:background="#ffffff"
-                    android:alpha="0.8"/>
+                    android:layout_gravity="center" android:textAlignment="center" android:background="#B2A2CD5A"
+                    android:layout_marginTop="10dp" android:clickable="false"/>
             <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,7 +57,8 @@
                     android:prompt="@string/level_prompt"
                     android:gravity="center" android:spinnerMode="dialog"
                     android:id="@+id/newproject_spinner_level" android:textAlignment="center"
-                    android:layout_gravity="center" android:background="#ffffff" android:alpha="0.8"/>
+                    android:layout_gravity="center" android:background="#B2A2CD5A"
+                    android:layout_marginTop="3dp"/>
 
             <!--<TextView
                     android:layout_width="wrap_content"
@@ -70,7 +72,7 @@
                     android:entries="@array/languages_array"
                     android:prompt="@string/languages_prompt" android:gravity="center"
                     android:id="@+id/newproject_spinner_language" android:layout_gravity="center" android:spinnerMode="dialog"
-                    android:background="#ffffff" android:alpha="0.8"/>
+                    android:background="#B2A2CD5A" android:layout_marginTop="3dp"/>
 
 
             <!--<TextView
@@ -97,36 +99,41 @@
                     android:layout_height="wrap_content"
                     android:text="due date"
                     android:id="@+id/lblDateAndTime" android:layout_gravity="center"
-                    android:textSize="10dp" android:layout_marginTop="2dp"/>
-            <Button
-                    android:layout_width="201dp"
-                    android:layout_height="15dp"
-                    android:text="Set a Budget for the project (In $ USD)"
-                    android:id="@+id/newproject_button_budget" android:layout_gravity="center" android:textSize="10dp"
-                    android:textStyle="bold" android:background="@drawable/buttons2" android:enabled="true"
-                    android:textColor="#ffffff" android:alpha="0.9"/>
+                    android:textSize="12dp" android:layout_marginTop="2dp" android:textStyle="bold"
+                    android:textColor="#A2CD5A"/>
+
 
             <LinearLayout
                     android:id="@+id/budget_layout"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="160dp"
                     android:measureWithLargestChild="true"
                     android:orientation="horizontal"
                     android:padding="6sp"
                     android:layout_alignParentBottom="true" android:layout_marginTop="3dp"
                     android:layout_gravity="center">
 
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        android:text="Budget: (In $ USD): "
+                        android:id="@+id/newproject_button_budget" android:layout_gravity="center" android:textSize="10dp"
+                        android:textStyle="bold" android:background="@android:color/transparent" android:enabled="true"
+                        android:textColor="#e5ffffff" android:layout_marginRight="5dp" />
                 <EditText
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editText1" android:layout_gravity="center" android:textSize="10dp"
-                        android:inputType="number" android:textColor="#010101"/>
+                        android:layout_height="20dp"
+                        android:id="@+id/newproject_edittext_price" android:layout_gravity="center" android:textSize="15dp"
+                        android:inputType="number" android:textColor="#010101"
+                        android:background="@drawable/underline" android:alpha="0.8" android:textStyle="bold"
+                        android:minWidth="20dp" android:textIsSelectable="false" android:maxWidth="50dp"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$"
-                        android:id="@+id/textView" android:layout_gravity="center" android:layout_marginLeft="2dp"
-                        android:textSize="12dp" android:layout_marginBottom="3dp" android:layout_marginTop="2dp"/>
+                        android:id="@+id/textView" android:layout_gravity="center"
+                        android:textSize="14dp" android:layout_marginBottom="3dp" android:layout_marginTop="2dp"
+                        android:textColor="#A2CD5A" android:textStyle="bold" android:layout_marginLeft="5dp"/>
 
             </LinearLayout>
             <TextView
@@ -143,14 +150,14 @@
                     android:orientation="horizontal"
                     android:padding="6sp"
                     android:layout_alignParentBottom="true" android:layout_marginTop="3dp"
-                    android:background="@drawable/gold">
+                    android:background="#010101" android:alpha="0.9">
 
                 <ImageButton
                         android:layout_width="98dp"
                         android:layout_height="80dp"
                         android:id="@+id/newproject_take_pic_btn"
                         android:layout_gravity="center"
-                        android:src="@drawable/camera"
+                        android:src="@drawable/whitecamera"
                         android:background="#000101" android:adjustViewBounds="false" android:alpha="0.8"/>
 
                 <ImageButton
@@ -158,16 +165,16 @@
                         android:layout_height="80dp"
                         android:id="@+id/newproject_gallery_btn"
                         android:layout_gravity="center"
-                        android:src="@drawable/gallery"
-                        android:background="#439bc2"/>
+                        android:src="@drawable/galleryblack"
+                        android:background="#000101" android:alpha="0.8"/>
 
                 <ImageButton
                         android:layout_width="104dp"
                         android:layout_height="80dp"
                         android:id="@+id/newproject_dropbox_btn"
                         android:layout_gravity="center"
-                        android:src="@drawable/dropbox"
-                        android:background="#439bc2"/>
+                        android:src="@drawable/dropboxblacknew"
+                        android:background="#010001" android:alpha="0.8"/>
 
             </LinearLayout>
 
@@ -175,7 +182,8 @@
             <ListView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/newproject_image_list" android:layout_gravity="center"/>
+                    android:id="@+id/newproject_image_list" android:layout_gravity="center"
+                    android:background="#ccffffff"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -197,7 +205,7 @@
     <Button
             android:id="@+id/newproject_button_next"
             android:layout_width="100dp"
-            android:layout_height="16dp"
+            android:layout_height="30dp"
             android:text="Submit Project"
             android:layout_gravity="center"
             android:singleLine="true" android:background="@drawable/buttons2" android:textColor="#ffffff" android:textStyle="bold"
