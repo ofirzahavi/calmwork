@@ -7,6 +7,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.*;
 import com.calm.android.R;
+import com.calm.android.model.Project;
 import roboguice.inject.InjectView;
 import android.app.DatePickerDialog;
 import android.widget.Button;
@@ -78,6 +79,7 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_take_pic_btn)
     private ImageButton mPictureButton;
 
+  //  private Project project;
   //  @InjectView(R.id.newproject_image_list)
  //   private ListView mImagesList;
 
@@ -86,7 +88,7 @@ public class CreateProjectActivity extends CalmActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
-
+     //   project = new Project("");
      //   images.add("image 1");
      //   images.add("image 2");
 
@@ -98,6 +100,7 @@ public class CreateProjectActivity extends CalmActivity {
                 new DatePickerDialog(CreateProjectActivity.this, d, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
             }
         });
 
@@ -119,6 +122,8 @@ public class CreateProjectActivity extends CalmActivity {
 
              //   String project_name =  mProjectNameText.getText().toString();
                 //String project_description =  mProjectDescriptionText.getText().toString();   //TODO: set all values
+
+                //project.title=mSubjectSpinner.getSelectedItem().toString();
 
                 //TODO - CHECK IF PASSWORDS MATCH
                 //TOAST

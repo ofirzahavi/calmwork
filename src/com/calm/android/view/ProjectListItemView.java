@@ -27,7 +27,7 @@ public class ProjectListItemView extends LinearLayout {
 
         TextView projectDateTextView = (TextView) findViewById(R.id.project_item_date);
      //   projectTitleTextView.setText(project.dueDate.toString());
-        projectDateTextView.setText("whenever");
+        projectDateTextView.setText("17/05/2013");
 
     }
 }

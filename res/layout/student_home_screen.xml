@@ -16,8 +16,8 @@
     <Button
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:id="@+id/studenthome_button_create_new_project" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textSize="10dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
+            android:id="@+id/studenthome_button_create_new_project" android:layout_gravity="center" android:layout_marginTop="5dp"
+            android:textSize="12dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#7CFC00"
             android:text="@string/create_new_project" android:clickable="true" android:alpha="0.8"/>
     <ScrollView
             android:layout_width="315dp"
@@ -26,7 +26,7 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent" android:paddingTop="5dp">
 
             <ListView
                     android:layout_width="wrap_content"
@@ -45,29 +45,35 @@
             android:measureWithLargestChild="true"
             android:orientation="horizontal"
             android:padding="6sp"
-            android:layout_alignParentBottom="true" android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true" android:layout_marginTop="10dp"
             android:background="#00ffffff" android:layout_gravity="center">
 
         <Button
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:lines="2"
                 android:text="@string/work_in_progress"
-                android:id="@+id/studenthome_button_work_in_progress" android:textSize="8dp"
+                android:onClick="onWorkInProgressProjectsClick"
+                android:id="@+id/studenthome_button_work_in_progress" android:textSize="12dp"
                 android:textStyle="bold" android:textColor="#ffffff" android:background="@drawable/round_button"
                 android:layout_marginRight="10dp" android:clickable="true" android:layout_gravity="center"
                 android:alpha="0.8"/>
         <Button
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:id="@+id/studenthome_button_awaiting_response" android:textSize="8dp"
+                android:lines="2"
+                android:onClick="onAwaitingResponseProjectsClick"
+                android:id="@+id/studenthome_button_awaiting_response" android:textSize="12dp"
                 android:text="@string/awaiting_response" android:background="@drawable/round_button" android:textColor="#ffffff"
                 android:textStyle="bold" android:layout_marginRight="10dp" android:clickable="true"
-                android:enabled="false" android:layout_gravity="center" android:alpha="0.8"/>
+                android:layout_gravity="center" android:alpha="0.8"/>
         <Button
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:lines="2"
                 android:text="@string/past_projects"
-                android:id="@+id/studenthome_button_past_projects" android:layout_gravity="center" android:textSize="8dp"
+                android:onClick="onPastProjectsClick"
+                android:id="@+id/studenthome_button_past_projects" android:layout_gravity="center" android:textSize="12dp"
                 android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
                 android:clickable="true" android:alpha="0.8"/>
     </LinearLayout>
