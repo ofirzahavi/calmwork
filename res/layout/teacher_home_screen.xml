@@ -15,8 +15,8 @@
     <Button
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:id="@+id/teacherthome_button_add_skills" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textSize="10dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
+            android:id="@+id/teacherthome_button_add_skills" android:layout_gravity="center" android:layout_marginTop="5dp"
+            android:textSize="12dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
             android:text="Edit Skills" android:clickable="true" android:alpha="0.9"/>
 
     <ScrollView
@@ -44,27 +44,27 @@
             android:measureWithLargestChild="true"
             android:orientation="horizontal"
             android:padding="6sp"
-            android:layout_alignParentBottom="true" android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true" android:layout_marginTop="10dp"
             android:background="#00ffffff" android:layout_gravity="center">
 
         <Button
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:text="@string/work_in_progress"
-                android:id="@+id/teacherhome_button_work_in_progress" android:layout_gravity="center" android:textSize="8dp"
+                android:id="@+id/teacherhome_button_work_in_progress" android:layout_gravity="center" android:textSize="10dp"
                 android:textStyle="bold" android:textColor="#ffffff" android:background="@drawable/round_button"
                 android:layout_marginRight="10dp" android:clickable="true" android:alpha="0.8"/>
         <Button
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:id="@+id/teacherhome_button_awaiting_response" android:layout_gravity="center" android:textSize="8dp"
+                android:id="@+id/teacherhome_button_awaiting_response" android:layout_gravity="center" android:textSize="12dp"
                 android:text="@string/awaiting_response" android:background="@drawable/round_button" android:textColor="#ffffff"
                 android:textStyle="bold" android:layout_marginRight="10dp" android:clickable="true" android:alpha="0.8"/>
         <Button
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:id="@+id/teacherhome_button_work_opportunities" android:layout_gravity="center"
-                android:textSize="8dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
+                android:textSize="12dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
                 android:text="@string/work_opportunities" android:clickable="true"
                 android:alpha="0.8"/>
     </LinearLayout>

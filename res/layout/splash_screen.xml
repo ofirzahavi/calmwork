@@ -4,13 +4,13 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#439bc2">
+    android:background="#000101">
 
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton"
-            android:src="@drawable/ninja_icon_big"
+            android:src="@drawable/dog"
             android:background="#439bc2" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="57dp"/>
+            android:layout_marginTop="40dp"/>
 </RelativeLayout>

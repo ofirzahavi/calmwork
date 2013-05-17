@@ -48,7 +48,7 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
 
     Context mContext = this;
     ArrayList<Project> projectsList = new ArrayList<Project>();
-
+    ArrayList<Project> filteredList;
     @Override
     protected int getLayoutId() {
         return R.layout.student_home_screen;
@@ -56,7 +56,7 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Project p = new Project("one");
+        Project p = new Project("English assignment");
         Project p2 = new Project("two");
         Project p3 = new Project("three");
         Project p4 = new Project("4");
@@ -65,7 +65,8 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         projectsList.add(p3);
         projectsList.add(p4);
 
-        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
+        filteredList = projectsList;
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
         mProjectsListView.setAdapter(adapter);
 
 
@@ -77,6 +78,8 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
        }
     */
 
+
+
         mNewProjectButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -87,16 +90,9 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
             }
         });
 
-        mAwaitingResponseButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), StudentHomeActivityFakeProject.class);
-                startActivity(intent);
-            }
-        });
     }
+
+
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -109,5 +105,41 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
             startActivity(intent);
         }
 
+    }
+
+    private ArrayList<Project> filterToPast(){
+        ArrayList<Project> list = new ArrayList<Project>();
+        Project p = new Project("a past project");
+        list.add(p);
+        return list;
+    }
+
+    private ArrayList<Project> filterToAwaitingResponse(){
+        ArrayList<Project> list = new ArrayList<Project>();
+        Project p = new Project("project awaiting response");
+        list.add(p);
+        return list;
+    }
+
+
+    public void onPastProjectsClick(View v) {
+      //  Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
+        filteredList = filterToPast();
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
+        mProjectsListView.setAdapter(adapter);
+    }
+
+    public void onAwaitingResponseProjectsClick(View v) {
+        //Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
+        filteredList = filterToAwaitingResponse();
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
+        mProjectsListView.setAdapter(adapter);
+    }
+
+    public void onWorkInProgressProjectsClick(View v) {
+        //  Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
+        //filteredList = filterToPast();
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
+        mProjectsListView.setAdapter(adapter);
     }
 }

@@ -18,28 +18,28 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:text="Create a new DoMyHomework account"
-            android:id="@+id/textView4" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:id="@+id/textView4" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:background="#83929F" android:alpha="0.8" android:textColor="#ffffff" android:textStyle="bold"
             android:textSize="14dp" android:gravity="center"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/enter_your_email_address"
-            android:id="@+id/textView" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:id="@+id/textView" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
     <EditText
             android:layout_width="193dp"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="Email"
-            android:id="@+id/signup_email" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:id="@+id/signup_email" android:layout_gravity="center" android:layout_marginTop="5dp"
             android:textColorHint="#010101" android:gravity="center" android:textSize="16dp"
             android:background="@drawable/round_edges" android:textColor="#010101" android:alpha="0.8"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_a_password"
-            android:id="@+id/textView1" android:layout_gravity="center" android:layout_marginTop="15dp"
+            android:id="@+id/textView1" android:layout_gravity="center" android:layout_marginTop="10dp"
             android:textColor="#ffffff"/>
     <EditText
             android:layout_width="193dp"
@@ -47,7 +47,7 @@
             android:inputType="textPassword"
             android:id="@+id/signup_password" android:layout_gravity="center" android:textColorHint="#010101"
             android:gravity="center" android:textSize="16dp" android:background="@drawable/round_edges"
-            android:textColor="#010101" android:layout_marginTop="10dp" android:alpha="0.8"/>
+            android:textColor="#010101" android:layout_marginTop="5dp" android:alpha="0.8"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:text="Submit"
-            android:id="@+id/signup_signupButton" android:layout_gravity="center" android:layout_marginTop="25dp"
+            android:id="@+id/signup_signupButton" android:layout_gravity="center" android:layout_marginTop="20dp"
             android:background="@drawable/round_button" android:textSize="16dp" android:textColor="#ffffff" android:textStyle="bold"
             android:alpha="0.9"/>
 

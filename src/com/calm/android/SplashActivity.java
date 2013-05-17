@@ -31,12 +31,12 @@ public class SplashActivity extends Activity {
                 Intent intent;
                 if (userName == null){
                     intent = new Intent(getApplicationContext(), LoginActivity.class);
-
                     startActivity(intent);
+                    finish();
                 } else {
                     intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
-
+                    finish();
                 }
             }
         };

@@ -67,7 +67,7 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
 
-        Project p = new Project("one");
+        Project p = new Project("Linear math assignment");
         Project p2 = new Project("two");
         Project p3 = new Project("three");
         Project p4 = new Project("4");
