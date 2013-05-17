@@ -8,13 +8,13 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="My Homeworks"
+            android:text="Home"
             android:id="@+id/sidemenu_homeworks" android:layout_gravity="left|center_vertical" android:textSize="20dp"
             android:textColor="#ffffff" android:alpha="0.9"/>
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="My Jobs"
+            android:text="Settings"
             android:id="@+id/sidemenu_jobs" android:layout_gravity="center" android:textSize="20dp"
             android:textColor="#ffffff" android:alpha="0.9"/>
     <Button

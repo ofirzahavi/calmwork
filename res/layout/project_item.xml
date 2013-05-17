@@ -1,0 +1,18 @@
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:clickable="true">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Project title"
+            android:id="@+id/project_item_title"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="20dp" android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due Date"
+            android:id="@+id/project_item_date" android:layout_alignParentLeft="true" android:layout_marginLeft="230dp"
+            android:layout_alignBottom="@+id/project_item_title"/>
+</RelativeLayout>

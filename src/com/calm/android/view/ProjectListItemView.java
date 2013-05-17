@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.calm.android.R;
+import com.calm.android.model.Project;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,8 +18,16 @@ import com.calm.android.R;
 public class ProjectListItemView extends LinearLayout {
 
 
-    public ProjectListItemView(Context context) {
+    public ProjectListItemView(Context context, Project project) {
         super(context);
-        LayoutInflater.from(context).inflate(R.layout.project_list_item, this);
+        LayoutInflater.from(context).inflate(R.layout.project_item, this);
+
+        TextView projectTitleTextView = (TextView) findViewById(R.id.project_item_title);
+        projectTitleTextView.setText(project.title);
+
+        TextView projectDateTextView = (TextView) findViewById(R.id.project_item_date);
+     //   projectTitleTextView.setText(project.dueDate.toString());
+        projectDateTextView.setText("whenever");
+
     }
 }

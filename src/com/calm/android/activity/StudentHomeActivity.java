@@ -1,17 +1,21 @@
 package com.calm.android.activity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.calm.android.R;
+import com.calm.android.adapter.ProjectsListAdapter;
+import com.calm.android.model.Project;
 import roboguice.inject.InjectView;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -39,6 +43,12 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
     @InjectView(R.id.studenthome_button_past_projects)
     private Button mPastProjectsButton;
 
+    @InjectView(R.id.studenthome_listview_worklist)
+    private ListView mProjectsListView;
+
+    Context mContext = this;
+    ArrayList<Project> projectsList = new ArrayList<Project>();
+
     @Override
     protected int getLayoutId() {
         return R.layout.student_home_screen;
@@ -46,6 +56,18 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Project p = new Project("one");
+        Project p2 = new Project("two");
+        Project p3 = new Project("three");
+        Project p4 = new Project("4");
+        projectsList.add(p);
+        projectsList.add(p2);
+        projectsList.add(p3);
+        projectsList.add(p4);
+
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
+        mProjectsListView.setAdapter(adapter);
+
 
      //   mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
   /*

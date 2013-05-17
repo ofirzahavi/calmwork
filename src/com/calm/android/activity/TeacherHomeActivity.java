@@ -8,12 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.calm.android.R;
+import com.calm.android.adapter.ProjectsListAdapter;
+import com.calm.android.model.Project;
 import roboguice.inject.InjectView;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 import android.app.Dialog;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -47,6 +50,12 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
     //@InjectView(R.id.newproject_spinner_subject_skills)
     //private Spinner mSubjectSpinnerSkills;
 
+    @InjectView(R.id.teacherhome_listview_worklist)
+    private ListView mProjectsListView;
+
+    Context mContext = this;
+    ArrayList<Project> projectsList = new ArrayList<Project>();
+
     final Context context = this;
 
     @Override
@@ -57,6 +66,18 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
+
+        Project p = new Project("one");
+        Project p2 = new Project("two");
+        Project p3 = new Project("three");
+        Project p4 = new Project("4");
+        projectsList.add(p);
+        projectsList.add(p2);
+        projectsList.add(p3);
+        projectsList.add(p4);
+
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
+        mProjectsListView.setAdapter(adapter);
 
        //mSwitchStudentNinja = (Switch) findViewById(R.id.teacherhome_switch_student_or_ninja);
 

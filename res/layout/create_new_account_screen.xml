@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/brownorange">
+              android:layout_height="match_parent" android:background="@drawable/calm">
 
     <TextView
             android:id="@+id/signup_headline"
@@ -14,41 +14,75 @@
             android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="15dp"
             android:autoText="true" android:clickable="false" android:textColor="#ffffff"
             android:gravity="center" android:textStyle="bold"/>
-    <EditText
+    <TextView
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Create a new DoMyHomework account"
+            android:id="@+id/textView4" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:background="#83929F" android:alpha="0.8" android:textColor="#ffffff" android:textStyle="bold"
+            android:textSize="14dp" android:gravity="center"/>
+    <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_your_email_address"
+            android:id="@+id/textView" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:textColor="#ffffff"/>
+    <EditText
+            android:layout_width="193dp"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="@string/enter_your_email_address"
-            android:id="@+id/signup_email" android:layout_gravity="center" android:layout_marginTop="40dp"
-            android:textColorHint="#ffffff" android:gravity="center" android:textSize="16dp"/>
-    <EditText
+            android:hint="Email"
+            android:id="@+id/signup_email" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textColorHint="#010101" android:gravity="center" android:textSize="16dp"
+            android:background="@drawable/round_edges" android:textColor="#010101" android:alpha="0.8"/>
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="@string/choose_a_password"
-            android:id="@+id/signup_password" android:layout_gravity="center" android:textColorHint="#ffffff"
-            android:gravity="center" android:textSize="16dp"/>
+            android:text="@string/choose_a_password"
+            android:id="@+id/textView1" android:layout_gravity="center" android:layout_marginTop="15dp"
+            android:textColor="#ffffff"/>
     <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="193dp"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="@string/re_enter_password"
-            android:id="@+id/signup_rePassword" android:layout_gravity="center" android:textColorHint="#ffffff"
-            android:password="true" android:gravity="center" android:textSize="16dp"/>
-    <EditText
+            android:id="@+id/signup_password" android:layout_gravity="center" android:textColorHint="#010101"
+            android:gravity="center" android:textSize="16dp" android:background="@drawable/round_edges"
+            android:textColor="#010101" android:layout_marginTop="10dp" android:alpha="0.8"/>
+    <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/re_enter_password"
+            android:id="@+id/textView2" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textColor="#ffffff"/>
+    <EditText
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/signup_rePassword" android:layout_gravity="center" android:textColorHint="#010101"
+            android:password="true" android:gravity="center" android:textSize="16dp" android:background="@drawable/round_edges"
+            android:textColor="#010101" android:layout_marginTop="5dp" android:alpha="0.8"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_a_user_name"
+            android:id="@+id/textView3" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textColor="#ffffff"/>
+    <EditText
+            android:layout_width="193dp"
             android:layout_height="wrap_content"
 
             android:inputType="textPersonName"
-            android:hint="@string/choose_a_user_name"
-            android:textColorHint="#ffffff"
+            android:hint="Username"
+            android:textColorHint="#010101"
             android:id="@+id/signup_userName" android:layout_gravity="center" android:gravity="center"
-            android:textSize="16dp"/>
+            android:textSize="16dp" android:background="@drawable/round_edges" android:textColor="#010101"
+            android:layout_marginTop="5dp" android:alpha="0.8"/>
     <Button
-            android:layout_width="235dp"
-            android:layout_height="30dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:text="Submit"
-            android:id="@+id/signup_signupButton" android:layout_gravity="center" android:layout_marginTop="35dp"
-            android:background="#aae002" android:textSize="16dp" android:textColor="#ffffff" android:textStyle="bold"/>
+            android:id="@+id/signup_signupButton" android:layout_gravity="center" android:layout_marginTop="25dp"
+            android:background="@drawable/round_button" android:textSize="16dp" android:textColor="#ffffff" android:textStyle="bold"
+            android:alpha="0.9"/>
 
 </LinearLayout>

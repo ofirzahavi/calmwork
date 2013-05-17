@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/brownorange">
+              android:layout_height="match_parent" android:background="@drawable/sea_boat">
   <!--
     <Switch
             android:layout_width="wrap_content"
@@ -12,19 +12,16 @@
             android:textOn="@string/ninja_mode"
             android:layout_marginTop="5dp" android:checked="true"/>
       -->
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Welcome Ofir Zahavi"
-              android:id="@+id/textView" android:layout_gravity="center" android:textColor="#ffffff"
-              android:textStyle="bold" android:layout_marginTop="5dp"/>
     <Button
-            android:layout_width="112dp"
-            android:layout_height="40dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:id="@+id/teacherthome_button_add_skills" android:layout_gravity="center" android:layout_marginTop="10dp"
-            android:textSize="10dp" android:background="#cc010100" android:textStyle="bold" android:textColor="#ffffff"
+            android:textSize="10dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
             android:text="Edit Skills" android:clickable="true" android:alpha="0.9"/>
 
     <ScrollView
             android:layout_width="315dp"
-            android:layout_height="200dp"
+            android:layout_height="235dp"
             android:id="@+id/teacher_scrollview" android:layout_gravity="center">
         <LinearLayout
                 android:orientation="vertical"
@@ -33,42 +30,43 @@
 
             <ListView
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_height="230dp"
                     android:id="@+id/teacherhome_listview_worklist" android:layout_gravity="center"
                     android:choiceMode="none" android:fastScrollAlwaysVisible="false" android:fastScrollEnabled="false"
-                    android:entries="@array/bluff_progress_array" android:background="#ccFFB90F"
-                    android:layout_marginTop="10dp"/>
+                    android:entries="@array/bluff_progress_array" android:background="@drawable/round_edges"
+                    android:alpha="0.80" android:layout_marginTop="5dp"/>
         </LinearLayout>
     </ScrollView>
     <LinearLayout
             android:id="@+id/teacherhome_buttonslayout"
-            android:layout_height="80dp"
-            android:layout_width="fill_parent"
+            android:layout_height="105dp"
+            android:layout_width="wrap_content"
             android:measureWithLargestChild="true"
             android:orientation="horizontal"
             android:padding="6sp"
-            android:layout_alignParentBottom="true" android:layout_marginTop="50dp"
-            android:background="#010101">
+            android:layout_alignParentBottom="true" android:layout_marginTop="20dp"
+            android:background="#00ffffff" android:layout_gravity="center">
 
         <Button
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:text="@string/work_in_progress"
-                android:id="@+id/teacherhome_button_work_in_progress" android:layout_gravity="center" android:textSize="10dp"
-                android:textStyle="bold" android:textColor="#ff3e2b" android:background="@drawable/buttons2"
-                android:layout_marginRight="5dp" android:clickable="true"/>
+                android:id="@+id/teacherhome_button_work_in_progress" android:layout_gravity="center" android:textSize="8dp"
+                android:textStyle="bold" android:textColor="#ffffff" android:background="@drawable/round_button"
+                android:layout_marginRight="10dp" android:clickable="true" android:alpha="0.8"/>
         <Button
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:id="@+id/teacherhome_button_awaiting_response" android:layout_gravity="center" android:textSize="10dp"
-                android:text="@string/awaiting_response" android:background="@drawable/buttons2" android:textColor="#ffffff"
-                android:textStyle="bold" android:layout_marginRight="5dp" android:clickable="true"/>
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/teacherhome_button_awaiting_response" android:layout_gravity="center" android:textSize="8dp"
+                android:text="@string/awaiting_response" android:background="@drawable/round_button" android:textColor="#ffffff"
+                android:textStyle="bold" android:layout_marginRight="10dp" android:clickable="true" android:alpha="0.8"/>
         <Button
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:id="@+id/teacherhome_button_work_opportunities" android:layout_gravity="center"
-                android:textSize="10dp" android:background="@drawable/buttons2" android:textStyle="bold" android:textColor="#ffffff"
-                android:text="@string/work_opportunities" android:clickable="true" android:layout_marginRight="5dp"/>
+                android:textSize="8dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
+                android:text="@string/work_opportunities" android:clickable="true"
+                android:alpha="0.8"/>
     </LinearLayout>
 
 </LinearLayout>

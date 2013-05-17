@@ -1,14 +1,10 @@
 package com.calm.android.activity;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.TextView;
 import com.calm.android.R;
-import com.calm.android.adapter.WorksListAdapter;
 import com.calm.android.model.User;
 import com.calm.android.model.Work;
 import roboguice.inject.InjectView;
@@ -46,9 +42,9 @@ public class WorksListActivity extends CalmActivity {
         getWorksList();
 
 
-        WorksListAdapter adapter = new WorksListAdapter(getApplicationContext(), works);
+      //  WorksListAdapter adapter = new WorksListAdapter(getApplicationContext(), works);
 
-        mWorksListView.setAdapter(adapter);
+     //   mWorksListView.setAdapter(adapter);
 
     }
 

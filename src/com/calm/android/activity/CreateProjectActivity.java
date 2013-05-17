@@ -1,24 +1,16 @@
 package com.calm.android.activity;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-import com.actionbarsherlock.ActionBarSherlock;
 import com.calm.android.R;
-import com.calm.android.adapter.WorksListAdapter;
 import roboguice.inject.InjectView;
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.TimePicker;
 import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -46,23 +38,23 @@ public class CreateProjectActivity extends CalmActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
+    //        updateLabel();
         }
     };
     private ArrayList<String> images = new ArrayList<String>();
     private int numberOfImages = 1;
 
-    private void updateLabel() {
-        lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
-    }
+  //  private void updateLabel() {
+   //     lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
+   // }
 
     @Override
     protected int getLayoutId() {
         return R.layout.new_project_screen;
     }
 
-    @InjectView(R.id.newproject_edittext_name)
-    private EditText mProjectNameText;
+  //  @InjectView(R.id.newproject_edittext_name)
+   // private EditText mProjectNameText;
 
     @InjectView(R.id.newproject_button_next)
     private Button mNextButton;
@@ -79,15 +71,15 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_button_due_date)
     private Button mDueDateButton;
 
-    @InjectView(R.id.newproject_button_budget)
-    private Button mBudgetButton;
+  //  @InjectView(R.id.newproject_button_budget)
+  //  private Button mBudgetButton;
 
 
     @InjectView(R.id.newproject_take_pic_btn)
     private ImageButton mPictureButton;
 
-    @InjectView(R.id.newproject_image_list)
-    private ListView mImagesList;
+  //  @InjectView(R.id.newproject_image_list)
+ //   private ListView mImagesList;
 
 
 
@@ -95,10 +87,10 @@ public class CreateProjectActivity extends CalmActivity {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
 
-        images.add("image 1");
-        images.add("image 2");
+     //   images.add("image 1");
+     //   images.add("image 2");
 
-        lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
+      //  lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
         mDueDateButton = (Button) findViewById(R.id.newproject_button_due_date);
 
         mDueDateButton.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +117,7 @@ public class CreateProjectActivity extends CalmActivity {
             @Override
             public void onClick(View v) {
 
-                String project_name =  mProjectNameText.getText().toString();
+             //   String project_name =  mProjectNameText.getText().toString();
                 //String project_description =  mProjectDescriptionText.getText().toString();   //TODO: set all values
 
                 //TODO - CHECK IF PASSWORDS MATCH
@@ -134,7 +126,7 @@ public class CreateProjectActivity extends CalmActivity {
                 SharedPreferences settings = getSharedPreferences("CALM",0);
                 SharedPreferences.Editor editor = settings.edit();
 
-                editor.putString("projectName", project_name);
+           //     editor.putString("projectName", project_name);
                 //editor.putString("projectDescription", project_description);
 
                 editor.commit();
@@ -145,12 +137,12 @@ public class CreateProjectActivity extends CalmActivity {
             }
         });
 
-        updateLabel();
+        //updateLabel();
 
-        ArrayAdapter<String> adapter= new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,images);
+      //  ArrayAdapter<String> adapter= new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,images);
 
 
-        mImagesList.setAdapter(adapter);
+       // mImagesList.setAdapter(adapter);
 
 
     }
@@ -164,7 +156,7 @@ public class CreateProjectActivity extends CalmActivity {
     public void addListenerOnSpinnerItemSelection() {
         mLevelSpinner = (Spinner) findViewById(R.id.newproject_spinner_level);
         mLevelSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-        mSubjectSpinner = (Spinner) findViewById(R.id.newproject_spinner_level);
+        mSubjectSpinner = (Spinner) findViewById(R.id.newproject_spinner_subject);
         mSubjectSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
         mLanguageSpinner = (Spinner) findViewById(R.id.newproject_spinner_language);
         mLanguageSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
