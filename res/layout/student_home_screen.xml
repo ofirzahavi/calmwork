@@ -33,7 +33,7 @@
                     android:layout_height="220dp"
                     android:id="@+id/studenthome_listview_worklist" android:layout_gravity="left|center_vertical"
                     android:divider="#79ff25"
-                    android:drawSelectorOnTop="false" android:entries="@array/bluff_progress_array"
+                    android:drawSelectorOnTop="false"
                     android:choiceMode="none" android:background="@drawable/round_edges"
                     android:layout_marginTop="5dp" android:alpha="0.80"/>
         </LinearLayout>

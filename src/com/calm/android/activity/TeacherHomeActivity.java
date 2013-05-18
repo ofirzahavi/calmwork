@@ -55,8 +55,10 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
 
     Context mContext = this;
     ArrayList<Project> projectsList = new ArrayList<Project>();
+    ArrayList<Project> filteredList;
 
     final Context context = this;
+
 
     @Override
     protected int getLayoutId() {
@@ -76,7 +78,8 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
         projectsList.add(p3);
         projectsList.add(p4);
 
-        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
+        filteredList = projectsList;
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
         mProjectsListView.setAdapter(adapter);
 
        //mSwitchStudentNinja = (Switch) findViewById(R.id.teacherhome_switch_student_or_ninja);
@@ -85,6 +88,7 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
       //  {
        //     mSwitchStudentNinja.setOnCheckedChangeListener(this);
      //   }
+
 
         mEditSkills.setOnClickListener(new View.OnClickListener() {
 
@@ -117,4 +121,40 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
         //mSubjectSpinnerSkills.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
     }
+
+    private ArrayList<Project> filterToPast(){
+        ArrayList<Project> list = new ArrayList<Project>();
+        Project p = new Project("a past project");
+        list.add(p);
+        return list;
+    }
+
+    private ArrayList<Project> filterToAwaitingResponse(){
+        ArrayList<Project> list = new ArrayList<Project>();
+        Project p = new Project("project awaiting response");
+        list.add(p);
+        return list;
+    }
+
+    public void onTeacherFindNewProjectsClick(View v) {
+        //  Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
+        filteredList = filterToPast();
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
+        mProjectsListView.setAdapter(adapter);
+    }
+
+    public void onTeacherAwaitingResponseProjectsClick(View v) {
+        //Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
+        filteredList = filterToAwaitingResponse();
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
+        mProjectsListView.setAdapter(adapter);
+    }
+
+    public void onTeacherWorkInProgressProjectsClick(View v) {
+        //  Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
+        //filteredList = filterToPast();
+        ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
+        mProjectsListView.setAdapter(adapter);
+    }
+
 }
