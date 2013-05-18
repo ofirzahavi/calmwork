@@ -13,10 +13,15 @@ import com.calm.android.model.User;
 public class SignUp extends PostApiRequest {
 
 
-    private User mUser;
+    //private User mUser;
+    private String email;
+    private String userName;
+    private String password;
 
     public SignUp(User user){
-        this.mUser = user;
+        this.email = user.email;
+        this.userName = user.name;
+        this.password = user.password;
     }
 
     @Override

@@ -99,7 +99,7 @@ public class SignupActivity extends CalmActivity {
                 editor.commit();
 
                 ApiRequest login = new SignUp(user);
-                new ApiExecuter(mContext, signupHandler);
+                new ApiExecuter(mContext, signupHandler).execute(login);
 
 
             }

@@ -25,7 +25,8 @@ public class ApiExecuter extends AsyncTask<ApiRequest, Integer, String>{
 	
 	public static final String HTTP_STR = "http://";
 	public static final String BASE_URL = "biuninja2013.appspot.com";
-	private static final String JSON_CONTENT_TYPE = "application/json";
+	//private static final String JSON_CONTENT_TYPE = "application/json"; //application/x-www-form-urlencoded
+    private static final String JSON_CONTENT_TYPE = "application/x-www-form-urlencoded";
 	private Context mContext;
 	
 	private static DefaultHttpClient sHttpClient = new DefaultHttpClient();
@@ -56,9 +57,11 @@ public class ApiExecuter extends AsyncTask<ApiRequest, Integer, String>{
 		
 
 			//Utils.Log(LogLevel.Debug,TAG, "executing " + getURL(api));
+        System.out.println("executing " + getURL(api));
 			HttpUriRequest httpRequest = putParameters(api);
 			//Utils.Log(LogLevel.Debug,TAG, "parameters: " + api.parameters());
-			
+        System.out.println("parameters: " + api.parameters());
+
 			HttpResponse response;
 			try {
 				response = sHttpClient.execute(httpRequest);

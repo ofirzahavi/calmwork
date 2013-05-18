@@ -42,9 +42,7 @@ public class WorksListActivity extends CalmActivity {
         getWorksList();
 
 
-      //  WorksListAdapter adapter = new WorksListAdapter(getApplicationContext(), works);
 
-     //   mWorksListView.setAdapter(adapter);
 
     }
 
