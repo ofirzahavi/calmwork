@@ -204,6 +204,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Bitmap image = null;
+        /*
         if (requestCode == CAMERA_PIC_REQUEST && resultCode == RESULT_OK) {
             if ( data.getExtras() == null){
                 Uri selectedImage = data.getData();
@@ -220,7 +221,12 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
             else {
                 image = (Bitmap) data.getExtras().get("data");
             }
-        } else if (requestCode == GALLERY_PIC_REQUEST && resultCode == RESULT_OK) {
+        }*/
+        if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
+            Uri imageUri = Uri.parse(mCurrentPhotoPath) ;
+            image = loadBitmapFromUri(getContentResolver(),imageUri );
+        }
+        else if (requestCode == GALLERY_PIC_REQUEST && resultCode == RESULT_OK) {
             Uri imageUri = data.getData();
             image = loadBitmapFromUri(getContentResolver(), imageUri);
         }
@@ -237,8 +243,13 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
         startActivityForResult(intent, GALLERY_PIC_REQUEST);
     }
     public void getPictureFromCameraClick(View v) {
+        /*
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+        */
+        if (isIntentAvailable(this, MediaStore.ACTION_IMAGE_CAPTURE)){
+            dispatchTakePictureIntent(CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+        }
     }
     public static Bitmap loadBitmapFromUri(ContentResolver cr, Uri uri){
         if(cr != null && uri != null){

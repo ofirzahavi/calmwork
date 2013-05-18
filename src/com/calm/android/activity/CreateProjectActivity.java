@@ -2,9 +2,12 @@ package com.calm.android.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.calm.android.R;
 import com.calm.android.model.Project;
@@ -72,8 +75,8 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_button_due_date)
     private Button mDueDateButton;
 
-    @InjectView(R.id.camera_result)
-    private ImageView mCameraResult ;
+    @InjectView(R.id.images_horizontal_scrollview)
+    private LinearLayout mImagesScrollView;
 
 
   //  @InjectView(R.id.newproject_button_budget)
@@ -153,7 +156,7 @@ public class CreateProjectActivity extends CalmActivity {
 
        // mImagesList.setAdapter(adapter);
 
-        setResultImageView(mCameraResult);
+     //   setResultImageView(mCameraResult);
 
 
     }
@@ -175,18 +178,44 @@ public class CreateProjectActivity extends CalmActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Bitmap image = null;
+        /*
+        if (requestCode == CAMERA_PIC_REQUEST && resultCode == RESULT_OK) {
+            if ( data.getExtras() == null){
+                Uri selectedImage = data.getData();
+                try {
+                    image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                } catch (FileNotFoundException e) {
+// Utils.Log(LogLevel.Error,TAG, "CreateBasicType onActivityResult. Unable to find file. image:" + selectedImage.getPath() + ", error: " + e.toString(),e);
+                    e.printStackTrace();
+                } catch (IOException e) {
+// Utils.Log(LogLevel.Error,TAG, "CreateBasicType onActivityResult. error. image:" + selectedImage.getPath() + ", error: " + e.toString(),e);
+                    e.printStackTrace();
+                }
+            }
+            else {
+                image = (Bitmap) data.getExtras().get("data");
+            }
+        }*/
         if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
-            //pass mFileName??
-            setPic();
-
+            Uri imageUri = Uri.parse(mCurrentPhotoPath) ;
+            image = loadBitmapFromUri(getContentResolver(),imageUri );
         }
-
+        else if (requestCode == GALLERY_PIC_REQUEST && resultCode == RESULT_OK) {
+            Uri imageUri = data.getData();
+            image = loadBitmapFromUri(getContentResolver(), imageUri);
+        }
+        if (image!=null){
+            ImageView newImageView = new ImageView(this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100, 100);
+            newImageView.setLayoutParams(lp);
+            lp.setMargins(10,0,10,0);
+            newImageView.setImageBitmap(image);
+            mImagesScrollView.addView(newImageView);
+        }
     }
 
-    private void setPic() {
-        Toast.makeText(getApplicationContext(), "camera", Toast.LENGTH_SHORT);
-    }
 
 
 }
