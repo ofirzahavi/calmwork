@@ -72,6 +72,10 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_button_due_date)
     private Button mDueDateButton;
 
+    @InjectView(R.id.camera_result)
+    private ImageView mCameraResult ;
+
+
   //  @InjectView(R.id.newproject_button_budget)
   //  private Button mBudgetButton;
 
@@ -148,6 +152,8 @@ public class CreateProjectActivity extends CalmActivity {
 
 
        // mImagesList.setAdapter(adapter);
+
+        setResultImageView(mCameraResult);
 
 
     }

@@ -78,6 +78,15 @@
     </orderEntry>
     <orderEntry type="module" module-name="menu-drawer-1.0" />
     <orderEntry type="module" module-name="sherlock-4.2.0" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/gson-2.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 

@@ -112,6 +112,7 @@
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:id="@+id/newproject_take_pic_btn"
+                        android:onClick="getPictureFromCameraClick"
                         android:layout_gravity="center"
                         android:src="@drawable/camerafinal"
                         android:background="@drawable/round_button" android:adjustViewBounds="false" android:alpha="0.9"
@@ -121,6 +122,7 @@
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:id="@+id/newproject_gallery_btn"
+                        android:onClick="getPictureFromGalleryClick"
                         android:layout_gravity="center"
                         android:src="@drawable/g"
                         android:background="@drawable/round_button" android:alpha="0.9"
@@ -134,12 +136,17 @@
                         android:src="@drawable/dropfinal"
                         android:background="@drawable/round_button" android:alpha="0.9"/>
 
+                <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/camera_result" android:layout_gravity="center"/>
+
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-        <EditText
+    <EditText
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:id="@+id/newproject_edittext_price" android:layout_gravity="center" android:textSize="8dp"

@@ -1,16 +1,20 @@
 package com.calm.android.activity;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -24,6 +28,7 @@ import net.simonvt.menudrawer.MenuDrawer;
 import roboguice.inject.InjectView;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,7 +50,9 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     private File mStorageDir;
     protected String mCurrentPhotoPath = "new";
 
-
+    protected static final int CAMERA_PIC_REQUEST = 0x1101;
+    protected static final int GALLERY_PIC_REQUEST = 0x1110;
+    protected ImageView resultImageView;
 
 
     /**
@@ -181,7 +188,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
 
 
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
             //pass mFileName??
@@ -192,8 +199,76 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
 
         }
 
-    }
+    }  */
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Bitmap image = null;
+        if (requestCode == CAMERA_PIC_REQUEST && resultCode == RESULT_OK) {
+            if ( data.getExtras() == null){
+                Uri selectedImage = data.getData();
+                try {
+                    image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                } catch (FileNotFoundException e) {
+// Utils.Log(LogLevel.Error,TAG, "CreateBasicType onActivityResult. Unable to find file. image:" + selectedImage.getPath() + ", error: " + e.toString(),e);
+                    e.printStackTrace();
+                } catch (IOException e) {
+// Utils.Log(LogLevel.Error,TAG, "CreateBasicType onActivityResult. error. image:" + selectedImage.getPath() + ", error: " + e.toString(),e);
+                    e.printStackTrace();
+                }
+            }
+            else {
+                image = (Bitmap) data.getExtras().get("data");
+            }
+        } else if (requestCode == GALLERY_PIC_REQUEST && resultCode == RESULT_OK) {
+            Uri imageUri = data.getData();
+            image = loadBitmapFromUri(getContentResolver(), imageUri);
+        }
+        if (image!=null){
+            resultImageView.setImageBitmap(image);
+        }
+    }
+    protected void setResultImageView(ImageView v){
+        resultImageView = v;
+    }
+    public void getPictureFromGalleryClick(View v) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, GALLERY_PIC_REQUEST);
+    }
+    public void getPictureFromCameraClick(View v) {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+    }
+    public static Bitmap loadBitmapFromUri(ContentResolver cr, Uri uri){
+        if(cr != null && uri != null){
+            BitmapFactory.Options opts = new BitmapFactory.Options();
+            opts.inJustDecodeBounds = true;
+            try {
+                BitmapFactory.decodeStream(cr.openInputStream(uri), null, opts);
+                opts = new BitmapFactory.Options();
+//Bitmap b = BitmapFactory.decodeStream(cr.openInputStream(uri), null, opts);
+                Bitmap b = BitmapFactory.decodeStream(cr.openInputStream(uri));//, null, opts);
+/*
+// check whether the bitmap should be rotated before presented to user
+String fileName = getRealPathFromURI(cr, uri);
+if(fileName.endsWith("jpg") || fileName.endsWith("jpeg")){
+try {
+ExifInterface exif = new ExifInterface(fileName);
+int rotateBy = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, -1);//ExifInterface.ORIENTATION_NORMAL);
+b = rotateBitmapBy(b, exifOrientationToDegrees(rotateBy));
+} catch (IOException e) {
+e.printStackTrace();
+}
+} */
+                return b;
+            } catch (FileNotFoundException e) {
+//Utils.Log(LogLevel.Error,TAG, e.toString(),e);
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 
     public void logout(){
         SharedPreferences settings = getSharedPreferences("CALM",0);
