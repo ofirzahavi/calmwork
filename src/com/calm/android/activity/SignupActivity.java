@@ -1,5 +1,6 @@
 package com.calm.android.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.calm.android.R;
+import com.calm.android.api.generic.ApiExecuter;
+import com.calm.android.api.generic.ApiHandler;
+import com.calm.android.api.generic.ApiRequest;
+import com.calm.android.api.login.SignUp;
+import com.calm.android.model.User;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 
@@ -35,6 +41,8 @@ public class SignupActivity extends CalmActivity {
     }
 
 
+    Context mContext = this;
+
     @InjectView(R.id.signup_email)
     private EditText mEmailText;
 
@@ -51,12 +59,22 @@ public class SignupActivity extends CalmActivity {
     private Button mSignupButton;
 
 
+    public ApiHandler signupHandler = new ApiHandler() {
+        @Override
+        public void handle(String response) {
+            Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+            startActivity(intent);
+
+        }
+    };
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
         mSignupButton.setOnClickListener(new View.OnClickListener() {
+
+            ;
 
             @Override
             public void onClick(View v) {
@@ -72,14 +90,16 @@ public class SignupActivity extends CalmActivity {
                 SharedPreferences settings = getSharedPreferences("CALM",0);
                 SharedPreferences.Editor editor = settings.edit();
 
-                editor.putString("userEmail", mEmailText.getText().toString());
+                String name = mUserNameText.getText().toString();
+                String email = mEmailText.getText().toString();
+                editor.putString("userEmail", email);
                 editor.putString("userPassword", password);
-                editor.putString("userName", mUserNameText.getText().toString());
-
+                editor.putString("userName",name );
+                User user = new User(name, email, password);
                 editor.commit();
 
-                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-                startActivity(intent);
+                ApiRequest login = new SignUp(user);
+                new ApiExecuter(mContext, signupHandler).execute(login);
 
 
             }

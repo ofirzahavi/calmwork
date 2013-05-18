@@ -42,13 +42,11 @@ public class WorksListActivity extends CalmActivity {
         getWorksList();
 
 
-      //  WorksListAdapter adapter = new WorksListAdapter(getApplicationContext(), works);
 
-     //   mWorksListView.setAdapter(adapter);
 
     }
 
-    private void getWorksList() {
+    private void getWorksList() {    /*
         for (int i = 0; i < 10; i++){
             Work work = new Work();
             Random r = new Random();
@@ -58,7 +56,7 @@ public class WorksListActivity extends CalmActivity {
             }
 
             works.add(work);
-        }
+        }                              */
 
     }
 

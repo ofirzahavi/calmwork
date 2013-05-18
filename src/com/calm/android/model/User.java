@@ -1,5 +1,7 @@
 package com.calm.android.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -11,11 +13,17 @@ import java.util.ArrayList;
  */
 public class User {
 
-    public String name;
-    public String email;
-    public ArrayList<Work> workList = new ArrayList<Work>();
+    @SerializedName("userName") public String name;
+    @SerializedName("email") public String email;
+    @SerializedName("password") public String password;
 
+    //public ArrayList<Work> workList = new ArrayList<Work>();
 
+    public User(String name, String email, String password){
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 
 
 }
