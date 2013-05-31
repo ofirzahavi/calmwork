@@ -1,7 +1,10 @@
 package com.calm.android.activity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -70,6 +73,8 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         mProjectsListView.setAdapter(adapter);
 
 
+
+
      //   mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
   /*
        if (mSwitchStudentNinja != null)
@@ -121,7 +126,6 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         return list;
     }
 
-
     public void onPastProjectsClick(View v) {
       //  Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
         filteredList = filterToPast();
@@ -142,4 +146,5 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
         mProjectsListView.setAdapter(adapter);
     }
+
 }

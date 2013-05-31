@@ -1,5 +1,6 @@
 package com.calm.android.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -63,6 +64,9 @@ public class CreateProjectActivity extends CalmActivity {
     @InjectView(R.id.newproject_button_next)
     private Button mNextButton;
 
+    @InjectView(R.id.newproject_add_notes_button)
+    private Button mAddNotesButton;
+
     @InjectView(R.id.newproject_spinner_subject)
     private Spinner mSubjectSpinner;
 
@@ -121,7 +125,11 @@ public class CreateProjectActivity extends CalmActivity {
             }
         });
 
-
+        mAddNotesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
         mNextButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:background="@drawable/sea_boat">
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teacher Name"
+            android:id="@+id/textView"
+            android:textColor="#ffffff" android:textStyle="bold" android:textSize="15dp"
+            android:layout_gravity="center"/>
+
+
+    <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="About Me"
+            android:id="@+id/button" android:background="@drawable/round_button"
+            android:alpha="0.6" android:layout_gravity="center"
+            android:textSize="8dp" android:layout_marginTop="5dp" android:textColor="#ffffff" android:textStyle="bold"/>
+    <RatingBar android:id="@+id/ratingbar1" style="@style/foodRatingBar"
+               android:layout_width="200dp" android:layout_height="60dp" android:layout_gravity="center"
+               android:background="#00ffffff" android:layout_marginTop="10dp"></RatingBar>
+
+    <TextView
+            android:id="@+id/ratetext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#010001"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="500dp" android:layout_gravity="center" android:layout_marginTop="125dp">
+        <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:id="@+id/imageView" android:layout_gravity="left|center_vertical"
+                android:background="@drawable/teacher_male1"/>
+    </LinearLayout>
+</LinearLayout>

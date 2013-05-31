@@ -16,26 +16,29 @@
     <Button
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:id="@+id/studenthome_button_create_new_project" android:layout_gravity="center" android:layout_marginTop="5dp"
-            android:textSize="12dp" android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#7CFC00"
-            android:text="@string/create_new_project" android:clickable="true" android:alpha="0.8"/>
+            android:id="@+id/studenthome_button_create_new_project" android:layout_gravity="center" android:layout_marginTop="10dp"
+            android:textSize="12dp" android:background="@drawable/round_button" android:textStyle="bold"
+            android:text="@string/create_new_project" android:clickable="true" android:alpha="0.7"
+            android:textColor="#ffffff"/>
     <ScrollView
             android:layout_width="315dp"
-            android:layout_height="225dp"
+            android:layout_height="247dp"
             android:id="@+id/scrollview" android:layout_gravity="center" android:layout_marginTop="5dp">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:paddingTop="5dp">
+                android:layout_height="fill_parent">
 
             <ListView
                     android:layout_width="wrap_content"
-                    android:layout_height="220dp"
-                    android:id="@+id/studenthome_listview_worklist" android:layout_gravity="left|center_vertical"
-                    android:divider="#79ff25"
+                    android:layout_height="242dp"
+                    android:id="@+id/studenthome_listview_worklist" android:layout_gravity="center"
                     android:drawSelectorOnTop="false"
-                    android:choiceMode="none" android:background="@drawable/round_edges"
-                    android:layout_marginTop="5dp" android:alpha="0.80"/>
+                    android:fastScrollAlwaysVisible="false" android:fastScrollEnabled="false"
+                    android:background="@drawable/round_edges"
+                    android:layout_marginTop="5dp" android:alpha="0.80" android:divider="#010101"
+                    android:clickable="false" android:dividerHeight="1dp" android:headerDividersEnabled="true"
+                    android:footerDividersEnabled="true"/>
         </LinearLayout>
     </ScrollView>
     <LinearLayout

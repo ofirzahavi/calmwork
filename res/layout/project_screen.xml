@@ -3,11 +3,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#439bc2">
+              android:layout_height="match_parent" android:background="@drawable/sea_boat">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Project's Name"
-            android:id="@+id/textView" android:layout_gravity="center"/>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="left|center_vertical"
+            android:background="#b2010101" android:alpha="0.8">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subject:"
+                android:id="@+id/textview" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="5dp" android:textStyle="bold" android:textColor="#ffffff"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level:"
+                android:id="@+id/textview1" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="#ffffff"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Language:"
+                android:id="@+id/textview2" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="#ffffff"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Budget:"
+                android:id="@+id/textview3" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="#ffffff"/>
+        <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollview" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assigned to:"
+                android:id="@+id/textview4" android:layout_gravity="left|center_vertical"
+                android:textStyle="bold" android:textColor="#ffffff" android:layout_marginBottom="5dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center" android:layout_marginTop="1dp"
+            android:background="#b2010101" android:alpha="0.8">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Messages"
+                android:id="@+id/textview5" android:layout_gravity="center" android:textStyle="bold"
+                android:textColor="#ffffff" android:layout_marginTop="5dp"/>
+        <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollview2" android:layout_gravity="center" android:layout_marginTop="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="left|center_vertical" android:layout_marginTop="1dp"
+            android:background="#b2010101" android:alpha="0.8">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Files"
+                  android:id="@+id/textview6" android:layout_gravity="center" android:textStyle="bold"
+                  android:textColor="#ffffff" android:layout_marginTop="5dp"/>
+        <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollview1" android:layout_gravity="center" android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+
 </LinearLayout>

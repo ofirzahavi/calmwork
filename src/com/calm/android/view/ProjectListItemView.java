@@ -1,6 +1,9 @@
 package com.calm.android.view;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -29,5 +32,21 @@ public class ProjectListItemView extends LinearLayout {
      //   projectTitleTextView.setText(project.dueDate.toString());
         projectDateTextView.setText("17/05/2013");
 
+        setOnClickListener(context);
+
+    }
+
+    private void setOnClickListener(final Context context) {
+
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.project_screen);
+
+                dialog.show();
+            }
+
+        });
     }
 }
