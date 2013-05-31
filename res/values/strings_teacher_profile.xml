@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="all_feedback">All\nFeedback</string>
+    <string name="negative_feedback">Negative\nFeedback</string>
+    <string name="positive_feedback">Positive\nFeedback</string>
+</resources>

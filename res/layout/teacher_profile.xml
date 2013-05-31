@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="match_parent"
+              android:layout_width="fill_parent"
               android:layout_height="wrap_content" android:background="@drawable/sea_boat">
 
 
@@ -16,15 +16,15 @@
 
 
     <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:text="About Me"
             android:id="@+id/button" android:background="@drawable/round_button"
-            android:alpha="0.6" android:layout_gravity="center"
-            android:textSize="8dp" android:layout_marginTop="5dp" android:textColor="#ffffff" android:textStyle="bold"/>
+            android:alpha="0.9" android:layout_gravity="center"
+            android:textSize="12dp" android:layout_marginTop="2dp" android:textColor="#ffffff" android:textStyle="bold"/>
     <RatingBar android:id="@+id/ratingbar1" style="@style/foodRatingBar"
-               android:layout_width="200dp" android:layout_height="60dp" android:layout_gravity="center"
-               android:background="#00ffffff" android:layout_marginTop="10dp"></RatingBar>
+               android:layout_width="200dp" android:layout_height="38dp" android:layout_gravity="center"
+               android:background="#00ffffff" android:layout_marginTop="2dp"></RatingBar>
 
     <TextView
             android:id="@+id/ratetext"
@@ -32,17 +32,59 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#010001"
-            android:textSize="20dp"
+            android:textSize="14dp"
             android:textStyle="bold"/>
 
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="500dp" android:layout_gravity="center" android:layout_marginTop="125dp">
-        <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:id="@+id/imageView" android:layout_gravity="left|center_vertical"
-                android:background="@drawable/teacher_male1"/>
+            android:layout_height="fill_parent" android:background="#b2375583" android:alpha="0.8"
+            android:layout_marginTop="2dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feedback:"
+                android:id="@+id/textView1" android:layout_gravity="left|center_vertical" android:textStyle="bold"
+                android:textColor="#ffffff" android:layout_marginLeft="3dp" android:textSize="15dp"/>
+        <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:id="@+id/teacherprofile_listview_worklist" android:layout_gravity="center"
+                android:drawSelectorOnTop="false"
+                android:fastScrollAlwaysVisible="false" android:fastScrollEnabled="false"
+                android:background="#b2ffffff"
+                android:divider="#010101"
+                android:clickable="false" android:dividerHeight="1dp" android:headerDividersEnabled="false"
+                android:footerDividersEnabled="false"/>
     </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="105dp" android:layout_gravity="center" android:layout_marginTop="5dp">
+        <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="@string/all_feedback"
+                android:id="@+id/button1" android:layout_gravity="center" android:background="@drawable/round_button"
+                android:layout_marginRight="10dp" android:alpha="0.8" android:textSize="12dp" android:textStyle="bold"
+                android:textColor="#ffffff"/>
+        <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="@string/positive_feedback"
+                android:id="@+id/button3" android:layout_gravity="right|center_vertical"
+                android:background="@drawable/round_button" android:layout_marginRight="10dp" android:alpha="0.8"
+                android:textSize="12dp" android:textStyle="bold" android:textColor="#ffffff"/>
+        <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="@string/negative_feedback"
+                android:id="@+id/button2" android:layout_gravity="left|center_vertical"
+                android:background="@drawable/round_button" android:alpha="0.8" android:textSize="12dp"
+                android:textStyle="bold" android:textColor="#ffffff"/>
+    </LinearLayout>
+
+
+
 </LinearLayout>

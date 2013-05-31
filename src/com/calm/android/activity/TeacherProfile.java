@@ -45,7 +45,7 @@ public class TeacherProfile extends CalmActivity {
                                         boolean fromUser) {
                 // TODO Auto-generated method stub
                // Toast.makeText(getApplicationContext(), Float.toString(rating), Toast.LENGTH_LONG).show();
-                mRatingText.setText("Rating: "+String.valueOf(rating));
+                mRatingText.setText("Average Rating: "+String.valueOf(rating));
 
             }
 

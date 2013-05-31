@@ -63,10 +63,18 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         Project p2 = new Project("two");
         Project p3 = new Project("three");
         Project p4 = new Project("4");
+        Project p5 = new Project("English assignment");
+        Project p6 = new Project("two");
+        Project p7 = new Project("three");
+        Project p8 = new Project("4");
         projectsList.add(p);
         projectsList.add(p2);
         projectsList.add(p3);
         projectsList.add(p4);
+        projectsList.add(p5);
+        projectsList.add(p6);
+        projectsList.add(p7);
+        projectsList.add(p8);
 
         filteredList = projectsList;
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);

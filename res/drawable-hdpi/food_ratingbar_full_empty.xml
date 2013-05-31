@@ -7,16 +7,16 @@
 
     <item android:state_pressed="true"
           android:state_window_focused="true"
-          android:drawable="@drawable/starempty" />
+          android:drawable="@drawable/star_gay_empty1" />
 
     <item android:state_focused="true"
           android:state_window_focused="true"
-          android:drawable="@drawable/starempty" />
+          android:drawable="@drawable/star_gay_empty1" />
 
     <item android:state_selected="true"
           android:state_window_focused="true"
-          android:drawable="@drawable/thumbs_transperent" />
+          android:drawable="@drawable/star_gay_empty1" />
 
-    <item android:drawable="@drawable/thumbs_transperent" />
+    <item android:drawable="@drawable/star_gay_empty1" />
 
 </selector>

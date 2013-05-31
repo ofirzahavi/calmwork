@@ -20,27 +20,18 @@
             android:textSize="12dp" android:background="@drawable/round_button" android:textStyle="bold"
             android:text="@string/create_new_project" android:clickable="true" android:alpha="0.7"
             android:textColor="#ffffff"/>
-    <ScrollView
-            android:layout_width="315dp"
-            android:layout_height="247dp"
-            android:id="@+id/scrollview" android:layout_gravity="center" android:layout_marginTop="5dp">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
 
-            <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="242dp"
-                    android:id="@+id/studenthome_listview_worklist" android:layout_gravity="center"
-                    android:drawSelectorOnTop="false"
-                    android:fastScrollAlwaysVisible="false" android:fastScrollEnabled="false"
-                    android:background="@drawable/round_edges"
-                    android:layout_marginTop="5dp" android:alpha="0.80" android:divider="#010101"
-                    android:clickable="false" android:dividerHeight="1dp" android:headerDividersEnabled="true"
-                    android:footerDividersEnabled="true"/>
-        </LinearLayout>
-    </ScrollView>
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="227.5dp"
+            android:id="@+id/studenthome_listview_worklist"
+            android:drawSelectorOnTop="false"
+            android:background="#b2ffffff"
+            android:layout_marginTop="12dp" android:divider="#b2010101"
+            android:clickable="false" android:dividerHeight="1dp" android:headerDividersEnabled="false"
+            android:footerDividersEnabled="false" android:choiceMode="none"/>
+
+
     <LinearLayout
             android:id="@+id/studenthome_buttonslayout"
             android:layout_height="105dp"
@@ -48,7 +39,7 @@
             android:measureWithLargestChild="true"
             android:orientation="horizontal"
             android:padding="6sp"
-            android:layout_alignParentBottom="true" android:layout_marginTop="10dp"
+            android:layout_alignParentBottom="true" android:layout_marginTop="5dp"
             android:background="#00ffffff" android:layout_gravity="center">
 
         <Button
