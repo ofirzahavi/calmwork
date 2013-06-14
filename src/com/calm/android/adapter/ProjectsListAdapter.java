@@ -29,6 +29,9 @@ public class ProjectsListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        if (mProjects==null){
+            return 0;
+        }
         return mProjects.size();
     }
 

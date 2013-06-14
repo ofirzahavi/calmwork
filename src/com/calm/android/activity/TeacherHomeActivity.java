@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.*;
 import com.calm.android.R;
 import com.calm.android.adapter.ProjectsListAdapter;
-import com.calm.android.model.Project;
+import com.google.api.services.projectendpoint.model.Project;
+
 import roboguice.inject.InjectView;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -69,14 +70,6 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
 
-        Project p = new Project("Linear math assignment");
-        Project p2 = new Project("two");
-        Project p3 = new Project("three");
-        Project p4 = new Project("4");
-        projectsList.add(p);
-        projectsList.add(p2);
-        projectsList.add(p3);
-        projectsList.add(p4);
 
         filteredList = projectsList;
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
@@ -123,17 +116,11 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
     }
 
     private ArrayList<Project> filterToPast(){
-        ArrayList<Project> list = new ArrayList<Project>();
-        Project p = new Project("a past project");
-        list.add(p);
-        return list;
+        return projectsList;
     }
 
     private ArrayList<Project> filterToAwaitingResponse(){
-        ArrayList<Project> list = new ArrayList<Project>();
-        Project p = new Project("project awaiting response");
-        list.add(p);
-        return list;
+        return projectsList;
     }
 
     public void onTeacherFindNewProjectsClick(View v) {

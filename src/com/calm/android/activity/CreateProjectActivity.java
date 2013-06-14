@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.calm.android.R;
-import com.calm.android.model.Project;
 import roboguice.inject.InjectView;
 import android.app.DatePickerDialog;
 import android.widget.Button;

@@ -8,9 +8,6 @@ import android.os.Handler;
 import com.actionbarsherlock.app.ActionBar;
 import com.calm.android.activity.CalmActivity;
 import com.calm.android.activity.LoginActivity;
-import com.calm.android.activity.NewWorkActivity;
-import com.calm.android.activity.WorksListActivity;
-import net.simonvt.menudrawer.MenuDrawer;
 
 public class SplashActivity extends Activity {
 

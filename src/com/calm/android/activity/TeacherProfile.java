@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.calm.android.R;
 import com.calm.android.adapter.ProjectsListAdapter;
-import com.calm.android.model.Project;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 

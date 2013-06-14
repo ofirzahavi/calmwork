@@ -10,11 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.calm.android.R;
-import com.calm.android.api.generic.ApiExecuter;
-import com.calm.android.api.generic.ApiHandler;
-import com.calm.android.api.generic.ApiRequest;
-import com.calm.android.api.login.SignUp;
-import com.calm.android.model.User;
+import com.google.api.services.userendpoint.model.User;
+
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 
@@ -59,15 +56,6 @@ public class SignupActivity extends CalmActivity {
     private Button mSignupButton;
 
 
-    public ApiHandler signupHandler = new ApiHandler() {
-        @Override
-        public void handle(String response) {
-            Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-            startActivity(intent);
-
-        }
-    };
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -95,11 +83,7 @@ public class SignupActivity extends CalmActivity {
                 editor.putString("userEmail", email);
                 editor.putString("userPassword", password);
                 editor.putString("userName",name );
-                User user = new User(name, email, password);
                 editor.commit();
-
-                ApiRequest login = new SignUp(user);
-                new ApiExecuter(mContext, signupHandler).execute(login);
 
 
             }

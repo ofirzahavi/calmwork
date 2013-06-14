@@ -56,8 +56,8 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
     private ListView mProjectsListView;
 
     Context mContext = this;
-    List<com.google.api.services.projectendpoint.model.Project> projectsList;
-    List<com.google.api.services.projectendpoint.model.Project> filteredList;
+    List<Project> projectsList;
+    List<Project> filteredList;
     private Projectendpoint service;
 
     @Override
