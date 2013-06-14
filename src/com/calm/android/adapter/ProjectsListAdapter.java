@@ -5,8 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
-import com.calm.android.model.Project;
 import com.calm.android.view.ProjectListItemView;
+import com.google.api.services.projectendpoint.model.Project;
 
 import java.util.List;
 

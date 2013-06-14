@@ -12,7 +12,12 @@ import android.view.View;
 import android.widget.*;
 import com.calm.android.R;
 import com.calm.android.adapter.ProjectsListAdapter;
-import com.calm.android.model.Project;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.projectendpoint.Projectendpoint;
+import com.google.api.services.projectendpoint.model.CollectionResponseProject;
+import com.google.api.services.projectendpoint.model.Project;
+
 import roboguice.inject.InjectView;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -20,6 +25,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,8 +56,10 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
     private ListView mProjectsListView;
 
     Context mContext = this;
-    ArrayList<Project> projectsList = new ArrayList<Project>();
-    ArrayList<Project> filteredList;
+    List<com.google.api.services.projectendpoint.model.Project> projectsList;
+    List<com.google.api.services.projectendpoint.model.Project> filteredList;
+    private Projectendpoint service;
+
     @Override
     protected int getLayoutId() {
         return R.layout.student_home_screen;
@@ -59,23 +67,9 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Project p = new Project("English assignment");
-        Project p2 = new Project("two");
-        Project p3 = new Project("three");
-        Project p4 = new Project("4");
-        Project p5 = new Project("English assignment");
-        Project p6 = new Project("two");
-        Project p7 = new Project("three");
-        Project p8 = new Project("4");
-        projectsList.add(p);
-        projectsList.add(p2);
-        projectsList.add(p3);
-        projectsList.add(p4);
-        projectsList.add(p5);
-        projectsList.add(p6);
-        projectsList.add(p7);
-        projectsList.add(p8);
 
+        initEndpointService();
+        getProjects();
         filteredList = projectsList;
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
         mProjectsListView.setAdapter(adapter);
@@ -120,18 +114,12 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
 
     }
 
-    private ArrayList<Project> filterToPast(){
-        ArrayList<Project> list = new ArrayList<Project>();
-        Project p = new Project("a past project");
-        list.add(p);
-        return list;
+    private List<Project> filterToPast(){
+        return projectsList;
     }
 
-    private ArrayList<Project> filterToAwaitingResponse(){
-        ArrayList<Project> list = new ArrayList<Project>();
-        Project p = new Project("project awaiting response");
-        list.add(p);
-        return list;
+    private List<Project> filterToAwaitingResponse(){
+        return projectsList;
     }
 
     public void onPastProjectsClick(View v) {
@@ -154,5 +142,21 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, projectsList);
         mProjectsListView.setAdapter(adapter);
     }
+
+
+    private void initEndpointService(){
+        Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), null);
+        service = builder.build();
+
+    }
+    public void getProjects(){
+        try{
+            CollectionResponseProject projects = service.projectEndpoint().listProject().execute();
+            projectsList = projects.getItems();
+        } catch (Exception e){
+
+        }
+    }
+
 
 }

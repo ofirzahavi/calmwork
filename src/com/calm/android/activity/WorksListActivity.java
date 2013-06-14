@@ -5,11 +5,18 @@ import android.os.Bundle;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import com.calm.android.R;
-import com.calm.android.model.User;
 import com.calm.android.model.Work;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.projectendpoint.Projectendpoint;
+import com.google.api.services.projectendpoint.model.CollectionResponseProject;
+import com.google.api.services.projectendpoint.model.Project;
+
+
 import roboguice.inject.InjectView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,6 +35,8 @@ public class WorksListActivity extends CalmActivity {
     @InjectView(R.id.works_list)
     private ExpandableListView mWorksListView;
 
+    Projectendpoint service;
+    List<Project> projectsList;
 
    // ArrayList<String> works = new ArrayList<String>();
    ArrayList<Work> works = new ArrayList<Work>();
@@ -63,6 +72,20 @@ public class WorksListActivity extends CalmActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.student_main;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    private void initEndpointService(){
+        Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), null);
+        service = builder.build();
+
+    }
+    public void getProjects(){
+        try{
+            CollectionResponseProject projects = service.projectEndpoint().listProject().execute();
+            projectsList = projects.getItems();
+        } catch (Exception e){
+
+        }
     }
 
 

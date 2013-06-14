@@ -13,7 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.calm.android.R;
 import com.calm.android.activity.SignupActivity;
-import com.calm.android.model.Project;
+import com.google.api.services.projectendpoint.model.Project;
+
 import roboguice.inject.InjectView;
 
 /**
@@ -34,11 +35,11 @@ public class ProjectListItemView extends LinearLayout {
         Button mTrashButton = (Button) findViewById(R.id.list_trash_button);
 
         TextView projectTitleTextView = (TextView) findViewById(R.id.project_item_title);
-        projectTitleTextView.setText(project.title);
+        projectTitleTextView.setText(project.getName());
 
         TextView projectDateTextView = (TextView) findViewById(R.id.project_item_date);
      //   projectTitleTextView.setText(project.dueDate.toString());
-        projectDateTextView.setText("17/05/2013");
+        projectDateTextView.setText(project.getDueDate().toString());
 
         setRowOnClickListener(context);
         mContext = context;
