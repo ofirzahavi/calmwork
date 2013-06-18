@@ -1,6 +1,7 @@
 package com.calm.android.activity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -11,14 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.calm.android.R;
+import com.google.api.client.util.DateTime;
+import com.google.api.services.projectendpoint.Projectendpoint;
+import com.google.api.services.projectendpoint.model.Project;
+import net.simonvt.menudrawer.StaticDrawer;
 import roboguice.inject.InjectView;
 import android.app.DatePickerDialog;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+
 import android.widget.Toast;
 
 
@@ -35,16 +43,9 @@ public class CreateProjectActivity extends CalmActivity {
     DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
     Calendar myCalendar = Calendar.getInstance();
     TextView lblDateAndTime;
+    Context mContext = this;
+    DatePickerDialog datePickerDialog;
 
-    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            myCalendar.set(Calendar.YEAR, year);
-            myCalendar.set(Calendar.MONTH, monthOfYear);
-            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-    //        updateLabel();
-        }
-    };
     private ArrayList<String> images = new ArrayList<String>();
     private int numberOfImages = 1;
 
@@ -93,11 +94,17 @@ public class CreateProjectActivity extends CalmActivity {
   //  @InjectView(R.id.newproject_image_list)
  //   private ListView mImagesList;
 
+    private Projectendpoint service;
+    private Project mNewProject = new Project();
+
+    private static final String DATE_FORMAT = "dd/MM/yyyy";
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addListenerOnSpinnerItemSelection();
+        setDateDialogs();
+
      //   project = new Project("");
      //   images.add("image 1");
      //   images.add("image 2");
@@ -107,10 +114,7 @@ public class CreateProjectActivity extends CalmActivity {
 
         mDueDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new DatePickerDialog(CreateProjectActivity.this, d, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-
+                datePickerDialog.show();
             }
         });
 
@@ -183,6 +187,36 @@ public class CreateProjectActivity extends CalmActivity {
         mLanguageSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
+    protected void setDateDialogs() {
+
+        Calendar c = Calendar.getInstance();
+
+        int startYear = c.get(Calendar.YEAR) - 1900;
+        int startMonth = c.get(Calendar.MONTH);
+        int startDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+        datePickerDialog = new DatePickerDialog(mContext,
+                new DatePickerDialog.OnDateSetListener() {
+
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
+                        //Date chosenDate = new Time();
+                        System.out.println(year + "/" + monthOfYear + "/" + dayOfMonth);
+                        Date date = new Date();
+
+                        date.setDate(dayOfMonth);
+                        date.setMonth(monthOfYear);
+                        date.setYear(year);
+                        DateTime dateTime = new DateTime(date);
+                        mNewProject.setDueDate(dateTime);
+                        String dateString = new SimpleDateFormat(DATE_FORMAT).format(date);
+                        mDueDateButton.setText(dateString);
+                    }
+                }, startYear, startMonth, startDay);
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
