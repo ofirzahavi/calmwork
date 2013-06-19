@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.calm.android.R;
-import com.google.api.services.userendpoint.model.User;
+
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
