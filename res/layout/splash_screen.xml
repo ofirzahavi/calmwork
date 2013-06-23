@@ -12,6 +12,6 @@
             android:id="@+id/imageButton"
             android:src="@drawable/homeworkdog"
             android:background="#000101"
-            android:layout_alignParentLeft="true" android:layout_marginLeft="35dp" android:layout_alignParentTop="true"
-            android:layout_marginTop="140dp"/>
+            android:layout_alignParentLeft="false" android:layout_alignParentTop="false"
+            android:layout_centerInParent="true"/>
 </RelativeLayout>

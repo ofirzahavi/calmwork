@@ -3,98 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/calm" android:layout_gravity="center" android:focusableInTouchMode="false"
-    android:clickable="true" android:focusable="false">
-
-    <TextView
-        android:id="@+id/textview3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dont_have_an_account"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14sp"
-        android:textColor="#ffffff" android:layout_alignParentRight="true" android:layout_alignParentTop="true"
-        android:layout_marginTop="285dp" android:gravity="center" android:layout_alignParentLeft="true"
-        android:textStyle="bold" android:background="#83929F" android:alpha="0.8"/>
-
-    <Button
-        android:id="@+id/login_button_signup"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:text="@string/sign_up"
-        android:background="@drawable/round_button"
-        android:textColor="#ffffff"
-        android:textStyle="bold" android:layout_alignParentEnd="false"
-        android:layout_alignLeft="@+id/login_button_login" android:layout_alignParentTop="true"
-        android:layout_marginTop="320dp" android:clickable="true" android:singleLine="true" android:alpha="0.9"
-        android:textSize="14dp"/>
-
-    <TextView
-        android:id="@+id/textview1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff" android:textStyle="bold" android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" android:layout_marginTop="20dp"
-            />
-
-    <EditText
-        android:id="@+id/login_password"
-        android:layout_width="193dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColorHint="#000000" android:textColor="#000000" android:password="true"
-        android:layout_alignLeft="@+id/login_email" android:layout_alignParentTop="true"
-        android:layout_marginTop="140dp" android:editable="false" android:clickable="true" android:gravity="center"
-        android:textSize="16dp" android:background="@drawable/round_edges" android:alpha="0.8"/>
-
-    <EditText
-        android:id="@+id/login_email"
-        android:layout_width="193dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#000000" android:textColor="#000000" android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" android:layout_marginTop="110dp" android:gravity="center"
-        android:textSize="16dp" android:background="@drawable/round_edges" android:alpha="0.8"/>
+    android:clickable="true" android:focusable="false" android:gravity="center">
 
     <Button
         android:id="@+id/login_button_login"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:text="@string/login"
         android:layout_gravity="center"
         android:singleLine="true" android:background="@drawable/round_button" android:textColor="#ffffff" android:textStyle="bold"
-        android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="190dp"
-        android:clickable="true" android:alpha="0.9" android:textSize="14dp"/>
-
-    <TextView
-        android:id="@+id/textview2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_account_information"
-        android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14sp" android:textColor="#ffffff" android:layout_alignRight="@+id/textview3"
-        android:layout_alignParentTop="true" android:layout_marginTop="60dp"
-        android:gravity="center" android:textStyle="bold" android:background="#83929F"
-        android:layout_alignLeft="@+id/textview3" android:alpha="0.8" android:focusableInTouchMode="false"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email:"
-            android:id="@+id/textView"
-            android:layout_alignLeft="@+id/textview3" android:layout_alignBottom="@+id/login_email"
-            android:layout_marginLeft="12dp" android:textColor="#ffffff" android:textSize="12dp"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password:"
-            android:id="@+id/textView1" android:layout_alignLeft="@+id/textview3"
-            android:layout_alignBottom="@+id/login_password" android:layout_marginLeft="2dp"
-            android:textColor="#ffffff" android:textSize="12dp"/>
+        android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+        android:clickable="true" android:alpha="0.9" android:textSize="35dp"/>
 
 </RelativeLayout>

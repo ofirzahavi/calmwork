@@ -21,6 +21,8 @@ import android.app.DatePickerDialog;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,6 +51,18 @@ public class CreateProjectActivity extends CalmActivity {
     private ArrayList<String> images = new ArrayList<String>();
     private int numberOfImages = 1;
 
+    private int mSelectedtDay;
+    private int mSelectedMonth;
+    private int mSelectedYear;
+
+    Calendar mCalander = Calendar.getInstance();
+
+    private int mCurrentDay = mCalander.get(Calendar.DAY_OF_MONTH);
+    private int mCurrentMonth = mCalander.get(Calendar.MONTH);
+    private int mCurrentYear = mCalander.get(Calendar.YEAR);
+
+
+   // private Project mProject;
   //  private void updateLabel() {
    //     lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
    // }
@@ -60,6 +74,9 @@ public class CreateProjectActivity extends CalmActivity {
 
   //  @InjectView(R.id.newproject_edittext_name)
    // private EditText mProjectNameText;
+
+     @InjectView(R.id.newproject_edittext_price)
+     private EditText mProjectBudget;
 
     @InjectView(R.id.newproject_button_next)
     private Button mNextButton;
@@ -105,16 +122,14 @@ public class CreateProjectActivity extends CalmActivity {
         addListenerOnSpinnerItemSelection();
         setDateDialogs();
 
-     //   project = new Project("");
-     //   images.add("image 1");
-     //   images.add("image 2");
+       // System.out.println(" budget is ********* " + mProjectBudget.getHint());
 
-      //  lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
         mDueDateButton = (Button) findViewById(R.id.newproject_button_due_date);
 
         mDueDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 datePickerDialog.show();
+
             }
         });
 
@@ -138,24 +153,43 @@ public class CreateProjectActivity extends CalmActivity {
             @Override
             public void onClick(View v) {
 
-             //   String project_name =  mProjectNameText.getText().toString();
-                //String project_description =  mProjectDescriptionText.getText().toString();   //TODO: set all values
 
-                //project.title=mSubjectSpinner.getSelectedItem().toString();
+             //
 
-                //TODO - CHECK IF PASSWORDS MATCH
-                //TOAST
-                maketoast();
                 SharedPreferences settings = getSharedPreferences("CALM",0);
                 SharedPreferences.Editor editor = settings.edit();
 
-           //     editor.putString("projectName", project_name);
-                //editor.putString("projectDescription", project_description);
+                if (mLevelSpinner.getSelectedItemPosition()== 0 || mSubjectSpinner.getSelectedItemPosition() == 0 ||
+                        mLanguageSpinner.getSelectedItemPosition()==0 || mSelectedYear<mCurrentYear ||
+                        (mSelectedYear==mCurrentYear && mSelectedMonth<mCurrentMonth) ||
+                        (mSelectedYear==mCurrentYear && mSelectedMonth==mCurrentMonth && mSelectedtDay<mCurrentDay))
+                       //add illegal date and budget check
+                {
+                    System.out.println("selected year:" + mSelectedYear + "cureYear " + mCurrentYear );
+                    System.out.println("selected month:" + mSelectedMonth + "cureMon " + mCurrentMonth );
+                    System.out.println("selected day:" + mSelectedtDay + "cureDay " + mCurrentDay );
+                    makeCorrectToast();
+                }
+                else
+                {
+                    mNewProject.setLevel(mLevelSpinner.getSelectedItemPosition());
 
-                editor.commit();
+                    mNewProject.setLanguage(mLanguageSpinner.getSelectedItem().toString());
 
-                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-                startActivity(intent);
+                    mNewProject.setSubject(mSubjectSpinner.getSelectedItem().toString());
+
+                    mNewProject.setBudjet(Integer.parseInt(mProjectBudget.getText().toString()));
+
+                    insertProject();
+                    editor.commit();
+
+                    Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+                    maketoast();
+                    startActivity(intent);
+                    finish();
+
+                }
+
 
             }
         });
@@ -172,28 +206,112 @@ public class CreateProjectActivity extends CalmActivity {
 
     }
 
+    private void makeCorrectToast() {
+
+
+        if (mSubjectSpinner.getSelectedItemPosition()==0)
+            maketoastInvalidSubject();
+        else
+        {
+            if (mLevelSpinner.getSelectedItemPosition() == 0)
+            {
+                maketoastInvalidLevel();
+            }
+            else
+            {
+                if  (mLanguageSpinner.getSelectedItemPosition() == 0)
+                    maketoastInvalidLanguage()  ;
+                else
+                {
+                    if (mSelectedYear<mCurrentYear ||
+                            (mSelectedYear==mCurrentYear && mSelectedMonth<mCurrentMonth) ||
+                            (mSelectedYear==mCurrentYear && mSelectedMonth==mCurrentMonth && mSelectedtDay<mCurrentDay))
+                        maketoastInvalidDate();        //TODO: fix logic
+                    else
+                    {
+                        //Todo: handle budget check
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    public void insertProject(){
+
+
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    CalmActivity.projectEndpoint.insertProject(mNewProject).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        Thread t = new Thread(r);
+        t.start();
+
+    }
+
+
     void maketoast()
     {
         Toast.makeText(this, ("Project Submitted successfully"),
                 Toast.LENGTH_SHORT).show();
     }
 
+    void maketoastInvalidSubject()
+    {
+        Toast.makeText(this, ("Please choose project's subject"),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    void maketoastInvalidDate()
+    {
+        Toast.makeText(this, ("Please choose a Valid due date"),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    void maketoastInvalidLevel()
+    {
+        Toast.makeText(this, ("Please choose project's Level"),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    void maketoastInvalidLanguage()
+    {
+        Toast.makeText(this, ("Please choose project's Language"),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    void maketoastInvaliBudget()
+    {
+        Toast.makeText(this, ("Please set a Valid Budget"),
+                Toast.LENGTH_SHORT).show();
+    }
+
+
+
     public void addListenerOnSpinnerItemSelection() {
         mLevelSpinner = (Spinner) findViewById(R.id.newproject_spinner_level);
         mLevelSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+      //  mNewProject.setLevel(mLevelSpinner.getSelectedItemPosition()); //TODO
         mSubjectSpinner = (Spinner) findViewById(R.id.newproject_spinner_subject);
         mSubjectSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
         mLanguageSpinner = (Spinner) findViewById(R.id.newproject_spinner_language);
         mLanguageSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
-    protected void setDateDialogs() {
+        protected void setDateDialogs() {
 
-        Calendar c = Calendar.getInstance();
+            Calendar c = Calendar.getInstance();
 
-        int startYear = c.get(Calendar.YEAR) - 1900;
-        int startMonth = c.get(Calendar.MONTH);
-        int startDay = c.get(Calendar.DAY_OF_MONTH);
+            int startYear = c.get(Calendar.YEAR);
+            int startMonth = c.get(Calendar.MONTH);
+            int startDay = c.get(Calendar.DAY_OF_MONTH);
 
 
         datePickerDialog = new DatePickerDialog(mContext,
@@ -208,13 +326,16 @@ public class CreateProjectActivity extends CalmActivity {
 
                         date.setDate(dayOfMonth);
                         date.setMonth(monthOfYear);
-                        date.setYear(year);
+                        date.setYear(year - 1900);
                         DateTime dateTime = new DateTime(date);
                         mNewProject.setDueDate(dateTime);
                         String dateString = new SimpleDateFormat(DATE_FORMAT).format(date);
                         mDueDateButton.setText(dateString);
+                        mSelectedtDay=dayOfMonth;
+                        mSelectedMonth=monthOfYear;
+                        mSelectedYear=year;
                     }
-                }, startYear, startMonth, startDay);
+                }, startYear , startMonth, startDay);
 
     }
 

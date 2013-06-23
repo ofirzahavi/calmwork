@@ -17,6 +17,7 @@ import com.google.android.gms.auth.GoogleAuthException;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.calmuserendpoint.Calmuserendpoint;
 import com.google.api.services.projectendpoint.Projectendpoint;
 import com.google.api.services.projectendpoint.model.Project;
 import roboguice.activity.RoboActivity;
@@ -34,24 +35,27 @@ import java.io.IOException;
 public class LoginActivity extends RoboActivity {
 
     private static final String PREF_ACCOUNT_NAME = "bla";
-    private GoogleAccountCredential credential;
+    private static final String SERVER_CLIENT_ID = "1080189142533.apps.googleusercontent.com";
+    private static final String WEB_CLIENT_ID = "1080189142533-1hin5t3rbq6655cop98oam64n9q9kbni.apps.googleusercontent.com";
+
     private SharedPreferences settings;
-    private String accountName;
-    private Projectendpoint service;
+    private String accountNaStringme;
+    private Projectendpoint projectService;
+    private Calmuserendpoint userService;
     Context mContext = this;
 
-    @InjectView(R.id.login_email)
-    private EditText mEmailText;
+ //   @InjectView(R.id.login_email)
+ //   private EditText mEmailText;
 
-    @InjectView(R.id.login_password)
-    private EditText mPasswordText;
+ //   @InjectView(R.id.login_password)
+ //   private EditText mPasswordText;
 
     @InjectView(R.id.login_button_login)
     private Button mLoginButton;
 
-    @InjectView(R.id.login_button_signup)
-    private Button mSignupButton;
-    private Account ac;
+ //   @InjectView(R.id.login_button_signup)
+ //   private Button mSignupButton;
+ //   private Account ac;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -68,20 +72,20 @@ public class LoginActivity extends RoboActivity {
                 SharedPreferences settings = getSharedPreferences("CALM",0);
                 SharedPreferences.Editor editor = settings.edit();
 
-                editor.putString("userName", mEmailText.getText().toString());
-                editor.putString("userPassword", mPasswordText.getText().toString());
+          //      editor.putString("userName", mEmailText.getText().toString());
+          //      editor.putString("userPassword", mPasswordText.getText().toString());
 
                 editor.commit();
+                chooseAccount();
 
-                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-                startActivity(intent);
-
+              //  Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+              //  startActivity(intent);
 
             }
         });
 
 
-        mSignupButton.setOnClickListener(new View.OnClickListener() {
+      /*  mSignupButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -91,14 +95,14 @@ public class LoginActivity extends RoboActivity {
 
 
             }
-        });
+        });  */
 
-        Account[] accounts = AccountManager.get(this).getAccounts();
+     //   Account[] accounts = AccountManager.get(this).getAccounts();
         /*for (Account a:accounts){
             System.out.println(a.name);
         }  */
-        ac = accounts[0];
-        chooseAccount();
+       // ac = accounts[0];
+
     }
 
     static final int REQUEST_ACCOUNT_PICKER = 2;
@@ -107,14 +111,14 @@ public class LoginActivity extends RoboActivity {
         //Intent i = AccountManager.newChooseAccountIntent(null, null, new String[]{"com.google"}, false, null, null, null, null);
         //startActivityForResult(i, REQUEST_ACCOUNT_PICKER);
 
-        String scope = "server:client_id:biuninja2013:apps.googleusercontent.com";
+        String scope = "biuninja2013.appspot.com";
         String USERINFO_SCOPE =
                 "oauth2:https://www.googleapis.com/auth/userinfo.profile";
      //   credential = new GoogleAccountCredential(mContext,USERINFO_SCOPE );
-        credential = GoogleAccountCredential.usingAudience(mContext,scope );
+        CalmActivity.credential = GoogleAccountCredential.usingAudience(mContext,"server:client_id:" + WEB_CLIENT_ID);
 
         startActivityForResult(
-            credential.newChooseAccountIntent(),
+                CalmActivity.credential.newChooseAccountIntent(),
             REQUEST_ACCOUNT_PICKER);
     }
 
@@ -129,51 +133,25 @@ public class LoginActivity extends RoboActivity {
                             data.getExtras().getString(
                                     AccountManager.KEY_ACCOUNT_NAME);
                     if (accountName != null) {
-                        credential.setSelectedAccountName(accountName) ;
-                        insertProject();
+                        CalmActivity.credential.setSelectedAccountName(accountName) ;
+                        Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
+                        projectService = builder.build();
+                        CalmActivity.projectEndpoint = projectService.projectEndpoint();
+
+                        Calmuserendpoint.Builder userbuilder = new Calmuserendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
+                       userService = userbuilder.build();
+                        CalmActivity.userEndpoint = userService.calmUserEndpoint();
+
+                        Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+                        startActivity(intent);
+
                     }
                 }
                 break;
         }
-    }
-
-    public void insertProject(){
-        Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), credential);
-
-        service = builder.build();
-
-        final Project p = new Project();
-        p.setName("Oron is gay");
-
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-
-                try {
-                   // GoogleAccountCredential gac =  new GoogleAccountCredential(mContext, null);
-                    String scope = "audience:server:client_id:biuninja2013:apps.googleusercontent.com";
-                //    GoogleAccountCredential gac = GoogleAccountCredential.usingOAuth2(mContext,"email");
-
-
-                    //String token = credential.getToken();
-
-                   // System.out.println("*******" + token);
-//                    Toast.makeText(mContext, token, Toast.LENGTH_SHORT).show();
-                    service.projectEndpoint().insertProject(p)
-                      //      .setOauthToken(token)
-                            .execute();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }// catch (GoogleAuthException e) {
-//                    Toast.makeText(mContext, "fuck", Toast.LENGTH_SHORT).show();
-                   // e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                //}
-            }
-        };
-
-        Thread t = new Thread(r);
-        t.start();
 
     }
+
+
 
 }

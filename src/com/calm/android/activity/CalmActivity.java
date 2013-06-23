@@ -24,6 +24,9 @@ import com.actionbarsherlock.view.MenuItem;
 import com.calm.android.R;
 import com.calm.android.SplashActivity;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.services.calmuserendpoint.Calmuserendpoint;
+import com.google.api.services.projectendpoint.Projectendpoint;
 import net.simonvt.menudrawer.MenuDrawer;
 import roboguice.inject.InjectView;
 
@@ -54,7 +57,9 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     protected static final int GALLERY_PIC_REQUEST = 0x1110;
     protected ImageView resultImageView;
 
-
+    public static GoogleAccountCredential credential;
+    public static Projectendpoint.ProjectEndpoint projectEndpoint;
+    public static Calmuserendpoint.CalmUserEndpoint userEndpoint;
     /**
      * Called when the activity is first created.
      */

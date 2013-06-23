@@ -68,7 +68,6 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initEndpointService();
         getProjects();
         filteredList = projectsList;
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
@@ -144,14 +143,9 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
     }
 
 
-    private void initEndpointService(){
-        Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), null);
-        service = builder.build();
-
-    }
     public void getProjects(){
         try{
-            CollectionResponseProject projects = service.projectEndpoint().listProject().execute();
+            CollectionResponseProject projects = projectEndpoint.listProject().execute();
             projectsList = projects.getItems();
         } catch (Exception e){
 
