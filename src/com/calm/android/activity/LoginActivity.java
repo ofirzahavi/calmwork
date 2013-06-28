@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,8 +19,11 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.calmuserendpoint.Calmuserendpoint;
+import com.google.api.services.calmuserendpoint.model.CalmUser;
 import com.google.api.services.projectendpoint.Projectendpoint;
+import com.google.api.services.projectendpoint.model.CollectionResponseProject;
 import com.google.api.services.projectendpoint.model.Project;
+import com.google.gson.Gson;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 
@@ -133,17 +137,56 @@ public class LoginActivity extends RoboActivity {
                             data.getExtras().getString(
                                     AccountManager.KEY_ACCOUNT_NAME);
                     if (accountName != null) {
+
                         CalmActivity.credential.setSelectedAccountName(accountName) ;
                         Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
                         projectService = builder.build();
                         CalmActivity.projectEndpoint = projectService.projectEndpoint();
 
                         Calmuserendpoint.Builder userbuilder = new Calmuserendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
-                       userService = userbuilder.build();
+                        userService = userbuilder.build();
                         CalmActivity.userEndpoint = userService.calmUserEndpoint();
 
-                        Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-                        startActivity(intent);
+                      ;
+
+
+
+                        Runnable r = new Runnable() {
+
+                            @Override
+                            public void run() {
+                                try{
+
+                                    System.out.println("******* try");
+                                    CalmUser calmUser;
+                                    calmUser = CalmActivity.userEndpoint.getCalmUser(CalmActivity.credential.getSelectedAccountName()).execute();
+
+                                    if (calmUser==null)
+                                    {
+                                        calmUser = new CalmUser();
+                                        calmUser.setMail(CalmActivity.credential.getSelectedAccountName());
+                                        calmUser = CalmActivity.userEndpoint.insertCalmUser(calmUser).execute();
+
+
+                                    }
+
+                                    if (calmUser!=null)
+                                    {
+                                        Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+                                        startActivity(intent);
+                                    }
+
+                                     //TODO: HANDLE CASE WHEN USER WAS NOT CREATED
+
+                                } catch (Exception e){
+                                    System.out.println("******* catch");
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        };
+                        Thread t = new Thread(r);
+                        t.start();
 
                     }
                 }
