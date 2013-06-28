@@ -23,6 +23,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -69,10 +70,11 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         super.onCreate(savedInstanceState);
 
         getProjects();
+
+        System.out.println("******** print from on create" +projectsList);
         filteredList = projectsList;
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
         mProjectsListView.setAdapter(adapter);
-
 
 
 
@@ -95,6 +97,24 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
                 startActivity(intent);
             }
         });
+
+        mPastProjectsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+           //     System.out.println("blaaaah before");
+                  getProjects();
+             //   System.out.println("blaaaah");
+                filteredList = filterToPast();
+                ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
+                mProjectsListView.setAdapter(adapter);
+              //  Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
+               // startActivity(intent);
+            }
+        });
+
+
 
     }
 
@@ -121,12 +141,15 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         return projectsList;
     }
 
-    public void onPastProjectsClick(View v) {
+  /*  public void onPastProjectsClick(View v) {
       //  Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
+        System.out.println("blaaaah before");
+        getProjects();
+        System.out.println("blaaaah");
         filteredList = filterToPast();
         ProjectsListAdapter adapter = new ProjectsListAdapter(mContext, filteredList);
         mProjectsListView.setAdapter(adapter);
-    }
+    }    */
 
     public void onAwaitingResponseProjectsClick(View v) {
         //Toast.makeText(mContext, "clicked", Toast.LENGTH_SHORT).show();
@@ -144,12 +167,26 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
 
 
     public void getProjects(){
-        try{
-            CollectionResponseProject projects = projectEndpoint.listProject().execute();
-            projectsList = projects.getItems();
-        } catch (Exception e){
 
-        }
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    //System.out.println("******* printing get projects before");
+                    CollectionResponseProject projects = projectEndpoint.listProject().execute();
+                    //System.out.println("******* printing get projects middle");
+                    projectsList = projects.getItems();
+                    //filteredList=projectsList;
+                   // System.out.println("******* printing get projects call"+ projects);
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        Thread t = new Thread(r);
+        t.start();
+
     }
 
 

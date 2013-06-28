@@ -20,25 +20,39 @@
                 android:layout_marginTop="5dp" android:textStyle="bold" android:textColor="#010101"
                 android:layout_marginLeft="3dp"/>
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:text="Level:"
-                android:id="@+id/textview1" android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="#010101"
+                android:id="@+id/projectscreen_level_textview" android:layout_gravity="left|center_vertical"
+                android:textStyle="bold" android:textColor="#010101"
                 android:layout_marginLeft="3dp"/>
-        <TextView
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Language:"
-                android:id="@+id/textview2" android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="#010101"
-                android:layout_marginLeft="3dp"/>
+                android:layout_height="fill_parent">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Language:"
+                    android:id="@+id/projectscreen_language_textview" android:layout_gravity="center|left"
+                    android:textStyle="bold" android:textColor="#010101"
+                    android:layout_marginLeft="3dp"/>
+            <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:id="@+id/projectscreen_language_to_set__textview" android:layout_marginLeft="8dp"
+                    android:layout_gravity="center"/>
+
+        </LinearLayout>
+
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Budget:"
-                android:id="@+id/textview3" android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="#010000"
+                android:id="@+id/projectscreen_budget_textview" android:layout_gravity="left|center_vertical"
+                android:textStyle="bold" android:textColor="#010000"
                 android:layout_marginLeft="3dp"/>
         <ScrollView
                 android:layout_width="wrap_content"
@@ -49,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Assigned to:"
-                android:id="@+id/textview4" android:layout_gravity="left|center_vertical"
+                android:id="@+id/projectscreen_assignedto_textview" android:layout_gravity="left|center_vertical"
                 android:textStyle="bold" android:textColor="#010101" android:layout_marginBottom="5dp"
                 android:layout_marginLeft="3dp"/>
     </LinearLayout>

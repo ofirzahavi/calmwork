@@ -47,6 +47,7 @@ public class CreateProjectActivity extends CalmActivity {
     TextView lblDateAndTime;
     Context mContext = this;
     DatePickerDialog datePickerDialog;
+    DateTime mChosenDateTime;
 
     private ArrayList<String> images = new ArrayList<String>();
     private int numberOfImages = 1;
@@ -61,6 +62,7 @@ public class CreateProjectActivity extends CalmActivity {
     private int mCurrentMonth = mCalander.get(Calendar.MONTH);
     private int mCurrentYear = mCalander.get(Calendar.YEAR);
 
+    private Date mDate;
 
    // private Project mProject;
   //  private void updateLabel() {
@@ -163,20 +165,26 @@ public class CreateProjectActivity extends CalmActivity {
                         mLanguageSpinner.getSelectedItemPosition()==0 || mSelectedYear<mCurrentYear ||
                         (mSelectedYear==mCurrentYear && mSelectedMonth<mCurrentMonth) ||
                         (mSelectedYear==mCurrentYear && mSelectedMonth==mCurrentMonth && mSelectedtDay<mCurrentDay))
-                       //add illegal date and budget check
+                       //add illegal budget check
                 {
-                    System.out.println("selected year:" + mSelectedYear + "cureYear " + mCurrentYear );
-                    System.out.println("selected month:" + mSelectedMonth + "cureMon " + mCurrentMonth );
-                    System.out.println("selected day:" + mSelectedtDay + "cureDay " + mCurrentDay );
+
                     makeCorrectToast();
                 }
                 else
                 {
+                    mDate = new Date();
+                    mDate.setDate(mSelectedtDay);
+                    mDate.setMonth(mSelectedMonth);
+                    mDate.setYear(mSelectedYear-1900);
+                    mChosenDateTime = new DateTime(mDate);
+
                     mNewProject.setLevel(mLevelSpinner.getSelectedItemPosition());
 
                     mNewProject.setLanguage(mLanguageSpinner.getSelectedItem().toString());
 
                     mNewProject.setSubject(mSubjectSpinner.getSelectedItem().toString());
+
+                    mNewProject.setDueDate(mChosenDateTime);
 
                     mNewProject.setBudjet(Integer.parseInt(mProjectBudget.getText().toString()));
 
@@ -328,12 +336,15 @@ public class CreateProjectActivity extends CalmActivity {
                         date.setMonth(monthOfYear);
                         date.setYear(year - 1900);
                         DateTime dateTime = new DateTime(date);
+                        //mChosenDateTime = dateTime;
                         mNewProject.setDueDate(dateTime);
                         String dateString = new SimpleDateFormat(DATE_FORMAT).format(date);
                         mDueDateButton.setText(dateString);
                         mSelectedtDay=dayOfMonth;
                         mSelectedMonth=monthOfYear;
                         mSelectedYear=year;
+
+
                     }
                 }, startYear , startMonth, startDay);
 

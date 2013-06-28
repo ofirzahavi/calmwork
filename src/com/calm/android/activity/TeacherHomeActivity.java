@@ -88,7 +88,7 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
             @Override
             public void onClick(View arg0) {
 
-                Intent intent = new Intent(getApplicationContext(), TeacherProfile.class);
+                Intent intent = new Intent(getApplicationContext(), EditSkillsActivity.class);
                 startActivity(intent);
             }
         });

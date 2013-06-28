@@ -66,7 +66,6 @@
                 android:layout_height="75dp"
                 android:lines="2"
                 android:text="@string/past_projects"
-                android:onClick="onPastProjectsClick"
                 android:id="@+id/studenthome_button_past_projects" android:layout_gravity="center" android:textSize="12dp"
                 android:background="@drawable/round_button" android:textStyle="bold" android:textColor="#ffffff"
                 android:clickable="true" android:alpha="0.8"/>

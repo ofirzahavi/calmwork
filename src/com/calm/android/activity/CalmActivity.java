@@ -60,6 +60,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     public static GoogleAccountCredential credential;
     public static Projectendpoint.ProjectEndpoint projectEndpoint;
     public static Calmuserendpoint.CalmUserEndpoint userEndpoint;
+
     /**
      * Called when the activity is first created.
      */
