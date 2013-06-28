@@ -94,6 +94,12 @@ public final class Project extends GenericJson {
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
+  private String teacherId;
+
+  /**
+   * The value may be {@code null}.
+   */
+  @com.google.api.client.util.Key
   private String userId;
 
   /**
@@ -246,6 +252,23 @@ public final class Project extends GenericJson {
    */
   public Project setSubject(String subject) {
     this.subject = subject;
+    return this;
+  }
+
+  /**
+
+   * The value returned may be {@code null}.
+   */
+  public String getTeacherId() {
+    return teacherId;
+  }
+
+  /**
+
+   * The value set may be {@code null}.
+   */
+  public Project setTeacherId(String teacherId) {
+    this.teacherId = teacherId;
     return this;
   }
 
