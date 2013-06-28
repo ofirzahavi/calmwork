@@ -1,10 +1,14 @@
 package com.calm.android.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.Button;
 import android.widget.TextView;
 import com.calm.android.R;
+import com.calm.android.adapter.ProjectsListAdapter;
 import com.google.api.services.projectendpoint.Projectendpoint;
 import com.google.api.services.projectendpoint.model.CollectionResponseProject;
 import com.google.api.services.projectendpoint.model.Project;
@@ -33,7 +37,7 @@ public class ProjectDetailsActivity extends CalmActivity{
 
     private Projectendpoint service;
     String mProjectId;
-
+    ProgressDialog pd;
 
     private Project mProject;
 
@@ -59,21 +63,55 @@ public class ProjectDetailsActivity extends CalmActivity{
 
     public void getProjectAndSetValues(){
         System.out.println("project id=" + mProjectId);
+        pd = ProgressDialog.show(this,"","loading");
         Runnable r = new Runnable() {
             @Override
             public void run() {
                 try{
 
                     mProject = projectEndpoint.getProject(mProjectId).execute();
-                    mLanguage.setText(mProject.getLanguage());
+
                 } catch (Exception e){
                     System.out.println("exp********");
                     e.printStackTrace();
+                }
+
+                finally {
+                    System.out.println("******* finally 1");
+                    String myString = new String("test");
+                    //updateTextView.obtainMessage(0, 10, 20, myString).sendToTarget();
+                    Message msg = handler.obtainMessage();
+                    msg.what = UPDATE_IMAGE;
+                    handler.sendMessage(msg);
+
                 }
             }
         };
         Thread t = new Thread(r);
         t.start();
 
+    }
+
+
+    private static final int UPDATE_IMAGE = 1 ;
+    final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            if(msg.what==UPDATE_IMAGE){
+                dismissProgressDialog();
+                mLanguage.setText(mProject.getLanguage());
+                //    adapter.notifyDataSetChanged();
+                //     mProjectsListView.invalidateViews();
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    private void dismissProgressDialog(){
+        if (pd != null){
+            pd.dismiss();
+            pd = null;
+        }
     }
 }
