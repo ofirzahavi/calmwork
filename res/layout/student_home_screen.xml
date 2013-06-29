@@ -29,7 +29,7 @@
             android:background="#b2ffffff"
             android:layout_marginTop="12dp" android:divider="#b2010101"
             android:clickable="false" android:dividerHeight="1dp" android:headerDividersEnabled="false"
-            android:footerDividersEnabled="false" android:choiceMode="none"/>
+            android:footerDividersEnabled="false" android:choiceMode="none" android:alpha="0.8"/>
 
 
     <LinearLayout

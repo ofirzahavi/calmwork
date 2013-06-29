@@ -4,12 +4,12 @@
         android:clickable="false">
     <TextView
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="26dp"
             android:text="Project's title"
             android:id="@+id/project_item_title"
             android:layout_alignParentLeft="true" android:layout_marginLeft="5dp" android:layout_alignParentTop="true"
             android:layout_marginTop="2dp" android:layout_marginBottom="2dp" android:textStyle="bold"
-            />
+            android:textColor="#010101"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             android:id="@+id/project_item_date"
             android:layout_alignLeft="@+id/project_item_title" android:layout_alignParentTop="true"
             android:layout_marginTop="30dp" android:layout_marginLeft="53dp" android:textStyle="bold"
-            android:textSize="14dp"/>
+            android:textSize="14dp" android:textColor="#010101"/>
     <Button
             android:layout_width="53dp"
             android:layout_height="53dp"
@@ -34,5 +34,5 @@
             android:text="Due to:"
             android:id="@+id/textView"
             android:textStyle="bold" android:textSize="14dp" android:layout_alignLeft="@+id/project_item_title"
-            android:layout_alignParentTop="true" android:layout_marginTop="30dp"/>
+            android:layout_alignParentTop="true" android:layout_marginTop="30dp" android:textColor="#010000"/>
 </RelativeLayout>

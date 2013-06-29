@@ -1,18 +1,25 @@
 package com.calm.android.activity;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.*;
 import com.calm.android.R;
+import com.calm.android.adapter.LanguagesListAdapter;
 import com.calm.android.adapter.ProjectsListAdapter;
 import com.calm.android.adapter.SkillsListAdapter;
+import com.calm.android.entities.Skill;
 import com.google.api.services.calmuserendpoint.Calmuserendpoint;
 import com.google.api.services.calmuserendpoint.model.CalmUser;
+import com.google.api.services.calmuserendpoint.model.CollectionResponseCalmUser;
 import com.google.api.services.projectendpoint.Projectendpoint;
 import com.google.api.services.projectendpoint.model.CollectionResponseProject;
 import com.google.api.services.projectendpoint.model.Project;
+import com.google.gson.Gson;
 import roboguice.inject.InjectView;
 
 import java.util.ArrayList;
@@ -27,12 +34,15 @@ import java.util.List;
  */
 public class EditSkillsActivity extends CalmActivity{
 
+
     @InjectView(R.id.skills_list)
     private ListView mSkillsListView;
 
+    @InjectView(R.id.language_list)
+    private ListView mLanguagesList;
 
-    @InjectView(R.id.editskills_button_add_skills)
-    private Button mSkillsButton;
+
+    private Button mAddLanguageButton;
 
 
     Context mContext = this;
@@ -45,45 +55,87 @@ public class EditSkillsActivity extends CalmActivity{
     }
 
 
+    private Spinner mSubjectSpinner;
+    private Spinner mLevelSpinner;
+    private Spinner mLanguageSpinner;
 
-    private Spinner mSubjectSpinnerSkills;
-    private Spinner mLevelSpinnerSkills;
-
+    ProgressDialog pd;
+    SkillsListAdapter adapter;
+    LanguagesListAdapter languagesAdapter;
+    List<String> skillsList;
 
     ArrayList<String> array;
 
     Button mAddSkillButton;
 
+    Skill mSkill;
+
+   // boolean mUpToBool;
+
+    CheckBox cbx;
 
     final Context context = this;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+      //  mUpToBool=false;
+
+
+        mSubjectSpinner = (Spinner) findViewById(R.id.editskills_spinner_subject);
+        mLevelSpinner = (Spinner) findViewById(R.id.editskills_spinner_level);
+        mLanguageSpinner = (Spinner) findViewById(R.id.editskills_spinner_language);
+
+        addListenerOnCheckbox();
+
+        addListenerOnSpinnerItemSelection();
         mAddSkillButton = (Button) findViewById(R.id.editskills_button_add_skills);
+        mAddLanguageButton = (Button) findViewById(R.id.editskillsscreen_add_languages_button);
         getUser();
         SkillsListAdapter adapter = new SkillsListAdapter(mContext, mCalmUser);
         mSkillsListView.setAdapter(adapter);
 
 
-        mSkillsButton.setOnClickListener(new View.OnClickListener() {
+        mAddLanguageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                pd = ProgressDialog.show(mContext, "Updating Languages List", "loading");
 
-                System.out.println("blaaaah before");
-                getUser();
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            List<String> myLanguagesList = mCalmUser.getLanguages();
+                            if(myLanguagesList==null){
+                                myLanguagesList=new ArrayList<String>();
+                            }
+                            if(!(myLanguagesList.contains(mLanguageSpinner.getSelectedItem().toString()))){
+                                myLanguagesList.add(mLanguageSpinner.getSelectedItem().toString());
+                                {
+                                }
+                                mCalmUser.setLanguages(myLanguagesList);
+                                CalmActivity.userEndpoint.updateCalmUser(mCalmUser).execute();
+                                getUser();
+                            }} catch (Exception e){
+                            e.printStackTrace();
 
-                if (mCalmUser==null)
-                    System.out.println("userIs null ****");
-                else
-                {  //   System.out.println("blaaaah");
-                  //  filteredList = filterToPast();
-                    SkillsListAdapter adapter = new SkillsListAdapter(mContext, mCalmUser);
-                    mSkillsListView.setAdapter(adapter);
-                    //  Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
-                    // startActivity(intent);
-             //       System.out.println("skills list" + "******" + mCalmUser.getSkills().toString());
-                }
+                        }
+
+                        finally {
+                            System.out.println("******* finally 1");
+                            String myString = new String("test");
+                            //updateTextView.obtainMessage(0, 10, 20, myString).sendToTarget();
+                            Message msg = handler.obtainMessage();
+                            msg.what = UPDATE_LANGUAGES_LIST;
+                            handler.sendMessage(msg);
+
+                        }
+                    }
+                };
+                Thread t = new Thread(r);
+                t.start();
+
             }
         });
 
@@ -91,33 +143,61 @@ public class EditSkillsActivity extends CalmActivity{
 
             @Override
             public void onClick(View v) {
-                System.out.println("******* printing get projects very before");
+
+                pd = ProgressDialog.show(mContext, "Updating Skills List", "loading");
+
                 Runnable r = new Runnable() {
                     @Override
                     public void run() {
                         try{
-                            System.out.println("******* new new new oron yael po leyadewno");
                             List<String> mySkillsList = mCalmUser.getSkills();
-                            System.out.println("******* printing get projects after leyadewno leyadewno");
                             if(mySkillsList==null){
-                                System.out.println("******* printing yael in the if1111");
                                 mySkillsList=new ArrayList<String>();
-                                System.out.println("******* printing yael in the if2222");
                             }
-                            if(!(mySkillsList.contains("bluhhhh"))){
-                                System.out.println("******* printing yael in the if3333");
-                                mySkillsList.add("bluhhhh");
-                                System.out.println("******* printing yael in the if4444");
+
+                            String skillString;
+                            String subjectString;
+                            ArrayList<Integer> levelsInteger = new ArrayList<Integer>();
+
+                            subjectString = mSubjectSpinner.getSelectedItem().toString();
+                            int j;
+                            if(cbx.isChecked() == true){
+                               boolean booli = cbx.isChecked();
+                               for( int i = 1;i<=mLevelSpinner.getSelectedItemPosition();i++){
+
+                                   levelsInteger.add(i);
+                               }
+
+
+                            }
+                            else{
+                                levelsInteger.add(mLevelSpinner.getSelectedItemPosition());
+                            }
+
+                            mSkill = new Skill(subjectString , levelsInteger);
+                            skillString = mSkill.toString();
+
+
+                            if(!(mySkillsList.contains(skillString))){
+                                mySkillsList.add(skillString);
                                 {
                             }
-                            System.out.println("*************** yael yael"+mySkillsList.toString());
-                            System.out.println("******* printing get projects after leyadewno leyadewno2");
                             mCalmUser.setSkills(mySkillsList);
                             CalmActivity.userEndpoint.updateCalmUser(mCalmUser).execute();
                             getUser();
                         }} catch (Exception e){
                             e.printStackTrace();
-                            System.out.println("null pointer ****");
+
+                        }
+
+                        finally {
+                            System.out.println("******* finally 1");
+                            String myString = new String("test");
+                            //updateTextView.obtainMessage(0, 10, 20, myString).sendToTarget();
+                            Message msg = handler.obtainMessage();
+                            msg.what = UNCHECK_CHECKBOX;
+                            handler.sendMessage(msg);
+
                         }
                     }
                 };
@@ -132,28 +212,121 @@ public class EditSkillsActivity extends CalmActivity{
 
 
 
-    public void getUser(){
 
+    public void getUser(){
+        pd = ProgressDialog.show(this, "Updating Lists", "loading");
         Runnable r = new Runnable() {
             @Override
             public void run() {
                 try{
-                    //System.out.println("******* printing get projects before");
-                    System.out.println("get user good ****" + CalmActivity.credential.getSelectedAccountName());
-                    String account =    CalmActivity.credential.getSelectedAccountName();
-                    mCalmUser = userEndpoint.getCalmUser(account).execute();
+                    System.out.println("******* printing get projects before");
+                    mCalmUser = CalmActivity.userEndpoint.getCalmUser(CalmActivity.credential.getSelectedAccountName()).execute();
                     //System.out.println("******* printing get projects middle");
+                    skillsList = mCalmUser.getSkills();
+                    Gson gson = new Gson();
+                    String x = gson.toJson(skillsList);
+                    System.out.println("******* skillsList list" + x);
+
+                    //     mProjectsListView.notify();
+                    //    mProjectsListView.notifyAll();
                     //filteredList=projectsList;
-                     System.out.println("******* printing get projects call");
+                    System.out.println("******* try");
+
 
                 } catch (Exception e){
+                    System.out.println("******* catch");
                     e.printStackTrace();
-                    System.out.println("get user exp ****");
+                }
+                finally {
+                    System.out.println("******* finally 1");
+                    String myString = new String("test");
+                    //updateTextView.obtainMessage(0, 10, 20, myString).sendToTarget();
+                    Message msg = handler.obtainMessage();
+                    msg.what = UPDATE_IMAGE;
+                    handler.sendMessage(msg);
+
                 }
             }
         };
         Thread t = new Thread(r);
         t.start();
+
+    }
+
+
+    private static final int UPDATE_IMAGE = 1;
+    private static final int UNCHECK_CHECKBOX = 2 ;
+    private static final int UPDATE_LANGUAGES_LIST =3;
+
+    final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            if(msg.what==UPDATE_IMAGE){
+                dismissProgressDialog();
+                adapter = new SkillsListAdapter(mContext, mCalmUser);
+                mSkillsListView.setAdapter(adapter);
+                languagesAdapter = new LanguagesListAdapter(mContext, mCalmUser);
+                mLanguagesList.setAdapter(languagesAdapter);
+                //    adapter.notifyDataSetChanged();
+                //     mProjectsListView.invalidateViews();
+            }
+
+            if(msg.what==UNCHECK_CHECKBOX)
+            {
+
+                dismissProgressDialog();
+                cbx.setChecked(false);
+                adapter = new SkillsListAdapter(mContext, mCalmUser);
+                mSkillsListView.setAdapter(adapter);
+            }
+
+            if(msg.what==UPDATE_LANGUAGES_LIST)
+            {
+                dismissProgressDialog();
+                languagesAdapter = new LanguagesListAdapter(mContext, mCalmUser);
+                mLanguagesList.setAdapter(languagesAdapter);
+            }
+
+            super.handleMessage(msg);
+        }
+    };
+
+    private void dismissProgressDialog(){
+        if (pd != null){
+            pd.dismiss();
+            pd = null;
+        }
+    }
+
+
+    public void addListenerOnSpinnerItemSelection() {
+        mLevelSpinner = (Spinner) findViewById(R.id.editskills_spinner_level);
+        mLevelSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+        //  mNewProject.setLevel(mLevelSpinner.getSelectedItemPosition()); //TODO
+        mSubjectSpinner = (Spinner) findViewById(R.id.editskills_spinner_subject);
+        mSubjectSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+        mLanguageSpinner = (Spinner) findViewById(R.id.editskills_spinner_language);
+        mLanguageSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+    }
+
+
+    public void addListenerOnCheckbox() {
+
+        cbx = (CheckBox) findViewById(R.id.editskills_checkbox);
+
+        cbx.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //is chkIos checked?
+                if (((CheckBox) v).isChecked()) {
+
+
+                }
+
+            }
+        });
 
     }
 
