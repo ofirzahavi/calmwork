@@ -12,13 +12,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_gravity="left|center_vertical"
             android:background="#ffffff" android:alpha="0.95">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Subject:"
-                android:id="@+id/textview" android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="5dp" android:textStyle="bold" android:textColor="#010101"
-                android:layout_marginLeft="3dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject:"
+                    android:id="@+id/projectscreen_subject_textview" android:layout_gravity="left|center_vertical"
+                    android:layout_marginTop="3dp" android:textStyle="bold" android:textColor="#010101"
+                    android:layout_marginLeft="3dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"
+                    android:id="@+id/projectscreen_subject_to_set_textview" android:layout_marginTop="3dp" android:layout_gravity="center_vertical|left"
+                    android:layout_marginLeft="5dp"/>
+        </LinearLayout>
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

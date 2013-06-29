@@ -1,4 +1,4 @@
-package com.calm.android.activity;
+package com.calm.android.view;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -87,11 +87,7 @@ public class MyEditText extends EditText{
 
     //intercept Typeface change and set it with our custom font
     public void setTypeface(Typeface tf, int style) {
-        if (style == Typeface.BOLD) {
-            super.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Vegur-B 0.602.otf"));
-        } else {
-            super.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Vegur-R 0.602.otf"));
-        }
+
     }
 
     void handleClearButton() {

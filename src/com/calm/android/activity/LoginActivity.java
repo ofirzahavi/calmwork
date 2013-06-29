@@ -2,11 +2,13 @@ package com.calm.android.activity;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.view.*;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.calm.android.R;
+import com.calm.android.adapter.ProjectsListAdapter;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
@@ -60,7 +63,7 @@ public class LoginActivity extends RoboActivity {
  //   @InjectView(R.id.login_button_signup)
  //   private Button mSignupButton;
  //   private Account ac;
-
+    ProgressDialog pd;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,6 +132,8 @@ public class LoginActivity extends RoboActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
+        pd = ProgressDialog.show(this, "", "loading");
+
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case REQUEST_ACCOUNT_PICKER:
@@ -159,19 +164,24 @@ public class LoginActivity extends RoboActivity {
 
                                     System.out.println("******* try");
                                     CalmUser calmUser;
+
                                     calmUser = CalmActivity.userEndpoint.getCalmUser(CalmActivity.credential.getSelectedAccountName()).execute();
 
-                                    if (calmUser==null)
+                                    if (calmUser.containsKey("error_message"))
                                     {
+                                        System.out.println("**** insert user before");
                                         calmUser = new CalmUser();
                                         calmUser.setMail(CalmActivity.credential.getSelectedAccountName());
+                                        System.out.println("**** insert user middle");
                                         calmUser = CalmActivity.userEndpoint.insertCalmUser(calmUser).execute();
-
+                                        System.out.println("**** insert user after");
 
                                     }
 
-                                    if (calmUser!=null)
+                                    if (!(calmUser.containsKey("error_message")))
                                     {
+
+                                        System.out.println("not null ******");
                                         Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
                                         startActivity(intent);
                                     }
@@ -181,6 +191,16 @@ public class LoginActivity extends RoboActivity {
                                 } catch (Exception e){
                                     System.out.println("******* catch");
                                     e.printStackTrace();
+                                }
+
+                                finally {
+                                    System.out.println("******* finally 1");
+                                    String myString = new String("test");
+                                    //updateTextView.obtainMessage(0, 10, 20, myString).sendToTarget();
+                                    Message msg = handler.obtainMessage();
+                                    msg.what = UPDATE_IMAGE;
+                                    handler.sendMessage(msg);
+
                                 }
 
                             }
@@ -195,6 +215,26 @@ public class LoginActivity extends RoboActivity {
 
     }
 
+    private static final int UPDATE_IMAGE = 1;
+    final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
 
+            if(msg.what==UPDATE_IMAGE){
+                dismissProgressDialog();
+
+                //    adapter.notifyDataSetChanged();
+                //     mProjectsListView.invalidateViews();
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    private void dismissProgressDialog(){
+        if (pd != null){
+            pd.dismiss();
+            pd = null;
+        }
+    }
 
 }

@@ -8,14 +8,15 @@
             android:text="Project's title"
             android:id="@+id/project_item_title"
             android:layout_alignParentLeft="true" android:layout_marginLeft="5dp" android:layout_alignParentTop="true"
-            android:layout_marginTop="2dp" android:layout_marginBottom="2dp" android:textStyle="bold"/>
+            android:layout_marginTop="2dp" android:layout_marginBottom="2dp" android:textStyle="bold"
+            />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Due date"
             android:id="@+id/project_item_date"
             android:layout_alignLeft="@+id/project_item_title" android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp" android:layout_marginLeft="55dp" android:textStyle="bold"
+            android:layout_marginTop="30dp" android:layout_marginLeft="53dp" android:textStyle="bold"
             android:textSize="14dp"/>
     <Button
             android:layout_width="53dp"

@@ -186,7 +186,7 @@ public class CreateProjectActivity extends CalmActivity {
 
                     mNewProject.setDueDate(mChosenDateTime);
 
-                    mNewProject.setBudjet(Integer.parseInt(mProjectBudget.getText().toString()));
+                    mNewProject.setBudget(Integer.parseInt(mProjectBudget.getText().toString()));
 
                     insertProject();
                     editor.commit();

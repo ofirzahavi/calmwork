@@ -36,13 +36,19 @@ public class ProjectListItemView extends LinearLayout{
         Button mTrashButton = (Button) findViewById(R.id.list_trash_button);
 
         TextView projectTitleTextView = (TextView) findViewById(R.id.project_item_title);
-        projectTitleTextView.setText(project.getName());
+        projectTitleTextView.setText(project.getSubject() + " Assignment");
 
         mProject=project;
 
         TextView projectDateTextView = (TextView) findViewById(R.id.project_item_date);
      //   projectTitleTextView.setText(project.dueDate.toString());
-        projectDateTextView.setText(project.getDueDate().toString());
+
+        String[] separated = project.getDueDate().toString().split("T");
+        String[] separatedFinal = separated[0].split("-");
+        String correctDate =  separatedFinal[2] + "-" + separatedFinal[1] + "-" + separatedFinal[0]   ;
+        projectDateTextView.setText(correctDate);
+
+
 
         setRowOnClickListener(context);
         mContext = context;
@@ -98,6 +104,8 @@ public class ProjectListItemView extends LinearLayout{
                 Intent intent = new Intent(mContext, ProjectDetailsActivity.class);
                 intent.putExtra("projectId" , mProject.getProjectId()) ;
 
+                String pid =   mProject.getProjectId();
+                System.out.println("********** project id: " + pid );
                 mContext.startActivity(intent);
               //  dialog.show();
             }

@@ -34,9 +34,6 @@ public class EditSkillsActivity extends CalmActivity{
     @InjectView(R.id.editskills_button_add_skills)
     private Button mSkillsButton;
 
-    @InjectView(R.id.button)
-    private Button mAddSkillButton;
-
 
     Context mContext = this;
     private Calmuserendpoint service;
@@ -47,8 +44,6 @@ public class EditSkillsActivity extends CalmActivity{
         return R.layout.edit_skills_screen;
     }
 
-    @InjectView(R.id.editskills_button_add_skills)
-    private Button mAddSkill;
 
 
     private Spinner mSubjectSpinnerSkills;
@@ -57,12 +52,14 @@ public class EditSkillsActivity extends CalmActivity{
 
     ArrayList<String> array;
 
+    Button mAddSkillButton;
 
 
     final Context context = this;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAddSkillButton = (Button) findViewById(R.id.editskills_button_add_skills);
         getUser();
         SkillsListAdapter adapter = new SkillsListAdapter(mContext, mCalmUser);
         mSkillsListView.setAdapter(adapter);
@@ -85,7 +82,7 @@ public class EditSkillsActivity extends CalmActivity{
                     mSkillsListView.setAdapter(adapter);
                     //  Intent intent = new Intent(getApplicationContext(), CreateProjectActivity.class);
                     // startActivity(intent);
-                    System.out.println("skills list" + "******" + mCalmUser.getSkills().toString());
+             //       System.out.println("skills list" + "******" + mCalmUser.getSkills().toString());
                 }
             }
         });
@@ -94,16 +91,31 @@ public class EditSkillsActivity extends CalmActivity{
 
             @Override
             public void onClick(View v) {
-
+                System.out.println("******* printing get projects very before");
                 Runnable r = new Runnable() {
                     @Override
                     public void run() {
                         try{
-                            //System.out.println("******* printing get projects before");
-                            mCalmUser.getSkills().add("bluhhhh");
+                            System.out.println("******* new new new oron yael po leyadewno");
+                            List<String> mySkillsList = mCalmUser.getSkills();
+                            System.out.println("******* printing get projects after leyadewno leyadewno");
+                            if(mySkillsList==null){
+                                System.out.println("******* printing yael in the if1111");
+                                mySkillsList=new ArrayList<String>();
+                                System.out.println("******* printing yael in the if2222");
+                            }
+                            if(!(mySkillsList.contains("bluhhhh"))){
+                                System.out.println("******* printing yael in the if3333");
+                                mySkillsList.add("bluhhhh");
+                                System.out.println("******* printing yael in the if4444");
+                                {
+                            }
+                            System.out.println("*************** yael yael"+mySkillsList.toString());
+                            System.out.println("******* printing get projects after leyadewno leyadewno2");
+                            mCalmUser.setSkills(mySkillsList);
                             CalmActivity.userEndpoint.updateCalmUser(mCalmUser).execute();
-
-                        } catch (Exception e){
+                            getUser();
+                        }} catch (Exception e){
                             e.printStackTrace();
                             System.out.println("null pointer ****");
                         }
@@ -132,7 +144,7 @@ public class EditSkillsActivity extends CalmActivity{
                     mCalmUser = userEndpoint.getCalmUser(account).execute();
                     //System.out.println("******* printing get projects middle");
                     //filteredList=projectsList;
-                    // System.out.println("******* printing get projects call"+ projects);
+                     System.out.println("******* printing get projects call");
 
                 } catch (Exception e){
                     e.printStackTrace();

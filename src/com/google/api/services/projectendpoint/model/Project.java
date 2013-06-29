@@ -40,7 +40,7 @@ public final class Project extends GenericJson {
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
-  private Integer budjet;
+  private Integer budget;
 
   /**
    * The value may be {@code null}.
@@ -70,7 +70,7 @@ public final class Project extends GenericJson {
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
-  private String name;
+  private Text notes;
 
   /**
    * The value may be {@code null}.
@@ -106,16 +106,16 @@ public final class Project extends GenericJson {
 
    * The value returned may be {@code null}.
    */
-  public Integer getBudjet() {
-    return budjet;
+  public Integer getBudget() {
+    return budget;
   }
 
   /**
 
    * The value set may be {@code null}.
    */
-  public Project setBudjet(Integer budjet) {
-    this.budjet = budjet;
+  public Project setBudget(Integer budget) {
+    this.budget = budget;
     return this;
   }
 
@@ -191,16 +191,16 @@ public final class Project extends GenericJson {
 
    * The value returned may be {@code null}.
    */
-  public String getName() {
-    return name;
+  public Text getNotes() {
+    return notes;
   }
 
   /**
 
    * The value set may be {@code null}.
    */
-  public Project setName(String name) {
-    this.name = name;
+  public Project setNotes(Text notes) {
+    this.notes = notes;
     return this;
   }
 

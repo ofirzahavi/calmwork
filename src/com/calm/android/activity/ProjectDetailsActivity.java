@@ -31,7 +31,12 @@ public class ProjectDetailsActivity extends CalmActivity{
         return R.layout.project_screen;
     }
 
+
+
     private TextView mLanguage;
+    private TextView mSubject;
+    private TextView mLevel;
+    private TextView mBudget;
 
     Context mContext = this;
 
@@ -41,10 +46,15 @@ public class ProjectDetailsActivity extends CalmActivity{
 
     private Project mProject;
 
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         mLanguage = (TextView) findViewById(R.id.projectscreen_language_to_set__textview);
+        mSubject = (TextView) findViewById(R.id.projectscreen_subject_to_set_textview);
+        mLevel = (TextView) findViewById(R.id.projectscreen_level_textview);
+        mBudget = (TextView) findViewById(R.id.projectscreen_budget_textview);
+
 
         if (extras != null) {
             System.out.println("project id is: *****" + extras.getString("projectId"));
@@ -100,7 +110,12 @@ public class ProjectDetailsActivity extends CalmActivity{
 
             if(msg.what==UPDATE_IMAGE){
                 dismissProgressDialog();
+              //  String detailsStr = new String();
                 mLanguage.setText(mProject.getLanguage());
+                mSubject.setText(mProject.getSubject());
+                mLevel.setText(mProject.getLevel().toString());
+                mBudget.setText("Project's Budget: " + String.valueOf(mProject.getBudget()));
+
                 //    adapter.notifyDataSetChanged();
                 //     mProjectsListView.invalidateViews();
             }
