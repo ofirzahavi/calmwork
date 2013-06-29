@@ -3,7 +3,6 @@ package com.calm.android.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -11,14 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.calm.android.R;
 import com.calm.android.activity.CalmActivity;
-import com.calm.android.activity.ProjectDetailsActivity;
 import com.calm.android.entities.Skill;
 import com.google.api.services.calmuserendpoint.model.CalmUser;
-import com.google.api.services.projectendpoint.model.Project;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,40 +23,22 @@ import java.util.ArrayList;
  * Time: 12:59 PM
  * To change this template use File | Settings | File Templates.
  */
-public class SkillsListItemView extends LinearLayout{
+public class LanguagesListItemView extends LinearLayout{
 
     private CalmUser mCalmUser;
     private Context mContext;
  //   private Project mProject;
 
-    public SkillsListItemView(Context context, final String skill, CalmUser calmUser) {
+    public LanguagesListItemView(Context context, final String language, CalmUser calmUser) {
 
         super(context);
-        LayoutInflater.from(context).inflate(R.layout.skills_item, this);
-        Button mTrashButton = (Button) findViewById(R.id.skill_trash_button);
-
-        String skillString;
-        String subjectString;
-        String levelString = "";
-       // ArrayList<Integer> levelsInteger = new ArrayList<Integer>();
-        Skill skillObject =  new Gson().fromJson(skill, Skill.class);
-
-        subjectString = skillObject.getSubject();
-
-        if (skillObject.getLevels().size()>1)
-        {
-            levelString =  "Up To  ";
-        }
-
-        levelString = levelString + skillObject.getLevels().get(skillObject.getLevels().size()-1);
+        LayoutInflater.from(context).inflate(R.layout.language_item, this);
+        Button mTrashButton = (Button) findViewById(R.id.language_trash_button);
 
 
-        TextView skillSubjectTitleTextView = (TextView) findViewById(R.id.skill_subject_title);
-        skillSubjectTitleTextView.setText(subjectString);
+        TextView languageTitleTextView = (TextView) findViewById(R.id.language_item_title);
+        languageTitleTextView.setText(language);
 
-
-        TextView skillLevelTitleTextView = (TextView) findViewById(R.id.skill_level_title);
-        skillLevelTitleTextView.setText(levelString);
 
     //    TextView projectTitleTextView = (TextView) findViewById(R.id.skill_item_title);
     //    projectTitleTextView.setText(project.getName());
@@ -82,7 +60,7 @@ public class SkillsListItemView extends LinearLayout{
                                     @Override
                                     public void run() {
                                         try {
-                                            mCalmUser.getSkills().remove(skill);
+                                            mCalmUser.getLanguages().remove(language);
                                             CalmActivity.userEndpoint.updateCalmUser(mCalmUser).execute();
 
                                       }

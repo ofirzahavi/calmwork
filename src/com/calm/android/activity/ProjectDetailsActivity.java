@@ -111,10 +111,11 @@ public class ProjectDetailsActivity extends CalmActivity{
             if(msg.what==UPDATE_IMAGE){
                 dismissProgressDialog();
               //  String detailsStr = new String();
-                mLanguage.setText(mProject.getLanguage());
-                mSubject.setText(mProject.getSubject());
-                mLevel.setText(mProject.getLevel().toString());
+                mLanguage.setText("Project's Language: " + mProject.getLanguage());
+                mSubject.setText("Project's Subject: " + mProject.getSubject());
+                mLevel.setText("Project's Level: " + String.valueOf(mProject.getLevel()));
                 mBudget.setText("Project's Budget: " + String.valueOf(mProject.getBudget()));
+
 
                 //    adapter.notifyDataSetChanged();
                 //     mProjectsListView.invalidateViews();
@@ -130,3 +131,5 @@ public class ProjectDetailsActivity extends CalmActivity{
         }
     }
 }
+
+
