@@ -1,32 +1,21 @@
 package com.calm.android.activity;
-
-import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.*;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 import com.calm.android.R;
-import com.calm.android.adapter.ProjectsListAdapter;
-import com.google.android.gms.auth.GoogleAuthException;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.calmuserendpoint.Calmuserendpoint;
 import com.google.api.services.calmuserendpoint.model.CalmUser;
 import com.google.api.services.projectendpoint.Projectendpoint;
-import com.google.api.services.projectendpoint.model.CollectionResponseProject;
-import com.google.api.services.projectendpoint.model.Project;
-import com.google.gson.Gson;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 
@@ -39,6 +28,7 @@ import java.io.IOException;
  * Time: 5:47 AM
  * To change this template use File | Settings | File Templates.
  */
+
 public class LoginActivity extends RoboActivity {
 
     private static final String PREF_ACCOUNT_NAME = "bla";
@@ -81,7 +71,6 @@ public class LoginActivity extends RoboActivity {
 
           //      editor.putString("userName", mEmailText.getText().toString());
           //      editor.putString("userPassword", mPasswordText.getText().toString());
-
                 editor.commit();
                 chooseAccount();
 
@@ -223,8 +212,6 @@ public class LoginActivity extends RoboActivity {
             if(msg.what==UPDATE_IMAGE){
                 dismissProgressDialog();
 
-                //    adapter.notifyDataSetChanged();
-                //     mProjectsListView.invalidateViews();
             }
             super.handleMessage(msg);
         }

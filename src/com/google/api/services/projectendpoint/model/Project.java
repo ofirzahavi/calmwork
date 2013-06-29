@@ -17,6 +17,7 @@ package com.google.api.services.projectendpoint.model;
 
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.util.DateTime;
+import com.google.api.services.calmuserendpoint.model.Text;
 
 /**
  * Model definition for Project.

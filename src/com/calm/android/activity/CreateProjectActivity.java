@@ -1,20 +1,25 @@
 package com.calm.android.activity;
 
 import android.app.Dialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.calm.android.R;
+import com.calm.android.util.Utils;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.projectendpoint.Projectendpoint;
 import com.google.api.services.projectendpoint.model.Project;
+import com.squareup.picasso.Picasso;
+
 import net.simonvt.menudrawer.StaticDrawer;
 import roboguice.inject.InjectView;
 import android.app.DatePickerDialog;
@@ -22,15 +27,19 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
 
 
 /**
@@ -186,7 +195,13 @@ public class CreateProjectActivity extends CalmActivity {
 
                     mNewProject.setDueDate(mChosenDateTime);
 
-                    mNewProject.setBudget(Integer.parseInt(mProjectBudget.getText().toString()));
+                    String budgetString = mProjectBudget.getText().toString();
+                    if (budgetString.length() > 0){
+                        mNewProject.setBudget(Integer.parseInt(budgetString));
+                    } else {
+                        mNewProject.setBudget(0);
+                    }
+
 
                     insertProject();
                     editor.commit();
@@ -352,7 +367,7 @@ public class CreateProjectActivity extends CalmActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Bitmap image = null;
+        //Bitmap image = null;
         /*
         if (requestCode == CAMERA_PIC_REQUEST && resultCode == RESULT_OK) {
             if ( data.getExtras() == null){
@@ -371,24 +386,56 @@ public class CreateProjectActivity extends CalmActivity {
                 image = (Bitmap) data.getExtras().get("data");
             }
         }*/
+        Uri imageUri = null;
+        File imageFile = null;
+
         if ( (resultCode == RESULT_OK) && (requestCode==CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) ){
-            Uri imageUri = Uri.parse(mCurrentPhotoPath) ;
-            image = loadBitmapFromUri(getContentResolver(),imageUri );
+            imageUri = Uri.parse(mCurrentPhotoPath);
+            //image = loadBitmapFromUri(getContentResolver(),imageUri );
         }
         else if (requestCode == GALLERY_PIC_REQUEST && resultCode == RESULT_OK) {
-            Uri imageUri = data.getData();
-            image = loadBitmapFromUri(getContentResolver(), imageUri);
+            imageUri = data.getData();
         }
-        if (image!=null){
+
+
+        if (imageUri!=null){
+            String f = Utils.getRealPathFromURI(this, imageUri);
+            imageFile = new File(f);
+
+            /*
             ImageView newImageView = new ImageView(this);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100, 100);
             newImageView.setLayoutParams(lp);
             lp.setMargins(10,0,10,0);
             newImageView.setImageBitmap(image);
             mImagesScrollView.addView(newImageView);
+            */
+            uploadFile(imageFile);
         }
     }
 
+    private void uploadFile(final File imageFile) {
+
+        try {
+            String serverImageUrl = Utils.postFileToServer(imageFile);
+            ImageView newImageView = new ImageView(this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100, 100);
+            newImageView.setLayoutParams(lp);
+            lp.setMargins(10, 0, 10, 0);
+            mImagesScrollView.addView(newImageView);
+            List<String> imagesList = mNewProject.getImageIds();
+            if (imagesList == null){
+                imagesList = new ArrayList<String>();
+            }
+            imagesList.add(serverImageUrl);
+
+            mNewProject.setImageIds(imagesList);
+            Picasso.with(mContext).load(serverImageUrl).into(newImageView);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
