@@ -8,116 +8,113 @@
               android:gravity="center_horizontal">
 
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:id="@+id/textView" android:layout_marginTop="5dp" android:textStyle="bold" android:textSize="18dp"
-            android:textColor="#ffffff"/>
-    <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/scrollView1" android:layout_gravity="center" android:layout_marginTop="10dp">
-
-        <LinearLayout
+    <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:layout_gravity="left|center_vertical"
                 android:gravity="center">
 
-            <com.calm.android.view.MyEditText
+       <!--     <com.calm.android.view.MyEditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" android:text="Change Your Displayed Name  "/>
-            <Spinner
-                    android:layout_width="220dp"
-                    android:layout_height="25dp"
-                    android:id="@+id/spinner" android:layout_gravity="center"
-                    android:background="@drawable/round_edges"
-                    android:spinnerMode="dialog" android:entries="@array/title_skills_array"
-                    android:layout_marginTop="5dp" android:alpha="0.8"/>
-            <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Write Something About Yourself"
-                    android:id="@+id/editText1" android:gravity="center"/>
+                    android:layout_gravity="center" android:text="Change Your Displayed Name  "/>     -->
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_gravity="center">
-            <Spinner
-                    android:layout_width="220dp"
-                    android:layout_height="25dp"
-                    android:id="@+id/editskills_spinner_language" android:background="@drawable/round_edges"
-                    android:entries="@array/languages_skills_array" android:spinnerMode="dialog"
-                    android:gravity="center" android:layout_gravity="center" android:layout_marginTop="5dp"
-                    android:alpha="0.8"/>
-            <ListView
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/language_list" android:layout_gravity="center"/>
+                    android:layout_height="wrap_content" android:layout_gravity="left">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Edit Skills:"
+                          android:id="@+id/textView2"
+                          android:textColor="#000000" android:textStyle="bold"
+                          android:layout_gravity="center" android:layout_marginTop="3dp"/>
+                <Spinner
+                        android:layout_width="280dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/subject_array_skills"
+                        android:prompt="@string/subject_prompt_skills"
+                        android:id="@+id/editskills_spinner_subject" android:spinnerMode="dialog" android:gravity="center"
+                        android:textAlignment="center"
+                        android:background="@drawable/round_edges"
+                        android:layout_gravity="center" android:alpha="0.8" android:layout_marginTop="2dp"/>
+                <Spinner
+                        android:layout_width="280dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/level_array_skills"
+                        android:prompt="@string/level_prompt_skills"
+                        android:gravity="center" android:spinnerMode="dialog"
+                        android:id="@+id/editskills_spinner_level" android:textAlignment="center"
+                        android:layout_gravity="center" android:focusable="false"
+                        android:background="@drawable/round_edges" android:layout_marginTop="2dp" android:alpha="0.8"/>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp" android:layout_gravity="center" android:layout_marginTop="2dp">
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editskills_checkbox" android:textSize="8dp" android:checked="false"
+                            />
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Check to add all levels below as well"
+                            android:id="@+id/textView3" android:textStyle="bold"
+                            android:textSize="12dp" android:textColor="#010101" android:layout_gravity="center|right"/>
+                </LinearLayout>
+                <Button
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:text="Add "
+                        android:id="@+id/editskills_button_add_skills" android:singleLine="false" android:textSize="14dp"
+                        android:textColor="#ffffff" android:textStyle="bold" android:layout_gravity="center"
+                        android:layout_marginTop="2dp" android:layout_marginBottom="2dp"/>
+                <ListView
+                        android:layout_width="wrap_content"
+                        android:layout_height="116dp"
+                        android:id="@+id/skills_list" android:layout_gravity="center" android:background="#b2ffffff"
+                        android:divider="#b2010101" android:dividerHeight="1dp"/>
+
+               </LinearLayout>
+               <LinearLayout
+                   android:orientation="vertical"
+                   android:layout_width="fill_parent"
+                   android:layout_height="fill_parent" android:layout_gravity="center">
+                   <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Edit Languages:"
+                           android:id="@+id/textView1" android:layout_gravity="center" android:layout_marginTop="2dp"
+                           android:textColor="#000000" android:textStyle="bold"/>
+                   <Spinner
+                       android:layout_width="280dp"
+                       android:layout_height="30dp"
+                       android:id="@+id/editskills_spinner_language" android:background="@drawable/round_edges"
+                       android:entries="@array/languages_skills_array" android:spinnerMode="dialog"
+                       android:gravity="center" android:layout_gravity="center" android:layout_marginTop="2dp"
+                       android:alpha="0.8" android:textAlignment="center"
+                       android:prompt="@string/languages_skills_prompt"/>
+                   <Button
+                           android:layout_width="75dp"
+                           android:layout_height="30dp"
+                           android:text="Add"
+                           android:id="@+id/editskillsscreen_add_languages_button" android:layout_gravity="center"
+                           android:textSize="14dp" android:textStyle="bold" android:textColor="#ffffff"
+                           android:layout_marginTop="2dp" android:layout_marginBottom="2dp"/>
+                   <ListView
+                       android:layout_width="fill_parent"
+                       android:layout_height="116dp"
+                       android:id="@+id/language_list" android:layout_gravity="center" android:background="#b2ffffff"
+                       android:alpha="0.8" android:divider="#b2010101"
+                       android:dividerHeight="1dp"/>
+           </LinearLayout>
+              <!-- <Spinner
+                       android:layout_width="220dp"
+                       android:layout_height="25dp"
+                       android:id="@+id/spinner" android:layout_gravity="center"
+                       android:background="@drawable/round_edges"
+                       android:spinnerMode="dialog" android:entries="@array/title_skills_array"
+                       android:layout_marginTop="5dp" android:alpha="0.8"/>     -->
+
         </LinearLayout>
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent" android:layout_gravity="left">
-            <Button
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:text="Add "
-                    android:id="@+id/editskillsscreen_add_languages_button" android:singleLine="false" android:textSize="12dp"
-                    android:background="@drawable/round_button"
-                    android:textColor="#ffffff" android:textStyle="bold" android:layout_gravity="center"
-                    android:layout_marginTop="3dp"/>
-            <Spinner
-                    android:layout_width="220dp"
-                    android:layout_height="25dp"
-                    android:entries="@array/subject_array_skills"
-                    android:prompt="@string/subject_prompt"
-                    android:id="@+id/editskills_spinner_subject" android:spinnerMode="dialog" android:gravity="center"
-                    android:textAlignment="center"
-                    android:background="@drawable/round_edges"
-                    android:layout_gravity="center" android:layout_marginTop="5dp" android:alpha="0.8"/>
-            <Spinner
-                    android:layout_width="220dp"
-                    android:layout_height="25dp"
-                    android:entries="@array/level_array_skills"
-                    android:prompt="@string/level_prompt"
-                    android:gravity="center" android:spinnerMode="dialog"
-                    android:id="@+id/editskills_spinner_level" android:textAlignment="center"
-                    android:layout_gravity="center" android:focusable="false"
-                    android:background="@drawable/round_edges" android:layout_marginTop="5dp" android:alpha="0.8"/>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:layout_gravity="center" android:layout_marginTop="3dp">
-                <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editskills_checkbox" android:textSize="8dp" android:checked="false"
-                        />
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Check to add all levels below as well"
-                        android:id="@+id/textView3" android:textStyle="bold"
-                        android:textSize="10dp" android:textColor="#010101" android:layout_gravity="center|right"/>
-            </LinearLayout>
-            <Button
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:text="Add"
-                    android:id="@+id/editskills_button_add_skills" android:layout_gravity="center"
-                    android:background="@drawable/round_button"
-                    android:textSize="12dp" android:textStyle="bold" android:textColor="#ffffff"
-                    android:layout_marginTop="3dp"/>
-            <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/skills_list" android:layout_gravity="center"/>
-        </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+   </LinearLayout>
 

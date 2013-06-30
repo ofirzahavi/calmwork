@@ -81,19 +81,6 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
         getProjects();
 
         System.out.println("******** print from on create" +projectsList);
-     //   filteredList = projectsList;
-
-
-
-
-     //   mSwitchStudentNinja = (Switch) findViewById(R.id.studenthome_switch_student_or_ninja);
-  /*
-       if (mSwitchStudentNinja != null)
-       {
-            mSwitchStudentNinja.setOnCheckedChangeListener(this);
-       }
-    */
-
 
 
         mNewProjectButton.setOnClickListener(new View.OnClickListener() {

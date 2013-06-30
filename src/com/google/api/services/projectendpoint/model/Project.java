@@ -17,7 +17,6 @@ package com.google.api.services.projectendpoint.model;
 
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.util.DateTime;
-import com.google.api.services.calmuserendpoint.model.Text;
 
 /**
  * Model definition for Project.
@@ -84,6 +83,12 @@ public final class Project extends GenericJson {
    */
   @com.google.api.client.util.Key
   private String status;
+
+  /**
+   * The value may be {@code null}.
+   */
+  @com.google.api.client.util.Key
+  private String subect;
 
   /**
    * The value may be {@code null}.
@@ -236,6 +241,23 @@ public final class Project extends GenericJson {
    */
   public Project setStatus(String status) {
     this.status = status;
+    return this;
+  }
+
+  /**
+
+   * The value returned may be {@code null}.
+   */
+  public String getSubect() {
+    return subect;
+  }
+
+  /**
+
+   * The value set may be {@code null}.
+   */
+  public Project setSubect(String subect) {
+    this.subect = subect;
     return this;
   }
 

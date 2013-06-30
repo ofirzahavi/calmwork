@@ -110,14 +110,14 @@ public class EditSkillsActivity extends CalmActivity{
                             if(myLanguagesList==null){
                                 myLanguagesList=new ArrayList<String>();
                             }
-                            if(!(myLanguagesList.contains(mLanguageSpinner.getSelectedItem().toString()))){
+                            if(!(myLanguagesList.contains(mLanguageSpinner.getSelectedItem().toString())))
+                            {
                                 myLanguagesList.add(mLanguageSpinner.getSelectedItem().toString());
-                                {
-                                }
                                 mCalmUser.setLanguages(myLanguagesList);
                                 CalmActivity.userEndpoint.updateCalmUser(mCalmUser).execute();
                                 getUser();
-                            }} catch (Exception e){
+                            }}
+                        catch (Exception e){
                             e.printStackTrace();
 
                         }
@@ -162,7 +162,7 @@ public class EditSkillsActivity extends CalmActivity{
                             subjectString = mSubjectSpinner.getSelectedItem().toString();
                             int j;
                             if(cbx.isChecked() == true){
-                               boolean booli = cbx.isChecked();
+                               //boolean booli = cbx.isChecked();
                                for( int i = 1;i<=mLevelSpinner.getSelectedItemPosition();i++){
 
                                    levelsInteger.add(i);
@@ -274,7 +274,6 @@ public class EditSkillsActivity extends CalmActivity{
 
             if(msg.what==UNCHECK_CHECKBOX)
             {
-
                 dismissProgressDialog();
                 cbx.setChecked(false);
                 adapter = new SkillsListAdapter(mContext, mCalmUser);
