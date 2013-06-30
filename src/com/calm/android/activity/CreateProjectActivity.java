@@ -133,6 +133,12 @@ public class CreateProjectActivity extends CalmActivity {
         addListenerOnSpinnerItemSelection();
         setDateDialogs();
 
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+
+
        // System.out.println(" budget is ********* " + mProjectBudget.getHint());
 
         mDueDateButton = (Button) findViewById(R.id.newproject_button_due_date);
@@ -225,6 +231,19 @@ public class CreateProjectActivity extends CalmActivity {
        // mImagesList.setAdapter(adapter);
 
      //   setResultImageView(mCameraResult);
+
+
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                handleSendImage(intent); // Handle text being sent
+            } else {
+                handleSendDoc(intent); // Handle single image being sent
+            }
+        } else if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
+            handleSendMultipleFiles(intent); // Handle multiple images being sent
+        }
+
 
 
     }
@@ -401,15 +420,6 @@ public class CreateProjectActivity extends CalmActivity {
         if (imageUri!=null){
             String f = Utils.getRealPathFromURI(this, imageUri);
             imageFile = new File(f);
-
-            /*
-            ImageView newImageView = new ImageView(this);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100, 100);
-            newImageView.setLayoutParams(lp);
-            lp.setMargins(10,0,10,0);
-            newImageView.setImageBitmap(image);
-            mImagesScrollView.addView(newImageView);
-            */
             uploadFile(imageFile);
         }
     }
@@ -417,7 +427,10 @@ public class CreateProjectActivity extends CalmActivity {
     private void uploadFile(final File imageFile) {
 
         try {
-            String serverImageUrl = Utils.postFileToServer(imageFile);
+
+
+            String mime = Utils.getMimeType(imageFile.getPath(), mContext);
+            String serverImageUrl = Utils.postFileToServer(imageFile, mime);
             ImageView newImageView = new ImageView(this);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100, 100);
             newImageView.setLayoutParams(lp);
@@ -434,6 +447,66 @@ public class CreateProjectActivity extends CalmActivity {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void uploadDoc(final File imageFile) {
+
+        try {
+            String mime = Utils.getMimeType(imageFile.getPath(), mContext);
+
+            String serverFileUrl = Utils.postFileToServer(imageFile, mime);
+            ImageView newImageView = new ImageView(this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100, 100);
+            newImageView.setLayoutParams(lp);
+            lp.setMargins(10, 0, 10, 0);
+            mImagesScrollView.addView(newImageView);
+            Picasso.with(mContext).load(R.drawable.document_add).into(newImageView);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    void handleSendDoc(Intent intent) {
+        Uri fileUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (fileUri != null) {
+            String f = fileUri.getPath(); //Utils.getRealPathFromURI(this, fileUri);
+            File file = new File(f);
+            uploadDoc(file);
+        }
+    }
+
+    void handleSendImage(Intent intent) {
+        Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (imageUri!=null){
+            String f = Utils.getRealPathFromURI(this, imageUri);
+            File imageFile = new File(f);
+            uploadFile(imageFile);
+        }
+    }
+
+    void handleSendMultipleFiles(Intent intent) {
+        ArrayList<Uri> filesUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+        if (filesUris != null) {
+            for(Uri fileUri : filesUris){
+                try{
+                    String f = Utils.getRealPathFromURI(this, fileUri);
+                    String type = Utils.getMimeType(f, mContext);
+                    File file = new File(f);
+                    if (type.startsWith("image/")){
+                        uploadFile(file);
+                    } else {
+                        file = new File(fileUri.getPath());
+                        uploadDoc(file);
+                    }
+                } catch (Exception e){
+                    File file = new File(fileUri.getPath());
+                    uploadDoc(file);
+                }
+            }
+            // Update UI to reflect multiple images being shared
         }
     }
 

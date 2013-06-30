@@ -1,21 +1,33 @@
 package com.calm.android.activity;
+
+import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.*;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.calm.android.R;
+import com.calm.android.adapter.ProjectsListAdapter;
+import com.calm.android.util.Utils;
+import com.google.android.gms.auth.GoogleAuthException;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.calmuserendpoint.Calmuserendpoint;
 import com.google.api.services.calmuserendpoint.model.CalmUser;
 import com.google.api.services.projectendpoint.Projectendpoint;
+import com.google.api.services.projectendpoint.model.CollectionResponseProject;
+import com.google.api.services.projectendpoint.model.Project;
+import com.google.gson.Gson;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 
@@ -28,17 +40,16 @@ import java.io.IOException;
  * Time: 5:47 AM
  * To change this template use File | Settings | File Templates.
  */
-
 public class LoginActivity extends RoboActivity {
 
     private static final String PREF_ACCOUNT_NAME = "bla";
     private static final String SERVER_CLIENT_ID = "1080189142533.apps.googleusercontent.com";
-    private static final String WEB_CLIENT_ID = "1080189142533-1hin5t3rbq6655cop98oam64n9q9kbni.apps.googleusercontent.com";
+
 
     private SharedPreferences settings;
     private String accountNaStringme;
-    private Projectendpoint projectService;
-    private Calmuserendpoint userService;
+    //private Projectendpoint projectService;
+    //private Calmuserendpoint userService;
     Context mContext = this;
 
  //   @InjectView(R.id.login_email)
@@ -53,14 +64,22 @@ public class LoginActivity extends RoboActivity {
  //   @InjectView(R.id.login_button_signup)
  //   private Button mSignupButton;
  //   private Account ac;
-    ProgressDialog pd;
+    protected ProgressDialog pd;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
-       // credential = new GoogleAccountCredential(this, null);
-        //chooseAccount();
+        CalmActivity.credential = GoogleAccountCredential.usingAudience(mContext,"server:client_id:" + CalmActivity.WEB_CLIENT_ID);
+
+        SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, 0);
+        String accountName = preferences.getString(Utils.ACCOUNT_NAME, null);
+        if (accountName != null){
+            CalmActivity.setEndpoints(accountName);
+            Intent intent = new Intent(mContext, StudentHomeActivity.class);
+            startActivity(intent);
+
+        }
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -69,35 +88,12 @@ public class LoginActivity extends RoboActivity {
                 SharedPreferences settings = getSharedPreferences("CALM",0);
                 SharedPreferences.Editor editor = settings.edit();
 
-          //      editor.putString("userName", mEmailText.getText().toString());
-          //      editor.putString("userPassword", mPasswordText.getText().toString());
                 editor.commit();
                 chooseAccount();
-
-              //  Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-              //  startActivity(intent);
 
             }
         });
 
-
-      /*  mSignupButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivity(intent);
-
-
-            }
-        });  */
-
-     //   Account[] accounts = AccountManager.get(this).getAccounts();
-        /*for (Account a:accounts){
-            System.out.println(a.name);
-        }  */
-       // ac = accounts[0];
 
     }
 
@@ -111,7 +107,7 @@ public class LoginActivity extends RoboActivity {
         String USERINFO_SCOPE =
                 "oauth2:https://www.googleapis.com/auth/userinfo.profile";
      //   credential = new GoogleAccountCredential(mContext,USERINFO_SCOPE );
-        CalmActivity.credential = GoogleAccountCredential.usingAudience(mContext,"server:client_id:" + WEB_CLIENT_ID);
+
 
         startActivityForResult(
                 CalmActivity.credential.newChooseAccountIntent(),
@@ -131,72 +127,11 @@ public class LoginActivity extends RoboActivity {
                             data.getExtras().getString(
                                     AccountManager.KEY_ACCOUNT_NAME);
                     if (accountName != null) {
-
-                        CalmActivity.credential.setSelectedAccountName(accountName) ;
-                        Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
-                        projectService = builder.build();
-                        CalmActivity.projectEndpoint = projectService.projectEndpoint();
-
-                        Calmuserendpoint.Builder userbuilder = new Calmuserendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
-                        userService = userbuilder.build();
-                        CalmActivity.userEndpoint = userService.calmUserEndpoint();
-
-                      ;
-
-
-
-                        Runnable r = new Runnable() {
-
-                            @Override
-                            public void run() {
-                                try{
-
-                                    System.out.println("******* try");
-                                    CalmUser calmUser;
-
-                                    calmUser = CalmActivity.userEndpoint.getCalmUser(CalmActivity.credential.getSelectedAccountName()).execute();
-
-                                    if (calmUser.containsKey("error_message"))
-                                    {
-                                        System.out.println("**** insert user before");
-                                        calmUser = new CalmUser();
-                                        calmUser.setMail(CalmActivity.credential.getSelectedAccountName());
-                                        System.out.println("**** insert user middle");
-                                        calmUser = CalmActivity.userEndpoint.insertCalmUser(calmUser).execute();
-                                        System.out.println("**** insert user after");
-
-                                    }
-
-                                    if (!(calmUser.containsKey("error_message")))
-                                    {
-
-                                        System.out.println("not null ******");
-                                        Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-                                        startActivity(intent);
-                                    }
-
-                                     //TODO: HANDLE CASE WHEN USER WAS NOT CREATED
-
-                                } catch (Exception e){
-                                    System.out.println("******* catch");
-                                    e.printStackTrace();
-                                }
-
-                                finally {
-                                    System.out.println("******* finally 1");
-                                    String myString = new String("test");
-                                    //updateTextView.obtainMessage(0, 10, 20, myString).sendToTarget();
-                                    Message msg = handler.obtainMessage();
-                                    msg.what = UPDATE_IMAGE;
-                                    handler.sendMessage(msg);
-
-                                }
-
-                            }
-                        };
-                        Thread t = new Thread(r);
-                        t.start();
-
+                      saveAccountName(accountName);
+                      CalmActivity.setEndpoints(accountName);
+                      Runnable getUser = CalmActivity.getUserService(handler);
+                      Thread t = new Thread(getUser);
+                      t.start();
                     }
                 }
                 break;
@@ -204,14 +139,25 @@ public class LoginActivity extends RoboActivity {
 
     }
 
-    private static final int UPDATE_IMAGE = 1;
+    private void saveAccountName(String accountName) {
+        SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, 0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(Utils.ACCOUNT_NAME, accountName);
+        editor.commit();
+
+    }
+
+
     final Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
 
-            if(msg.what==UPDATE_IMAGE){
+            if(msg.what==CalmActivity.DISMISS_PD){
                 dismissProgressDialog();
 
+            } else if(msg.what==CalmActivity.LOGIN_SUCSESS){
+                Intent intent = new Intent(mContext, StudentHomeActivity.class);
+                startActivity(intent);
             }
             super.handleMessage(msg);
         }

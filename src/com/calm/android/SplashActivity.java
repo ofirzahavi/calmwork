@@ -42,6 +42,7 @@ public class SplashActivity extends Activity {
         h.postDelayed(r, 1000);
 
 
+
     }
 
 }

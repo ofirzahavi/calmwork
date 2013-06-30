@@ -1,5 +1,6 @@
 package com.calm.android.activity;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -23,9 +26,13 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.calm.android.R;
 import com.calm.android.SplashActivity;
+import com.calm.android.util.Utils;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
+import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.calmuserendpoint.Calmuserendpoint;
+import com.google.api.services.calmuserendpoint.model.CalmUser;
 import com.google.api.services.projectendpoint.Projectendpoint;
 import net.simonvt.menudrawer.MenuDrawer;
 import roboguice.inject.InjectView;
@@ -39,7 +46,13 @@ import java.util.List;
 
 public abstract class CalmActivity extends RoboSherlockFragmentActivity {
 
+    public static final String WEB_CLIENT_ID = "1080189142533-1hin5t3rbq6655cop98oam64n9q9kbni.apps.googleusercontent.com";
+
     private static final String JPEG_FILE_SUFFIX = "jpg";
+    public static final int DISMISS_PD = 0x7;
+    public static final int LOGIN_SUCSESS = 0x1 ;
+
+    protected Context mContext = this;
 
     private ActionBar actionBar;
     private MenuDrawer mMenuDrawer;
@@ -57,9 +70,11 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     protected static final int GALLERY_PIC_REQUEST = 0x1110;
     protected ImageView resultImageView;
 
-    public static GoogleAccountCredential credential;
+    public static GoogleAccountCredential credential = null;
     public static Projectendpoint.ProjectEndpoint projectEndpoint;
     public static Calmuserendpoint.CalmUserEndpoint userEndpoint;
+
+    protected ProgressDialog pd;
 
     /**
      * Called when the activity is first created.
@@ -67,6 +82,14 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (credential == null){
+            SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, 0);
+            String accountName = preferences.getString(Utils.ACCOUNT_NAME, null);
+            if (accountName != null){
+                CalmActivity.credential = GoogleAccountCredential.usingAudience(mContext,"server:client_id:" + WEB_CLIENT_ID);
+                setEndpoints(accountName);
+            }
+        }
         //setContentView(R.layout.main);
 
         mStorageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
@@ -295,5 +318,93 @@ e.printStackTrace();
 
         editor.commit();
 
+    }
+
+    public static void setEndpoints(String accountName){
+        if (accountName!= null){
+
+            CalmActivity.credential.setSelectedAccountName(accountName) ;
+            Projectendpoint.Builder builder = new Projectendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
+            Projectendpoint projectService = builder.build();
+            CalmActivity.projectEndpoint = projectService.projectEndpoint();
+
+            Calmuserendpoint.Builder userbuilder = new Calmuserendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), CalmActivity.credential);
+            Calmuserendpoint userService = userbuilder.build();
+            CalmActivity.userEndpoint = userService.calmUserEndpoint();
+        }
+
+    }
+
+    public static Runnable getUserService(final Handler handler){
+
+        return new Runnable() {
+
+            @Override
+            public void run() {
+                try{
+
+                    System.out.println("getting user");
+                    CalmUser calmUser;
+
+                    calmUser = CalmActivity.userEndpoint.getCalmUser(CalmActivity.credential.getSelectedAccountName()).execute();
+
+                    //user does not exist, create new user
+                    if (calmUser.containsKey("error_message")) {
+
+                        calmUser = new CalmUser();
+                        calmUser.setMail(CalmActivity.credential.getSelectedAccountName());
+                        calmUser = CalmActivity.userEndpoint.insertCalmUser(calmUser).execute();
+
+                    }
+
+                    //user exist
+                    if (!(calmUser.containsKey("error_message"))){
+                        System.out.println("got user");
+                        Message msg = handler.obtainMessage();
+                        msg.what = LOGIN_SUCSESS;
+                        handler.sendMessage(msg);
+
+
+                    }
+
+                    //TODO: HANDLE CASE WHEN USER WAS NOT CREATED
+
+                } catch (Exception e){
+                    System.out.println("******* catch");
+                    e.printStackTrace();
+                }
+
+                finally {
+                    Message msg = handler.obtainMessage();
+                    msg.what = DISMISS_PD;
+                    handler.sendMessage(msg);
+
+                }
+
+            }
+        };
+    }
+
+
+    final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            if(msg.what==CalmActivity.DISMISS_PD){
+                dismissProgressDialog();
+
+            } else if(msg.what==CalmActivity.LOGIN_SUCSESS){
+                Intent intent = new Intent(mContext, StudentHomeActivity.class);
+                startActivity(intent);
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    private void dismissProgressDialog(){
+        if (pd != null){
+            pd.dismiss();
+            pd = null;
+        }
     }
 }

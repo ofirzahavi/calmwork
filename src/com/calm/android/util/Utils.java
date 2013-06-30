@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.content.CursorLoader;
+import android.webkit.MimeTypeMap;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -28,12 +29,14 @@ import java.io.InputStreamReader;
 public class Utils {
 
     protected static final String FILES_UPLOAD_URL = "http://biuninja2013.appspot.com/images";
+    public static final String PREFERENCES = "preferences";
+    public static final String ACCOUNT_NAME = "account name";
 
 
-    public static String postFileToServer(File file) throws IOException, HttpHostConnectException {
+    public static String postFileToServer(File file, String mime) throws IOException, HttpHostConnectException {
         HttpPost httpPost = new HttpPost(FILES_UPLOAD_URL);
         MultipartEntity entity = new MultipartEntity();
-        FileBody fileBody = new FileBody(file, "image/jpeg");
+        FileBody fileBody = new FileBody(file, mime);
         entity.addPart("imageFile", fileBody);
         httpPost.setEntity(entity);
         HttpClient httpClient = new DefaultHttpClient();
@@ -76,6 +79,14 @@ public class Utils {
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
         return cursor.getString(column_index);
+    }
+
+
+    public static String getMimeType(String path, Context context) {
+        String extention = path.substring(path.lastIndexOf(".") );
+        String mimeTypeMap = MimeTypeMap.getFileExtensionFromUrl(extention);
+        String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(mimeTypeMap);
+        return mimeType;
     }
 }
 
