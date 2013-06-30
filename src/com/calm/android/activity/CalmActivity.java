@@ -34,12 +34,18 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.calmuserendpoint.Calmuserendpoint;
 import com.google.api.services.calmuserendpoint.model.CalmUser;
 import com.google.api.services.projectendpoint.Projectendpoint;
+import com.google.api.services.projectendpoint.model.Project;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PaymentActivity;
+
 import net.simonvt.menudrawer.MenuDrawer;
 import roboguice.inject.InjectView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -74,7 +80,23 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     public static Projectendpoint.ProjectEndpoint projectEndpoint;
     public static Calmuserendpoint.CalmUserEndpoint userEndpoint;
 
+    public static final int STUDENT_MODE = 0;
+    public static final int TEACHER_MODE = 1;
+
+    protected static String[] modes=  {"Student", "Teacher"};
+    protected static int userMode = STUDENT_MODE;
+
     public ProgressDialog pd;
+    protected Menu menu;
+
+
+    private static final String CONFIG_ENVIRONMENT = PaymentActivity.ENVIRONMENT_NO_NETWORK;
+
+    // note that these credentials will differ between live & sandbox environments.
+    private static final String CONFIG_CLIENT_ID = "AVUHBxAART2AJkMp8fbJ_GsGEzfm8bB-SRzi5MoDn2KfhvC2UGEdHMXvoPTN";
+    // when testing in sandbox, this is likely the -facilitator email address.
+    private static final String CONFIG_RECEIVER_EMAIL = "gross.yoni-facilitator@gmail.com";
+
 
     /**
      * Called when the activity is first created.
@@ -82,6 +104,13 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent paypalService = new Intent(getApplicationContext(), PayPalService.class);
+        paypalService.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, CONFIG_ENVIRONMENT);
+        paypalService.putExtra(PaymentActivity.EXTRA_CLIENT_ID, CONFIG_CLIENT_ID);
+        paypalService.putExtra(PaymentActivity.EXTRA_RECEIVER_EMAIL, CONFIG_RECEIVER_EMAIL);
+        startService(paypalService);
+
+
         if (credential == null){
             SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, 0);
             String accountName = preferences.getString(Utils.ACCOUNT_NAME, null);
@@ -143,7 +172,8 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
 
         MenuInflater inflater = getSupportMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-
+        menu.findItem(R.id.choose_role).setTitle(modes[userMode]);
+        this.menu = menu;
         return true;
 
     }
@@ -153,15 +183,17 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
         Intent intent;
         switch (item.getItemId()){
             case R.id.menu_student:
-                item.setTitle("Student");
+
                // Toast.makeText(this, , Toast.LENGTH_SHORT);
-                System.out.println("Student");
+                userMode = STUDENT_MODE;
+
+                menu.findItem(R.id.choose_role).setTitle(modes[userMode]);
                 intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.menu_techer:
-                item.setTitle("Teacher");
-                System.out.println("Teacher");
+                userMode = TEACHER_MODE;
+                menu.findItem(R.id.choose_role).setTitle(modes[userMode]);
                 intent = new Intent(getApplicationContext(), TeacherHomeActivity.class);
                 startActivity(intent);
                 return true;
@@ -407,5 +439,33 @@ e.printStackTrace();
             pd.dismiss();
             pd = null;
         }
+    }
+
+    public void buyProject(Project project) {
+        String teacher = project.getTeacherId();
+        int price = project.getBudget();
+        PayPalPayment thingToBuy = new PayPalPayment(new BigDecimal(price), "USD", teacher);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
+
+        intent.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, CONFIG_ENVIRONMENT);
+        intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, CONFIG_CLIENT_ID);
+        intent.putExtra(PaymentActivity.EXTRA_RECEIVER_EMAIL, CONFIG_RECEIVER_EMAIL);
+
+        // It's important to repeat the clientId here so that the SDK has it if Android restarts your
+        // app midway through the payment UI flow.
+        intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, "AVUHBxAART2AJkMp8fbJ_GsGEzfm8bB-SRzi5MoDn2KfhvC2UGEdHMXvoPTN");
+        intent.putExtra(PaymentActivity.EXTRA_PAYER_ID, "yoni@goaly.me");
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+
+        startActivityForResult(intent, 0);
+    }
+
+
+
+    @Override
+    public void onDestroy() {
+        stopService(new Intent(this, PayPalService.class));
+        super.onDestroy();
     }
 }

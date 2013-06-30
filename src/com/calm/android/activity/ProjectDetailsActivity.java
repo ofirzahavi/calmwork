@@ -1,17 +1,30 @@
 package com.calm.android.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.calm.android.R;
 import com.calm.android.adapter.ProjectsListAdapter;
 import com.google.api.services.projectendpoint.Projectendpoint;
 import com.google.api.services.projectendpoint.model.CollectionResponseProject;
 import com.google.api.services.projectendpoint.model.Project;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+
 import roboguice.inject.InjectView;
 
 import java.util.List;
@@ -67,7 +80,61 @@ public class ProjectDetailsActivity extends CalmActivity{
        // else System.out.println("**************");
 
 
+        inflateImages();
+        if (userMode == STUDENT_MODE){
+            inflateTeachers();
+        }
+    }
 
+    private void inflateTeachers() {
+        LinearLayout listView = (LinearLayout) findViewById(R.id.teachers_list);
+        List<String> list = mProject.getAwaitingTeachers();
+        for (String userNAme : list){
+            TextView teacherView = createTeacherView(userNAme);
+            listView.addView(teacherView);
+        }
+
+    }
+
+    private void inflateImages() {
+        LinearLayout listView = (LinearLayout) findViewById(R.id.files_list);
+        List<String> list = mProject.getImageIds();
+
+        for (String imageUrl : list){
+            ImageView imageView = createImage(imageUrl);
+            listView.addView(imageView);
+        }
+    }
+
+    private ImageView createImage(String imageUrl) {
+        ImageView newImageView = new ImageView(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100, 100);
+        newImageView.setLayoutParams(lp);
+        lp.setMargins(10, 0, 10, 0);
+        Picasso.with(mContext).load(R.drawable.file_icon).into(newImageView);
+        return newImageView;
+
+    }
+
+    private TextView createTeacherView(final String userName) {
+        TextView newTextView = new TextView(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
+        newTextView.setLayoutParams(lp);
+        //lp.setMargins(10, 0, 10, 0);
+        newTextView.setText(userName);
+        newTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                acceptTeacher(userName);
+            }
+        });
+        return newTextView;
+
+    }
+
+    private void acceptTeacher(String teacherName) {
+        mProject.setTeacherId(teacherName);
+        buyProject(mProject);
     }
 
 
@@ -128,6 +195,31 @@ public class ProjectDetailsActivity extends CalmActivity{
         if (pd != null){
             pd.dismiss();
             pd = null;
+        }
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+            if (confirm != null) {
+                try {
+                    Log.i("paymentExample", confirm.toJSONObject().toString(4));
+
+                    // TODO: send 'confirm' to your server for verification.
+                    // see https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
+                    // for more details.
+
+                } catch (JSONException e) {
+                    Log.e("paymentExample", "an extremely unlikely failure occurred: ", e);
+                }
+            }
+        }
+        else if (resultCode == Activity.RESULT_CANCELED) {
+            Log.i("paymentExample", "The user canceled.");
+        }
+        else if (resultCode == PaymentActivity.RESULT_PAYMENT_INVALID) {
+            Log.i("paymentExample", "An invalid payment was submitted. Please see the docs.");
         }
     }
 }
