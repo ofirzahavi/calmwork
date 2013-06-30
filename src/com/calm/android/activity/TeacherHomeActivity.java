@@ -251,7 +251,6 @@ public class TeacherHomeActivity extends CalmActivity implements CompoundButton.
 //get the skills from user, first as strings and then convert them to Skills
         StringSkills = mCalmUser.getSkills();
         System.out.println("print********18*******");
-
         for (i = 0;i< StringSkills.size();i++)
         {
             System.out.println("print********19*******");

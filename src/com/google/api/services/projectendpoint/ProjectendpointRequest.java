@@ -12,7 +12,7 @@
 /*
  * This file was generated.
  *  with google-apis-code-generator 1.4.0 (build: 2013-06-26 16:27:34 UTC)
- *  on 2013-06-29 at 21:20:25 UTC 
+ *  on 2013-06-30 at 11:03:21 UTC 
  */
 
 package com.google.api.services.projectendpoint;
@@ -25,7 +25,7 @@ import com.google.api.client.http.UriTemplate;
  * Projectendpoint request.
  *
  * <p>
- * Upgrade warning: this class now extends {@link AbstractGoogleJsonClientRequest}, whereas in prior
+ * Upgrade warning: this class now extends {@link com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest}, whereas in prior
  * version 1.8 it extended {@link com.google.api.client.http.json.JsonHttpRequest}.
  * </p>
  *
@@ -40,7 +40,7 @@ public abstract class ProjectendpointRequest<T> extends AbstractGoogleJsonClient
    * @param uriTemplate URI template for the path relative to the base URL. If it starts with a "/"
    *        the base path from the base URL will be stripped out. The URI template can also be a
    *        full URL. URI template expansion is done using
-   *        {@link UriTemplate#expand(String, String, Object, boolean)}
+   *        {@link com.google.api.client.http.UriTemplate#expand(String, String, Object, boolean)}
    * @param content A POJO that can be serialized into JSON or {@code null} for none
    * @param responseClass response class to parse into
    */

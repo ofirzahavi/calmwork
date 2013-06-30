@@ -74,7 +74,7 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
     public static Projectendpoint.ProjectEndpoint projectEndpoint;
     public static Calmuserendpoint.CalmUserEndpoint userEndpoint;
 
-    protected ProgressDialog pd;
+    public ProgressDialog pd;
 
     /**
      * Called when the activity is first created.
@@ -153,13 +153,14 @@ public abstract class CalmActivity extends RoboSherlockFragmentActivity {
         Intent intent;
         switch (item.getItemId()){
             case R.id.menu_student:
-                Toast.makeText(this, "Student", Toast.LENGTH_SHORT);
+                item.setTitle("Student");
+               // Toast.makeText(this, , Toast.LENGTH_SHORT);
                 System.out.println("Student");
                 intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.menu_techer:
-                Toast.makeText(this, "Teacher", Toast.LENGTH_SHORT);
+                item.setTitle("Teacher");
                 System.out.println("Teacher");
                 intent = new Intent(getApplicationContext(), TeacherHomeActivity.class);
                 startActivity(intent);
@@ -386,7 +387,7 @@ e.printStackTrace();
     }
 
 
-    final Handler handler = new Handler(){
+    public final Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
 

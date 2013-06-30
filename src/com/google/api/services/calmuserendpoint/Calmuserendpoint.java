@@ -12,7 +12,7 @@
 /*
  * This file was generated.
  *  with google-apis-code-generator 1.4.0 (build: 2013-06-26 16:27:34 UTC)
- *  on 2013-06-29 at 21:19:56 UTC 
+ *  on 2013-06-30 at 11:02:51 UTC 
  */
 
 package com.google.api.services.calmuserendpoint;
@@ -41,11 +41,11 @@ import com.google.common.base.Preconditions;
  *
  * <p>
  * This service uses {@link CalmuserendpointRequestInitializer} to initialize global parameters via its
- * {@link Builder}.
+ * {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.Builder}.
  * </p>
  *
  * <p>
- * Upgrade warning: this class now extends {@link AbstractGoogleJsonClient}, whereas in prior
+ * Upgrade warning: this class now extends {@link com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient}, whereas in prior
  * version 1.8 it extended {@link com.google.api.client.googleapis.services.GoogleClient}.
  * </p>
  *
@@ -91,7 +91,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
    * Constructor.
    *
    * <p>
-   * Use {@link Builder} if you need to specify any of the optional parameters.
+   * Use {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.Builder} if you need to specify any of the optional parameters.
    * </p>
    *
    * @param transport HTTP transport
@@ -168,7 +168,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "calmUserEndpoint.getCalmUser".
      *
      * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-     * optional parameters, call the {@link GetCalmUser#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.GetCalmUser#execute()} method to invoke the remote
      * operation.
      *
      * @param id
@@ -188,8 +188,8 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "calmUserEndpoint.getCalmUser".
        *
        * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-       * optional parameters, call the {@link GetCalmUser#execute()} method to invoke the remote
-       * operation. <p> {@link GetCalmUser#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.GetCalmUser#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.GetCalmUser#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param id
@@ -265,7 +265,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "calmUserEndpoint.insertCalmUser".
      *
      * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-     * optional parameters, call the {@link InsertCalmUser#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.InsertCalmUser#execute()} method to invoke the remote
      * operation.
      *
      * @param content the {@link com.google.api.services.calmuserendpoint.model.CalmUser}
@@ -285,8 +285,8 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "calmUserEndpoint.insertCalmUser".
        *
        * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-       * optional parameters, call the {@link InsertCalmUser#execute()} method to invoke the remote
-       * operation. <p> {@link InsertCalmUser#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.InsertCalmUser#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.InsertCalmUser#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param content the {@link com.google.api.services.calmuserendpoint.model.CalmUser}
@@ -336,7 +336,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "calmUserEndpoint.listCalmUser".
      *
      * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-     * optional parameters, call the {@link ListCalmUser#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.ListCalmUser#execute()} method to invoke the remote
      * operation.
      *
      * @return the request
@@ -355,8 +355,8 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "calmUserEndpoint.listCalmUser".
        *
        * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-       * optional parameters, call the {@link ListCalmUser#execute()} method to invoke the remote
-       * operation. <p> {@link ListCalmUser#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.ListCalmUser#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.ListCalmUser#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @since 1.13
@@ -445,7 +445,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "calmUserEndpoint.removeCalmUser".
      *
      * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-     * optional parameters, call the {@link RemoveCalmUser#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.RemoveCalmUser#execute()} method to invoke the remote
      * operation.
      *
      * @param id
@@ -465,8 +465,8 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "calmUserEndpoint.removeCalmUser".
        *
        * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-       * optional parameters, call the {@link RemoveCalmUser#execute()} method to invoke the remote
-       * operation. <p> {@link RemoveCalmUser#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.RemoveCalmUser#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.RemoveCalmUser#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param id
@@ -532,7 +532,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "calmUserEndpoint.updateCalmUser".
      *
      * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-     * optional parameters, call the {@link UpdateCalmUser#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.UpdateCalmUser#execute()} method to invoke the remote
      * operation.
      *
      * @param content the {@link com.google.api.services.calmuserendpoint.model.CalmUser}
@@ -552,8 +552,8 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "calmUserEndpoint.updateCalmUser".
        *
        * This request holds the parameters needed by the the calmuserendpoint server.  After setting any
-       * optional parameters, call the {@link UpdateCalmUser#execute()} method to invoke the remote
-       * operation. <p> {@link UpdateCalmUser#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.UpdateCalmUser#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.calmuserendpoint.Calmuserendpoint.CalmUserEndpoint.UpdateCalmUser#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param content the {@link com.google.api.services.calmuserendpoint.model.CalmUser}
@@ -603,7 +603,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
   }
 
   /**
-   * Builder for {@link Calmuserendpoint}.
+   * Builder for {@link com.google.api.services.calmuserendpoint.Calmuserendpoint}.
    *
    * <p>
    * Implementation is not thread-safe.
@@ -632,7 +632,7 @@ public class Calmuserendpoint extends AbstractGoogleJsonClient {
           false);
     }
 
-    /** Builds a new instance of {@link Calmuserendpoint}. */
+    /** Builds a new instance of {@link com.google.api.services.calmuserendpoint.Calmuserendpoint}. */
     @Override
     public Calmuserendpoint build() {
       return new Calmuserendpoint(getTransport(),

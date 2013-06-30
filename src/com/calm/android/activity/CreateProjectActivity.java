@@ -462,7 +462,7 @@ public class CreateProjectActivity extends CalmActivity {
             newImageView.setLayoutParams(lp);
             lp.setMargins(10, 0, 10, 0);
             mImagesScrollView.addView(newImageView);
-            Picasso.with(mContext).load(R.drawable.document_add).into(newImageView);
+            Picasso.with(mContext).load(R.drawable.file_icon).into(newImageView);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -147,7 +147,6 @@ public class StudentHomeActivity extends CalmActivity implements CompoundButton.
             }
         });
 
-
     }
 
 

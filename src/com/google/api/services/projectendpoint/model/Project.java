@@ -40,6 +40,12 @@ public final class Project extends GenericJson {
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
+  private java.util.List<String> awaitingTeachers;
+
+  /**
+   * The value may be {@code null}.
+   */
+  @com.google.api.client.util.Key
   private Integer budget;
 
   /**
@@ -107,6 +113,23 @@ public final class Project extends GenericJson {
    */
   @com.google.api.client.util.Key
   private String userId;
+
+  /**
+
+   * The value returned may be {@code null}.
+   */
+  public java.util.List<String> getAwaitingTeachers() {
+    return awaitingTeachers;
+  }
+
+  /**
+
+   * The value set may be {@code null}.
+   */
+  public Project setAwaitingTeachers(java.util.List<String> awaitingTeachers) {
+    this.awaitingTeachers = awaitingTeachers;
+    return this;
+  }
 
   /**
 

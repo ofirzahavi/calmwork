@@ -12,7 +12,7 @@
 /*
  * This file was generated.
  *  with google-apis-code-generator 1.4.0 (build: 2013-06-26 16:27:34 UTC)
- *  on 2013-06-29 at 21:19:56 UTC 
+ *  on 2013-06-30 at 11:02:51 UTC 
  */
 
 package com.google.api.services.calmuserendpoint;

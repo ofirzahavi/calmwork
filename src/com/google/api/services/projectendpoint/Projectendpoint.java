@@ -12,7 +12,7 @@
 /*
  * This file was generated.
  *  with google-apis-code-generator 1.4.0 (build: 2013-06-26 16:27:34 UTC)
- *  on 2013-06-29 at 21:20:25 UTC 
+ *  on 2013-06-30 at 11:03:21 UTC 
  */
 
 package com.google.api.services.projectendpoint;
@@ -41,11 +41,11 @@ import com.google.common.base.Preconditions;
  *
  * <p>
  * This service uses {@link ProjectendpointRequestInitializer} to initialize global parameters via its
- * {@link Builder}.
+ * {@link com.google.api.services.projectendpoint.Projectendpoint.Builder}.
  * </p>
  *
  * <p>
- * Upgrade warning: this class now extends {@link AbstractGoogleJsonClient}, whereas in prior
+ * Upgrade warning: this class now extends {@link com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient}, whereas in prior
  * version 1.8 it extended {@link com.google.api.client.googleapis.services.GoogleClient}.
  * </p>
  *
@@ -91,7 +91,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
    * Constructor.
    *
    * <p>
-   * Use {@link Builder} if you need to specify any of the optional parameters.
+   * Use {@link com.google.api.services.projectendpoint.Projectendpoint.Builder} if you need to specify any of the optional parameters.
    * </p>
    *
    * @param transport HTTP transport
@@ -168,7 +168,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "projectEndpoint.getProject".
      *
      * This request holds the parameters needed by the the projectendpoint server.  After setting any
-     * optional parameters, call the {@link GetProject#execute()} method to invoke the remote operation.
+     * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.GetProject#execute()} method to invoke the remote operation.
      *
      * @param id
      * @return the request
@@ -187,8 +187,8 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "projectEndpoint.getProject".
        *
        * This request holds the parameters needed by the the projectendpoint server.  After setting any
-       * optional parameters, call the {@link GetProject#execute()} method to invoke the remote
-       * operation. <p> {@link GetProject#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.GetProject#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.GetProject#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param id
@@ -264,7 +264,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "projectEndpoint.insertProject".
      *
      * This request holds the parameters needed by the the projectendpoint server.  After setting any
-     * optional parameters, call the {@link InsertProject#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.InsertProject#execute()} method to invoke the remote
      * operation.
      *
      * @param content the {@link com.google.api.services.projectendpoint.model.Project}
@@ -284,8 +284,8 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "projectEndpoint.insertProject".
        *
        * This request holds the parameters needed by the the projectendpoint server.  After setting any
-       * optional parameters, call the {@link InsertProject#execute()} method to invoke the remote
-       * operation. <p> {@link InsertProject#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.InsertProject#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.InsertProject#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param content the {@link com.google.api.services.projectendpoint.model.Project}
@@ -335,7 +335,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "projectEndpoint.listProject".
      *
      * This request holds the parameters needed by the the projectendpoint server.  After setting any
-     * optional parameters, call the {@link ListProject#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.ListProject#execute()} method to invoke the remote
      * operation.
      *
      * @return the request
@@ -354,8 +354,8 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "projectEndpoint.listProject".
        *
        * This request holds the parameters needed by the the projectendpoint server.  After setting any
-       * optional parameters, call the {@link ListProject#execute()} method to invoke the remote
-       * operation. <p> {@link ListProject#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.ListProject#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.ListProject#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @since 1.13
@@ -444,7 +444,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "projectEndpoint.noTeacherListProject".
      *
      * This request holds the parameters needed by the the projectendpoint server.  After setting any
-     * optional parameters, call the {@link NoTeacherListProject#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.NoTeacherListProject#execute()} method to invoke the remote
      * operation.
      *
      * @return the request
@@ -463,8 +463,8 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "projectEndpoint.noTeacherListProject".
        *
        * This request holds the parameters needed by the the projectendpoint server.  After setting any
-       * optional parameters, call the {@link NoTeacherListProject#execute()} method to invoke the
-       * remote operation. <p> {@link NoTeacherListProject#initialize(AbstractGoogleClientRequest)} must
+       * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.NoTeacherListProject#execute()} method to invoke the
+       * remote operation. <p> {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.NoTeacherListProject#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must
        * be called to initialize this instance immediately after invoking the constructor. </p>
        *
        * @since 1.13
@@ -543,7 +543,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "projectEndpoint.removeProject".
      *
      * This request holds the parameters needed by the the projectendpoint server.  After setting any
-     * optional parameters, call the {@link RemoveProject#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.RemoveProject#execute()} method to invoke the remote
      * operation.
      *
      * @param id
@@ -563,8 +563,8 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "projectEndpoint.removeProject".
        *
        * This request holds the parameters needed by the the projectendpoint server.  After setting any
-       * optional parameters, call the {@link RemoveProject#execute()} method to invoke the remote
-       * operation. <p> {@link RemoveProject#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.RemoveProject#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.RemoveProject#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param id
@@ -630,7 +630,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
      * Create a request for the method "projectEndpoint.updateProject".
      *
      * This request holds the parameters needed by the the projectendpoint server.  After setting any
-     * optional parameters, call the {@link UpdateProject#execute()} method to invoke the remote
+     * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.UpdateProject#execute()} method to invoke the remote
      * operation.
      *
      * @param content the {@link com.google.api.services.projectendpoint.model.Project}
@@ -650,8 +650,8 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
        * Create a request for the method "projectEndpoint.updateProject".
        *
        * This request holds the parameters needed by the the projectendpoint server.  After setting any
-       * optional parameters, call the {@link UpdateProject#execute()} method to invoke the remote
-       * operation. <p> {@link UpdateProject#initialize(AbstractGoogleClientRequest)} must be called to
+       * optional parameters, call the {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.UpdateProject#execute()} method to invoke the remote
+       * operation. <p> {@link com.google.api.services.projectendpoint.Projectendpoint.ProjectEndpoint.UpdateProject#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to
        * initialize this instance immediately after invoking the constructor. </p>
        *
        * @param content the {@link com.google.api.services.projectendpoint.model.Project}
@@ -701,7 +701,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
   }
 
   /**
-   * Builder for {@link Projectendpoint}.
+   * Builder for {@link com.google.api.services.projectendpoint.Projectendpoint}.
    *
    * <p>
    * Implementation is not thread-safe.
@@ -730,7 +730,7 @@ public class Projectendpoint extends AbstractGoogleJsonClient {
           false);
     }
 
-    /** Builds a new instance of {@link Projectendpoint}. */
+    /** Builds a new instance of {@link com.google.api.services.projectendpoint.Projectendpoint}. */
     @Override
     public Projectendpoint build() {
       return new Projectendpoint(getTransport(),

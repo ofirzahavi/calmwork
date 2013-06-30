@@ -1,9 +1,11 @@
 package com.calm.android.view;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import com.calm.android.activity.ProjectDetailsActivity;
 import com.google.api.services.projectendpoint.model.Project;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -56,41 +60,34 @@ public class ProjectTeacherListItemView extends LinearLayout{
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(mContext, ("Project Accepted"),
-                        Toast.LENGTH_SHORT).show();
-                /*
-                new AlertDialog.Builder(mContext)
-                        .setTitle("Delete entry")
-                        .setMessage("Are you sure you want to delete this entry?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                           public void onClick(DialogInterface dialog, int which) {
-
-                                Runnable r = new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        try {
-                                            CalmActivity.projectEndpoint.removeProject(project.getProjectId()).execute();
-
-                                      }
-                                        catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                };
-
-                                Thread t = new Thread(r);
-                                t.start();
-
-
-                                // continue with delete
+                final CalmActivity ctx = (CalmActivity) mContext;
+                ctx.pd = ProgressDialog.show(ctx, "", "Accepting project");
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            List<String> teachersList = mProject.getAwaitingTeachers();
+                            if (teachersList == null){
+                                teachersList = new ArrayList<String>();
                             }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        .show();  */
+                            String teahcerID = CalmActivity.credential.getSelectedAccountName();
+                            teachersList.add(teahcerID);
+                            mProject.setAwaitingTeachers(teachersList);
+                            mProject = CalmActivity.projectEndpoint.updateProject(mProject).execute();
+                            Message msg = ctx.handler.obtainMessage();
+                            msg.what = CalmActivity.DISMISS_PD;
+                            ctx.handler.sendMessage(msg);
+
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                Thread t = new Thread(r);
+                t.start();
+
             }
         });
 
@@ -107,7 +104,7 @@ public class ProjectTeacherListItemView extends LinearLayout{
                 Intent intent = new Intent(mContext, ProjectDetailsActivity.class);
                 intent.putExtra("projectId" , mProject.getProjectId()) ;
 
-                String pid =   mProject.getProjectId();
+                String pid = mProject.getProjectId();
                 System.out.println("********** project id: " + pid );
                 mContext.startActivity(intent);
               //  dialog.show();
