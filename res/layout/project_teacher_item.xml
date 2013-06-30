@@ -1,0 +1,37 @@
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:clickable="false">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:text="Project's title"
+            android:id="@+id/project_item_teacher_title"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="5dp" android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp" android:layout_marginBottom="2dp" android:textStyle="bold"
+            android:textColor="#010101"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due date"
+            android:id="@+id/project_item_teacher_date"
+            android:layout_alignLeft="@+id/project_item_teacher_title" android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp" android:layout_marginLeft="53dp" android:textStyle="bold"
+            android:textSize="14dp" android:textColor="#010101"/>
+    <Button
+            android:layout_width="75dp"
+            android:layout_height="40dp"
+            android:id="@+id/project_teacher_list_accept_button"
+            android:textColor="#b2010001" android:textSize="10dp"
+            android:textAlignment="center"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="245dp"
+            android:textStyle="bold" android:alpha="0.4"
+            android:layout_marginTop="5dp" android:text="Accept"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due to:"
+            android:id="@+id/project_item_techer_dueto"
+            android:textStyle="bold" android:textSize="14dp" android:layout_alignLeft="@+id/project_item_teacher_title"
+            android:layout_alignParentTop="true" android:layout_marginTop="30dp" android:textColor="#010000"/>
+</RelativeLayout>

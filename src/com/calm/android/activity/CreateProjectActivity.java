@@ -400,6 +400,7 @@ public class CreateProjectActivity extends CalmActivity {
 
         if (imageUri!=null){
             String f = Utils.getRealPathFromURI(this, imageUri);
+            System.out.println("** image file name: " + f);
             imageFile = new File(f);
 
             /*
